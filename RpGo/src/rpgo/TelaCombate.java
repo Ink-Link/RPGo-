@@ -26,6 +26,8 @@ public class TelaCombate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         cboxTeste = new javax.swing.JComboBox<>();
         btnTeste = new javax.swing.JButton();
@@ -33,18 +35,39 @@ public class TelaCombate extends javax.swing.JFrame {
         lblAcoesStand = new javax.swing.JLabel();
         btnAtqPoder = new javax.swing.JButton();
         btnAtqPrecisao = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnVilanesca = new javax.swing.JButton();
+        btnGolpePersonagem = new javax.swing.JButton();
+        lblPersonagem = new javax.swing.JLabel();
+        lblVilao = new javax.swing.JLabel();
         pnlCena = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnBackground = new javax.swing.JButton();
+        lblTestes = new javax.swing.JLabel();
+        lblTeste1 = new javax.swing.JLabel();
+        lblTeste2 = new javax.swing.JLabel();
+        lblTeste3 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        lblNomeCampanha = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
+        lblAddPersonagem = new javax.swing.JLabel();
+        lblRemoverPersonagem = new javax.swing.JLabel();
         btnRemoverPersonagem = new javax.swing.JButton();
-        btnAddPersonagem = new javax.swing.JButton();
         btnEditarPersonagem = new javax.swing.JButton();
+        btnAddPersonagem = new javax.swing.JButton();
+        lblEditarPersonagem = new javax.swing.JLabel();
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         cboxTeste.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxTesteActionPerformed(evt);
+            }
+        });
 
         btnTeste.setText("Testar");
 
@@ -56,11 +79,13 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnAtqPrecisao.setText("À Distância");
 
-        jButton4.setText("Ação Vilanesca");
+        btnVilanesca.setText("Ação Vilanesca");
 
-        jButton3.setText("Golpe");
+        btnGolpePersonagem.setText("Golpe");
 
-        jLabel2.setText("Personagem");
+        lblPersonagem.setText("Personagem");
+
+        lblVilao.setText("Vilão");
 
         javax.swing.GroupLayout pnlAcoesLayout = new javax.swing.GroupLayout(pnlAcoes);
         pnlAcoes.setLayout(pnlAcoesLayout);
@@ -69,59 +94,125 @@ public class TelaCombate extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAcoesLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(lblAcoesStand)
+                .addGap(62, 62, 62)
+                .addComponent(lblPersonagem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(99, 99, 99))
+                .addComponent(lblVilao)
+                .addGap(76, 76, 76))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAcoesLayout.createSequentialGroup()
                 .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(pnlAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnAtqPrecisao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtqPoder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(132, 132, 132)
-                .addGroup(pnlAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(78, 78, 78))
+                .addGap(32, 32, 32)
+                .addComponent(btnGolpePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(btnVilanesca)
+                .addGap(32, 32, 32))
         );
         pnlAcoesLayout.setVerticalGroup(
             pnlAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAcoesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblAcoesStand))
+                    .addComponent(lblPersonagem)
+                    .addComponent(lblAcoesStand)
+                    .addComponent(lblVilao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtqPoder)
-                    .addComponent(jButton3))
+                    .addComponent(btnGolpePersonagem)
+                    .addComponent(btnVilanesca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlAcoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtqPrecisao)
-                    .addComponent(jButton4))
+                .addComponent(btnAtqPrecisao)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pnlCena.setBackground(new java.awt.Color(50, 50, 50));
         pnlCena.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel1.setText("Pontos Bizarros: X");
+
         javax.swing.GroupLayout pnlCenaLayout = new javax.swing.GroupLayout(pnlCena);
         pnlCena.setLayout(pnlCenaLayout);
         pnlCenaLayout.setHorizontalGroup(
             pnlCenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCenaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         pnlCenaLayout.setVerticalGroup(
             pnlCenaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pnlCenaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnBackground.setText("BACKGROUND");
+        btnBackground.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnBackground.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackgroundActionPerformed(evt);
+            }
+        });
 
-        btnRemoverPersonagem.setText("REMOVER PERSONAGEM");
+        lblTestes.setText("Testes Fora de Combate");
 
-        btnAddPersonagem.setText("ADICIONAR PERSONAGEM");
+        lblTeste1.setText("1-4 (Falha)");
 
-        btnEditarPersonagem.setText("EDITAR PERSONAGEM");
+        lblTeste2.setText("5-6 (S.Parcial)");
+
+        lblTeste3.setText("7+ (Sucesso)");
+
+        btnBack.setBackground(new java.awt.Color(30, 30, 30));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnBack.setText("<");
+        btnBack.setBorder(null);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        lblNomeCampanha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblNomeCampanha.setText("NOME DA CAMPANHA");
+
+        lblBackground.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblBackground.setText("Background");
+
+        lblAddPersonagem.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblAddPersonagem.setText("Adicionar Personagem");
+
+        lblRemoverPersonagem.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblRemoverPersonagem.setText("Remover Personagem");
+
+        btnRemoverPersonagem.setToolTipText("");
+        btnRemoverPersonagem.setEnabled(false);
+        btnRemoverPersonagem.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnRemoverPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverPersonagemActionPerformed(evt);
+            }
+        });
+
+        btnEditarPersonagem.setEnabled(false);
+        btnEditarPersonagem.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnEditarPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPersonagemActionPerformed(evt);
+            }
+        });
+
+        btnAddPersonagem.setPreferredSize(new java.awt.Dimension(50, 50));
+        btnAddPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddPersonagemActionPerformed(evt);
+            }
+        });
+
+        lblEditarPersonagem.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        lblEditarPersonagem.setText("Editar Personagem");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,64 +222,145 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
                         .addComponent(pnlAcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTeste))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnTeste))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTeste2)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblTeste1)
+                                        .addGap(8, 8, 8))
+                                    .addComponent(lblTeste3, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(10, 10, 10))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(lblTestes)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(pnlCena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddPersonagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblNomeCampanha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pnlCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(lblRemoverPersonagem))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(lblEditarPersonagem))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblBackground)
+                                    .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblAddPersonagem)))
+                        .addGap(4, 4, 4)))
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNomeCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btnBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBackground)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAddPersonagem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRemoverPersonagem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(lblEditarPersonagem)
+                        .addGap(0, 15, Short.MAX_VALUE)))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnTeste)
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(pnlAcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblTeste1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTeste2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTeste)
+                            .addComponent(lblTeste3)))
+                    .addComponent(pnlAcoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 714, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(1, 1, 1))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cboxTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxTesteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxTesteActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackgroundActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackgroundActionPerformed
+
+    private void btnRemoverPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverPersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoverPersonagemActionPerformed
+
+    private void btnEditarPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarPersonagemActionPerformed
+
+    private void btnAddPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddPersonagemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,16 +401,30 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JButton btnAddPersonagem;
     private javax.swing.JButton btnAtqPoder;
     private javax.swing.JButton btnAtqPrecisao;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBackground;
     private javax.swing.JButton btnEditarPersonagem;
+    private javax.swing.JButton btnGolpePersonagem;
     private javax.swing.JButton btnRemoverPersonagem;
     private javax.swing.JButton btnTeste;
+    private javax.swing.JButton btnVilanesca;
     private javax.swing.JComboBox<String> cboxTeste;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblAcoesStand;
+    private javax.swing.JLabel lblAddPersonagem;
+    private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblEditarPersonagem;
+    private javax.swing.JLabel lblNomeCampanha;
+    private javax.swing.JLabel lblPersonagem;
+    private javax.swing.JLabel lblRemoverPersonagem;
+    private javax.swing.JLabel lblTeste1;
+    private javax.swing.JLabel lblTeste2;
+    private javax.swing.JLabel lblTeste3;
+    private javax.swing.JLabel lblTestes;
+    private javax.swing.JLabel lblVilao;
     private javax.swing.JPanel pnlAcoes;
     private javax.swing.JPanel pnlCena;
     // End of variables declaration//GEN-END:variables
