@@ -11,5 +11,14 @@ public class Vilao extends Personagem{
     public Vilao(){
         super();
         this.pontosBizarros = 0;
+        
     } 
+
+    public int getPontosBizarros() {
+        return pontosBizarros;
+    }
+
+    public void setPontosBizarros(int pontosBizarros) {
+        this.pontosBizarros = pontosBizarros;
+    }
 }

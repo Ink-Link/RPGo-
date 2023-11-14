@@ -14,6 +14,8 @@ public class Personagem {
     protected int plano;
     
     protected int determinacao;
+    
+    protected Stand stand = new Stand();
 
     public Personagem(String nome, int corpo, int mente, int coragem, int hp, int plano, int determinacao) {
         this.nome = nome;
