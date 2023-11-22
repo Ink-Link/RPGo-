@@ -638,6 +638,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Golpe"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGolpePersonagemActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPersonagem">
           <Properties>

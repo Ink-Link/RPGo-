@@ -312,6 +312,11 @@ public class TelaCombate extends javax.swing.JFrame {
         btnVilanesca.setText("Ação Vilanesca");
 
         btnGolpePersonagem.setText("Golpe");
+        btnGolpePersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolpePersonagemActionPerformed(evt);
+            }
+        });
 
         lblPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPersonagem.setText("Personagem");
@@ -533,6 +538,11 @@ public class TelaCombate extends javax.swing.JFrame {
         // TODO add your handling code here:
         new TelaPersonagens().setVisible(true);
     }//GEN-LAST:event_btnAddPersonagemActionPerformed
+
+    private void btnGolpePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolpePersonagemActionPerformed
+        // TODO add your handling code here:
+        // TCHARAN!! Código novo.
+    }//GEN-LAST:event_btnGolpePersonagemActionPerformed
 
     /**
      * @param args the command line arguments
