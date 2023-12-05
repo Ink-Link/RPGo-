@@ -15,6 +15,8 @@ public class InserirCampanha extends javax.swing.JFrame {
      */
     public InserirCampanha() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -30,7 +32,6 @@ public class InserirCampanha extends javax.swing.JFrame {
         txtfTitulo = new javax.swing.JTextField();
         txtfSistema = new javax.swing.JTextField();
         cboxMestre = new javax.swing.JComboBox<>();
-        txtfIdCampanha = new javax.swing.JTextField();
         ftxtfDataInicio = new javax.swing.JFormattedTextField();
         cboxFrequencia = new javax.swing.JComboBox<>();
         lblId = new javax.swing.JLabel();
@@ -41,12 +42,20 @@ public class InserirCampanha extends javax.swing.JFrame {
         lblCriacaoCampanha = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblSalvar = new javax.swing.JButton();
+        spnrId = new javax.swing.JSpinner();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nova Campanha");
+        setResizable(false);
 
+        txtfTitulo.setBackground(new java.awt.Color(40, 40, 40));
+
+        txtfSistema.setBackground(new java.awt.Color(40, 40, 40));
+
+        cboxMestre.setBackground(new java.awt.Color(40, 40, 40));
+        cboxMestre.setForeground(new java.awt.Color(255, 255, 255));
         cboxMestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxMestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,40 +63,47 @@ public class InserirCampanha extends javax.swing.JFrame {
             }
         });
 
-        txtfIdCampanha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfIdCampanhaActionPerformed(evt);
-            }
-        });
-
+        ftxtfDataInicio.setBackground(new java.awt.Color(40, 40, 40));
         ftxtfDataInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtfDataInicioActionPerformed(evt);
             }
         });
 
-        cboxFrequencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxFrequencia.setBackground(new java.awt.Color(40, 40, 40));
+        cboxFrequencia.setForeground(new java.awt.Color(255, 255, 255));
+        cboxFrequencia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semanalmente", "Bisemanalmente", "Mensalmente", "Bimensalmente" }));
         cboxFrequencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxFrequenciaActionPerformed(evt);
             }
         });
 
-        lblId.setText("ID:");
+        lblId.setForeground(new java.awt.Color(255, 255, 255));
+        lblId.setText("ID");
 
-        lblTitulo.setText("Título:");
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Título");
 
-        lblSistema.setText("Sistema:");
+        lblSistema.setForeground(new java.awt.Color(255, 255, 255));
+        lblSistema.setText("Sistema");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Data de Início:");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Frequência:");
 
+        lblCriacaoCampanha.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCriacaoCampanha.setForeground(new java.awt.Color(255, 255, 255));
         lblCriacaoCampanha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCriacaoCampanha.setText("Criação de Campanha");
 
-        jLabel4.setText("Mestre:");
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Mestre");
 
+        lblSalvar.setBackground(new java.awt.Color(86, 86, 86));
+        lblSalvar.setForeground(new java.awt.Color(255, 255, 255));
         lblSalvar.setText("Salvar");
         lblSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,67 +116,70 @@ public class InserirCampanha extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSistema)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtfSistema)
-                            .addComponent(cboxMestre, 0, 131, Short.MAX_VALUE))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboxFrequencia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                    .addComponent(lblSalvar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(cboxMestre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(cboxFrequencia, 0, 1, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSistema)
+                                .addComponent(txtfSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ftxtfDataInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))))
+                                .addComponent(jLabel3)
+                                .addComponent(ftxtfDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfIdCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtfTitulo)))
-                .addGap(19, 19, 19))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblTitulo)
+                                .addGap(212, 212, 212)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblId)
+                            .addComponent(spnrId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(15, Short.MAX_VALUE))
             .addComponent(lblCriacaoCampanha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(lblSalvar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(lblCriacaoCampanha)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtfIdCampanha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblId)
                     .addComponent(lblTitulo)
-                    .addComponent(txtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblId))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnrId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSistema)
-                    .addComponent(txtfSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(ftxtfDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cboxFrequencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtfSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtfDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxMestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(cboxFrequencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblSalvar)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -177,10 +196,6 @@ public class InserirCampanha extends javax.swing.JFrame {
     private void ftxtfDataInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtfDataInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ftxtfDataInicioActionPerformed
-
-    private void txtfIdCampanhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfIdCampanhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfIdCampanhaActionPerformed
 
     private void lblSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSalvarActionPerformed
         // TODO add your handling code here:
@@ -234,7 +249,7 @@ public class InserirCampanha extends javax.swing.JFrame {
     private javax.swing.JButton lblSalvar;
     private javax.swing.JLabel lblSistema;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JTextField txtfIdCampanha;
+    private javax.swing.JSpinner spnrId;
     private javax.swing.JTextField txtfSistema;
     private javax.swing.JTextField txtfTitulo;
     // End of variables declaration//GEN-END:variables

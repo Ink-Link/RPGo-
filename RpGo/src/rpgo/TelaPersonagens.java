@@ -15,6 +15,8 @@ public class TelaPersonagens extends javax.swing.JFrame {
      */
     public TelaPersonagens() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -39,8 +41,17 @@ public class TelaPersonagens extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Personagens da Campanha");
 
+        jTable1.setAutoCreateRowSorter(true);
+        jTable1.setBackground(new java.awt.Color(40, 40, 40));
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -50,8 +61,12 @@ public class TelaPersonagens extends javax.swing.JFrame {
                 "Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador"
             }
         ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        jTable1.setAutoscrolls(false);
+        jTable1.setGridColor(new java.awt.Color(40, 40, 40));
         jScrollPane1.setViewportView(jTable1);
 
+        lblJogadores.setForeground(new java.awt.Color(255, 255, 255));
         lblJogadores.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblJogadores.setText("Personagens");
 
@@ -59,6 +74,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
         btnAddJogador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnAddJogador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/16x16/plus.png"))); // NOI18N
         btnAddJogador.setBorder(null);
+        btnAddJogador.setContentAreaFilled(false);
         btnAddJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddJogadorActionPerformed(evt);
@@ -69,6 +85,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
         btnExcluir1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
         btnExcluir1.setBorder(null);
+        btnExcluir1.setContentAreaFilled(false);
         btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluir1ActionPerformed(evt);
@@ -79,6 +96,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/pencil.png"))); // NOI18N
         btnEditar.setBorder(null);
+        btnEditar.setContentAreaFilled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -89,15 +107,20 @@ public class TelaPersonagens extends javax.swing.JFrame {
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/search.png"))); // NOI18N
         btnBuscar.setBorder(null);
+        btnBuscar.setContentAreaFilled(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
             }
         });
 
+        txtfBusca.setBackground(new java.awt.Color(40, 40, 40));
+        txtfBusca.setForeground(new java.awt.Color(255, 255, 255));
+
         btnSelecionar.setBackground(new java.awt.Color(30, 30, 30));
         btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/tick.png"))); // NOI18N
         btnSelecionar.setBorder(null);
+        btnSelecionar.setContentAreaFilled(false);
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);

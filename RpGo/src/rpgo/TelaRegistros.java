@@ -15,11 +15,8 @@ public class TelaRegistros extends javax.swing.JFrame {
      */
     public TelaRegistros() {
         initComponents();
-        
-        /*
-        Color cor = new Color(30,30,30);
-        getContentPane().setBackground(cor);
-        */
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -47,8 +44,20 @@ public class TelaRegistros extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registros");
 
+        txtfBusca.setBackground(new java.awt.Color(40, 40, 40));
+        txtfBusca.setForeground(new java.awt.Color(255, 255, 255));
+
+        tblFuncionarios.setAutoCreateRowSorter(true);
+        tblFuncionarios.setBackground(new java.awt.Color(40, 40, 40));
+        tblFuncionarios.setForeground(new java.awt.Color(255, 255, 255));
         tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -60,11 +69,21 @@ public class TelaRegistros extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblFuncionarios);
 
+        lblJogadores.setForeground(new java.awt.Color(255, 255, 255));
         lblJogadores.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblJogadores.setText("Jogadores");
 
+        tblJogadores.setAutoCreateRowSorter(true);
+        tblJogadores.setBackground(new java.awt.Color(40, 40, 40));
+        tblJogadores.setForeground(new java.awt.Color(255, 255, 255));
         tblJogadores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -76,6 +95,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblJogadores);
 
+        lblMestres.setForeground(new java.awt.Color(255, 255, 255));
         lblMestres.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblMestres.setText("Mestres");
 
@@ -84,6 +104,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/pencil.png"))); // NOI18N
         btnEditar.setToolTipText("Editar selecionado");
         btnEditar.setBorder(null);
+        btnEditar.setContentAreaFilled(false);
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditarActionPerformed(evt);
@@ -95,6 +116,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         btnExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
         btnExcluir1.setToolTipText("Excluir selecionado");
         btnExcluir1.setBorder(null);
+        btnExcluir1.setContentAreaFilled(false);
         btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluir1ActionPerformed(evt);
@@ -106,6 +128,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/search.png"))); // NOI18N
         btnBuscar.setToolTipText("Buscar");
         btnBuscar.setBorder(null);
+        btnBuscar.setContentAreaFilled(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -117,6 +140,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         btnAddJogador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/16x16/plus.png"))); // NOI18N
         btnAddJogador.setToolTipText("Inserir jogador");
         btnAddJogador.setBorder(null);
+        btnAddJogador.setContentAreaFilled(false);
         btnAddJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddJogadorActionPerformed(evt);
@@ -128,6 +152,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         btnAddMestre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/16x16/plus.png"))); // NOI18N
         btnAddMestre.setToolTipText("Inserir mestre");
         btnAddMestre.setBorder(null);
+        btnAddMestre.setContentAreaFilled(false);
         btnAddMestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddMestreActionPerformed(evt);

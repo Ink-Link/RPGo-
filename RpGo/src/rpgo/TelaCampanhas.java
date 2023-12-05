@@ -15,6 +15,8 @@ public class TelaCampanhas extends javax.swing.JFrame {
      */
     public TelaCampanhas() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -48,6 +50,7 @@ public class TelaCampanhas extends javax.swing.JFrame {
         btnForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/arrow-right-2.png"))); // NOI18N
         btnForward.setToolTipText("Próximo");
         btnForward.setBorder(null);
+        btnForward.setContentAreaFilled(false);
         btnForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnForwardActionPerformed(evt);
@@ -59,24 +62,31 @@ public class TelaCampanhas extends javax.swing.JFrame {
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/arrow-left-2.png"))); // NOI18N
         btnBack.setToolTipText("Anterior");
         btnBack.setBorder(null);
+        btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
+        cboxCampanhas.setBackground(new java.awt.Color(86, 86, 86));
+        cboxCampanhas.setForeground(new java.awt.Color(255, 255, 255));
         cboxCampanhas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLayeredPane1.setBackground(new java.awt.Color(90, 90, 90));
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nome da Campanha");
         jLayeredPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 340, 40));
 
+        lblProximaSessao.setForeground(new java.awt.Color(255, 255, 255));
         lblProximaSessao.setText("Próxima Sessão: -");
         jLayeredPane1.add(lblProximaSessao, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 100, -1));
 
+        btnCampanha.setBackground(new java.awt.Color(94, 94, 94));
+        btnCampanha.setForeground(new java.awt.Color(255, 255, 255));
         btnCampanha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCampanhaActionPerformed(evt);
@@ -88,6 +98,7 @@ public class TelaCampanhas extends javax.swing.JFrame {
         btnRegistros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/user.png"))); // NOI18N
         btnRegistros.setToolTipText("Registros");
         btnRegistros.setBorder(null);
+        btnRegistros.setContentAreaFilled(false);
         btnRegistros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrosActionPerformed(evt);
@@ -98,6 +109,7 @@ public class TelaCampanhas extends javax.swing.JFrame {
         btnLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/cross.png"))); // NOI18N
         btnLogOut.setToolTipText("Log out");
         btnLogOut.setBorder(null);
+        btnLogOut.setContentAreaFilled(false);
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogOutActionPerformed(evt);
@@ -107,6 +119,7 @@ public class TelaCampanhas extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(30, 30, 30));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/plus.png"))); // NOI18N
         jButton1.setToolTipText("Criar uma nova campanha");
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -118,12 +131,14 @@ public class TelaCampanhas extends javax.swing.JFrame {
         btnExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
         btnExcluir1.setToolTipText("Excluir selecionado");
         btnExcluir1.setBorder(null);
+        btnExcluir1.setContentAreaFilled(false);
 
         btnEditar.setBackground(new java.awt.Color(30, 30, 30));
         btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/pencil.png"))); // NOI18N
         btnEditar.setToolTipText("Editar selecionado");
         btnEditar.setBorder(null);
+        btnEditar.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -15,6 +15,8 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -29,10 +31,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel2 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
-        txtfSenha = new javax.swing.JTextField();
         txtfUsuario = new javax.swing.JTextField();
         headerRPGO = new javax.swing.JLabel();
         btnRegistroMestre = new javax.swing.JButton();
+        passfSenha = new javax.swing.JPasswordField();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,6 +45,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(70, 70, 70));
 
+        btnLogin.setBackground(new java.awt.Color(86, 86, 86));
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,9 +54,8 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        txtfSenha.setText("Senha");
-        txtfSenha.setToolTipText("Insira a senha");
-
+        txtfUsuario.setBackground(new java.awt.Color(40, 40, 40));
+        txtfUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtfUsuario.setText("Usuário");
         txtfUsuario.setToolTipText("Insira o nome de usuário");
         txtfUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -63,13 +66,25 @@ public class TelaLogin extends javax.swing.JFrame {
 
         headerRPGO.setBackground(new java.awt.Color(221, 221, 221));
         headerRPGO.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        headerRPGO.setForeground(new java.awt.Color(255, 255, 255));
         headerRPGO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         headerRPGO.setText("RPGO!");
 
+        btnRegistroMestre.setBackground(new java.awt.Color(86, 86, 86));
+        btnRegistroMestre.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistroMestre.setText("Registro");
         btnRegistroMestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarMestreActionPerformed(evt);
+            }
+        });
+
+        passfSenha.setBackground(new java.awt.Color(40, 40, 40));
+        passfSenha.setForeground(new java.awt.Color(255, 255, 255));
+        passfSenha.setText("SenhaUsuário");
+        passfSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passfSenhaActionPerformed(evt);
             }
         });
 
@@ -80,13 +95,13 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtfSenha)
                     .addComponent(txtfUsuario)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnRegistroMestre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addComponent(btnLogin))
-                    .addComponent(headerRPGO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(headerRPGO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passfSenha))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -96,9 +111,9 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(headerRPGO, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(passfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistroMestre)
                     .addComponent(btnLogin))
@@ -138,6 +153,10 @@ public class TelaLogin extends javax.swing.JFrame {
         this.dispose();       
         new TelaCampanhas().setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void passfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passfSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,7 +200,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblBackground;
-    private javax.swing.JTextField txtfSenha;
+    private javax.swing.JPasswordField passfSenha;
     private javax.swing.JTextField txtfUsuario;
     // End of variables declaration//GEN-END:variables
 }
