@@ -4,6 +4,8 @@
  */
 package rpgo;
 
+import rpgo.*;
+
 /**
  *
  * @author Gabriel Henrique
@@ -85,6 +87,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lblVidaVilao2 = new javax.swing.JLabel();
         lblNomeVilao2 = new javax.swing.JLabel();
         btnVilao2 = new javax.swing.JButton();
+        pnlPontosBizarros = new javax.swing.JPanel();
         lblPontosBizarros = new javax.swing.JLabel();
         btnTeste = new javax.swing.JButton();
         btnEditarPersonagem = new javax.swing.JButton();
@@ -92,10 +95,8 @@ public class TelaCombate extends javax.swing.JFrame {
         lblBackground = new javax.swing.JLabel();
         lblNomeCampanha = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        lblTeste2 = new javax.swing.JLabel();
         btnRemoverPersonagem = new javax.swing.JButton();
         lblTestes = new javax.swing.JLabel();
-        lblTeste3 = new javax.swing.JLabel();
         pnlAcoes1 = new javax.swing.JPanel();
         lblAcoesStand1 = new javax.swing.JLabel();
         btnAtqPoder1 = new javax.swing.JButton();
@@ -104,13 +105,19 @@ public class TelaCombate extends javax.swing.JFrame {
         btnGolpePersonagem1 = new javax.swing.JButton();
         lblPersonagem1 = new javax.swing.JLabel();
         separadorAcoes1 = new javax.swing.JSeparator();
+        btnDefenderDur = new javax.swing.JButton();
+        btnAtqPoder3 = new javax.swing.JButton();
+        btnTurnoExtra = new javax.swing.JButton();
+        btnNegarDano = new javax.swing.JButton();
         cboxTeste = new javax.swing.JComboBox<>();
-        lblTeste1 = new javax.swing.JLabel();
         btnAddPersonagem = new javax.swing.JButton();
         lblEditarPersonagem = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaLog = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        lblTeste1 = new javax.swing.JLabel();
+        lblTeste2 = new javax.swing.JLabel();
+        lblTeste3 = new javax.swing.JLabel();
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -123,12 +130,12 @@ public class TelaCombate extends javax.swing.JFrame {
         lblAddPersonagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblAddPersonagem.setForeground(new java.awt.Color(255, 255, 255));
         lblAddPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAddPersonagem.setText("Adicionar Personagem");
+        lblAddPersonagem.setText("Novo");
 
         lblRemoverPersonagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblRemoverPersonagem.setForeground(new java.awt.Color(255, 255, 255));
         lblRemoverPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRemoverPersonagem.setText("Remover Personagem");
+        lblRemoverPersonagem.setText("Remover");
 
         pnlCena3.setBackground(new java.awt.Color(50, 50, 50));
         pnlCena3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -148,7 +155,7 @@ public class TelaCombate extends javax.swing.JFrame {
         separadorCena.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         lblTurno.setForeground(new java.awt.Color(255, 255, 255));
-        lblTurno.setText("Turno: -");
+        lblTurno.setText("Turno: Prot1 - Prot5 - Vilao2 - Prot2 - Vilao1 - Prot3 - Prot4 - Prot6");
 
         lpnlProtag1.setBackground(new java.awt.Color(30, 30, 30));
         lpnlProtag1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -167,7 +174,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlProtag1.add(lblPlanoProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
 
         lblDetermProtag1.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermProtag1.setText("00");
         lblDetermProtag1.setToolTipText("Determinação");
         lpnlProtag1.add(lblDetermProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -195,7 +202,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlProtag3.add(lblPlanoProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
 
         lblDetermProtag3.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermProtag3.setText("00");
         lblDetermProtag3.setToolTipText("Determinação");
         lpnlProtag3.add(lblDetermProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -224,7 +231,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlProtag2.add(lblPlanoProtag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
 
         lblDetermProtag2.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermProtag2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermProtag2.setText("00");
         lblDetermProtag2.setToolTipText("Determinação");
         lpnlProtag2.add(lblDetermProtag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -252,7 +259,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlProtag4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDetermProtag4.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermProtag4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermProtag4.setText("00");
         lblDetermProtag4.setToolTipText("Determinação");
         lpnlProtag4.add(lblDetermProtag4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -281,7 +288,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlProtag5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDetermProtag5.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermProtag5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermProtag5.setText("00");
         lblDetermProtag5.setToolTipText("Determinação");
         lpnlProtag5.add(lblDetermProtag5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -310,7 +317,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlProtag6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDetermProtag6.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermProtag6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermProtag6.setText("00");
         lblDetermProtag6.setToolTipText("Determinação");
         lpnlProtag6.add(lblDetermProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -339,7 +346,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlVilao1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDetermVilao1.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermVilao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermVilao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermVilao1.setText("00");
         lblDetermVilao1.setToolTipText("Determinação");
         lpnlVilao1.add(lblDetermVilao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -373,7 +380,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lpnlVilao2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDetermVilao2.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermVilao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblDetermVilao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
         lblDetermVilao2.setText("00");
         lblDetermVilao2.setToolTipText("Determinação");
         lpnlVilao2.add(lblDetermVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
@@ -404,40 +411,61 @@ public class TelaCombate extends javax.swing.JFrame {
         });
         lpnlVilao2.add(btnVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
-        lblPontosBizarros.setForeground(new java.awt.Color(255, 255, 255));
-        lblPontosBizarros.setText("Pontos Bizarros: -");
+        pnlPontosBizarros.setBackground(new java.awt.Color(200, 200, 200));
+
+        lblPontosBizarros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        lblPontosBizarros.setText("Pontos Bizarros: 0");
+
+        javax.swing.GroupLayout pnlPontosBizarrosLayout = new javax.swing.GroupLayout(pnlPontosBizarros);
+        pnlPontosBizarros.setLayout(pnlPontosBizarrosLayout);
+        pnlPontosBizarrosLayout.setHorizontalGroup(
+            pnlPontosBizarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPontosBizarrosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblPontosBizarros)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlPontosBizarrosLayout.setVerticalGroup(
+            pnlPontosBizarrosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblPontosBizarros, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout pnlCena3Layout = new javax.swing.GroupLayout(pnlCena3);
         pnlCena3.setLayout(pnlCena3Layout);
         pnlCena3Layout.setHorizontalGroup(
             pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCena3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lpnlProtag1)
-                    .addComponent(lpnlProtag4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblProtCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lpnlProtag2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                    .addComponent(lpnlProtag5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lpnlProtag3)
-                    .addComponent(lpnlProtag6))
-                .addGap(108, 108, 108)
+                    .addGroup(pnlCena3Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lpnlProtag1)
+                            .addComponent(lpnlProtag4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblProtCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lpnlProtag2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                            .addComponent(lpnlProtag5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lpnlProtag3)
+                            .addComponent(lpnlProtag6))
+                        .addGap(6, 6, 6))
+                    .addGroup(pnlCena3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTurno)))
                 .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lpnlVilao1)
-                        .addComponent(lpnlVilao2))
-                    .addComponent(lblViloesCena, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
-            .addGroup(pnlCena3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTurno)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblPontosBizarros)
-                .addContainerGap())
+                    .addGroup(pnlCena3Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lpnlVilao1)
+                                .addComponent(lpnlVilao2))
+                            .addComponent(lblViloesCena, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCena3Layout.createSequentialGroup()
+                        .addComponent(pnlPontosBizarros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlCena3Layout.createSequentialGroup()
                     .addGap(421, 421, 421)
@@ -446,7 +474,7 @@ public class TelaCombate extends javax.swing.JFrame {
         );
         pnlCena3Layout.setVerticalGroup(
             pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCena3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCena3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblProtCena)
@@ -464,9 +492,9 @@ public class TelaCombate extends javax.swing.JFrame {
                     .addComponent(lpnlProtag6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lpnlVilao2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTurno)
-                    .addComponent(lblPontosBizarros))
+                .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlPontosBizarros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTurno))
                 .addContainerGap())
             .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlCena3Layout.createSequentialGroup()
@@ -482,6 +510,9 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnEditarPersonagem.setBackground(new java.awt.Color(86, 86, 86));
         btnEditarPersonagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-Rohan2StandPPP.png"))); // NOI18N
+        btnEditarPersonagem.setToolTipText("Editar Personagens da Cena");
+        btnEditarPersonagem.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnEditarPersonagem.setMinimumSize(new java.awt.Dimension(50, 50));
         btnEditarPersonagem.setPreferredSize(new java.awt.Dimension(50, 50));
         btnEditarPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -491,7 +522,9 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnBackground.setBackground(new java.awt.Color(86, 86, 86));
         btnBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-Josuke2StandPPP.png"))); // NOI18N
-        btnBackground.setToolTipText("");
+        btnBackground.setToolTipText("Mudar Plano de Fundo");
+        btnBackground.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnBackground.setMinimumSize(new java.awt.Dimension(50, 50));
         btnBackground.setPreferredSize(new java.awt.Dimension(50, 50));
         btnBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -502,7 +535,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lblBackground.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblBackground.setForeground(new java.awt.Color(255, 255, 255));
         lblBackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBackground.setText("Background");
+        lblBackground.setText("Fundo");
 
         lblNomeCampanha.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNomeCampanha.setForeground(new java.awt.Color(255, 255, 255));
@@ -520,12 +553,11 @@ public class TelaCombate extends javax.swing.JFrame {
             }
         });
 
-        lblTeste2.setForeground(new java.awt.Color(255, 255, 255));
-        lblTeste2.setText("5-6 (S.Parcial)");
-
         btnRemoverPersonagem.setBackground(new java.awt.Color(86, 86, 86));
         btnRemoverPersonagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-Okuyasu2StandPPP.png"))); // NOI18N
-        btnRemoverPersonagem.setToolTipText("");
+        btnRemoverPersonagem.setToolTipText("Excluir Personagem da Cena");
+        btnRemoverPersonagem.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnRemoverPersonagem.setMinimumSize(new java.awt.Dimension(50, 50));
         btnRemoverPersonagem.setPreferredSize(new java.awt.Dimension(50, 50));
         btnRemoverPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -535,10 +567,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblTestes.setForeground(new java.awt.Color(255, 255, 255));
         lblTestes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTestes.setText("Testes Fora de Combate");
-
-        lblTeste3.setForeground(new java.awt.Color(255, 255, 255));
-        lblTeste3.setText("7+ (Sucesso)");
+        lblTestes.setText("Teste Fora de Combate");
 
         pnlAcoes1.setBackground(new java.awt.Color(30, 30, 30));
         pnlAcoes1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ações", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -547,27 +576,49 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblAcoesStand1.setForeground(new java.awt.Color(255, 255, 255));
         lblAcoesStand1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAcoesStand1.setText("Ataques de Stand");
+        lblAcoesStand1.setText("Ações de Stand");
 
         btnAtqPoder1.setBackground(new java.awt.Color(86, 86, 86));
         btnAtqPoder1.setForeground(new java.awt.Color(255, 255, 255));
         btnAtqPoder1.setText("Corpo a Corpo");
+        btnAtqPoder1.setToolTipText("Utiliza o atributo de Poder do Stand");
         btnAtqPoder1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnAtqPoder1.setMaximumSize(new java.awt.Dimension(69, 26));
+        btnAtqPoder1.setMinimumSize(new java.awt.Dimension(69, 26));
+        btnAtqPoder1.setPreferredSize(new java.awt.Dimension(69, 26));
 
         btnAtqPrecisao1.setBackground(new java.awt.Color(86, 86, 86));
         btnAtqPrecisao1.setForeground(new java.awt.Color(255, 255, 255));
         btnAtqPrecisao1.setText("À Distância");
+        btnAtqPrecisao1.setToolTipText("Utiliza o atributo de Precisão do Stand");
         btnAtqPrecisao1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnAtqPrecisao1.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnAtqPrecisao1.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnAtqPrecisao1.setPreferredSize(new java.awt.Dimension(122, 26));
 
         btnVilanesca1.setBackground(new java.awt.Color(86, 86, 86));
         btnVilanesca1.setForeground(new java.awt.Color(255, 255, 255));
+        btnVilanesca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
         btnVilanesca1.setText("Ação Vilanesca");
+        btnVilanesca1.setToolTipText("Apenas para vilões, rola 1d6+Pontos Bizarros conta Mente");
         btnVilanesca1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnVilanesca1.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnVilanesca1.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnVilanesca1.setPreferredSize(new java.awt.Dimension(122, 26));
+        btnVilanesca1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVilanesca1ActionPerformed(evt);
+            }
+        });
 
         btnGolpePersonagem1.setBackground(new java.awt.Color(86, 86, 86));
         btnGolpePersonagem1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGolpePersonagem1.setText("Golpe");
+        btnGolpePersonagem1.setText("Golpe/Defesa");
+        btnGolpePersonagem1.setToolTipText("Utiliza o atributo de Corpo do Personagem");
         btnGolpePersonagem1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnGolpePersonagem1.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnGolpePersonagem1.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnGolpePersonagem1.setPreferredSize(new java.awt.Dimension(122, 26));
         btnGolpePersonagem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGolpePersonagemActionPerformed(evt);
@@ -576,33 +627,91 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblPersonagem1.setForeground(new java.awt.Color(255, 255, 255));
         lblPersonagem1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPersonagem1.setText("Personagem");
+        lblPersonagem1.setText("Ações de Personagem");
 
         separadorAcoes1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        btnDefenderDur.setBackground(new java.awt.Color(86, 86, 86));
+        btnDefenderDur.setForeground(new java.awt.Color(255, 255, 255));
+        btnDefenderDur.setText("Defender");
+        btnDefenderDur.setToolTipText("Utiliza o atributo de Durabilidade do Stand");
+        btnDefenderDur.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnDefenderDur.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnDefenderDur.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnDefenderDur.setPreferredSize(new java.awt.Dimension(122, 26));
+
+        btnAtqPoder3.setBackground(new java.awt.Color(86, 86, 86));
+        btnAtqPoder3.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtqPoder3.setText("Esquivar");
+        btnAtqPoder3.setToolTipText("Utiliza o atributo de Velocidade do Stand");
+        btnAtqPoder3.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnAtqPoder3.setMaximumSize(new java.awt.Dimension(69, 26));
+        btnAtqPoder3.setMinimumSize(new java.awt.Dimension(69, 26));
+        btnAtqPoder3.setPreferredSize(new java.awt.Dimension(69, 26));
+
+        btnTurnoExtra.setBackground(new java.awt.Color(86, 86, 86));
+        btnTurnoExtra.setForeground(new java.awt.Color(255, 255, 255));
+        btnTurnoExtra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
+        btnTurnoExtra.setText("Turno Extra");
+        btnTurnoExtra.setToolTipText("Usa 1 ponto de Determinação, concede uma ação a mais");
+        btnTurnoExtra.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnTurnoExtra.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnTurnoExtra.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnTurnoExtra.setPreferredSize(new java.awt.Dimension(122, 26));
+        btnTurnoExtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTurnoExtrabtnGolpePersonagemActionPerformed(evt);
+            }
+        });
+
+        btnNegarDano.setBackground(new java.awt.Color(86, 86, 86));
+        btnNegarDano.setForeground(new java.awt.Color(255, 255, 255));
+        btnNegarDano.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
+        btnNegarDano.setText("Negar Dano");
+        btnNegarDano.setToolTipText("Usa 1 ponto de Determinação, nega 5 de dano do último ataque");
+        btnNegarDano.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnNegarDano.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnNegarDano.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnNegarDano.setPreferredSize(new java.awt.Dimension(122, 26));
+        btnNegarDano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNegarDanobtnGolpePersonagemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAcoes1Layout = new javax.swing.GroupLayout(pnlAcoes1);
         pnlAcoes1.setLayout(pnlAcoes1Layout);
         pnlAcoes1Layout.setHorizontalGroup(
             pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAcoes1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(15, 15, 15)
                 .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAtqPrecisao1, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                    .addComponent(btnAtqPoder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAcoes1Layout.createSequentialGroup()
-                        .addComponent(lblAcoesStand1)
-                        .addGap(9, 9, 9)))
-                .addGap(18, 18, 18)
-                .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblPersonagem1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(btnGolpePersonagem1, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                    .addComponent(btnVilanesca1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addGroup(pnlAcoes1Layout.createSequentialGroup()
+                        .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAtqPoder1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAtqPrecisao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDefenderDur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAtqPoder3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblAcoesStand1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlAcoes1Layout.createSequentialGroup()
+                        .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnGolpePersonagem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVilanesca1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTurnoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNegarDano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblPersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAcoes1Layout.createSequentialGroup()
-                    .addContainerGap(144, Short.MAX_VALUE)
+                    .addContainerGap(288, Short.MAX_VALUE)
                     .addComponent(separadorAcoes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(140, Short.MAX_VALUE)))
+                    .addContainerGap(285, Short.MAX_VALUE)))
         );
         pnlAcoes1Layout.setVerticalGroup(
             pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,19 +721,24 @@ public class TelaCombate extends javax.swing.JFrame {
                     .addComponent(lblPersonagem1)
                     .addComponent(lblAcoesStand1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtqPoder1)
-                    .addComponent(btnGolpePersonagem1))
+                .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnGolpePersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAtqPoder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDefenderDur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTurnoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAtqPrecisao1)
-                    .addComponent(btnVilanesca1))
+                    .addComponent(btnAtqPrecisao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVilanesca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtqPoder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNegarDano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlAcoes1Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(separadorAcoes1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(12, Short.MAX_VALUE)))
         );
 
         cboxTeste.setBackground(new java.awt.Color(86, 86, 86));
@@ -638,12 +752,11 @@ public class TelaCombate extends javax.swing.JFrame {
             }
         });
 
-        lblTeste1.setForeground(new java.awt.Color(255, 255, 255));
-        lblTeste1.setText("1-4 (Falha)");
-
         btnAddPersonagem.setBackground(new java.awt.Color(86, 86, 86));
         btnAddPersonagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-Giorno3StandPPP.png"))); // NOI18N
-        btnAddPersonagem.setToolTipText("");
+        btnAddPersonagem.setToolTipText("Inserir ou Criar Personagem");
+        btnAddPersonagem.setMaximumSize(new java.awt.Dimension(50, 50));
+        btnAddPersonagem.setMinimumSize(new java.awt.Dimension(50, 50));
         btnAddPersonagem.setPreferredSize(new java.awt.Dimension(50, 50));
         btnAddPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -654,7 +767,7 @@ public class TelaCombate extends javax.swing.JFrame {
         lblEditarPersonagem.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblEditarPersonagem.setForeground(new java.awt.Color(255, 255, 255));
         lblEditarPersonagem.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEditarPersonagem.setText("Editar Personagem");
+        lblEditarPersonagem.setText("Editar");
 
         txtaLog.setBackground(new java.awt.Color(30, 30, 30));
         txtaLog.setColumns(20);
@@ -677,119 +790,128 @@ public class TelaCombate extends javax.swing.JFrame {
             }
         });
 
+        lblTeste1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTeste1.setText("1-4 (Falha)");
+
+        lblTeste2.setForeground(new java.awt.Color(255, 255, 255));
+        lblTeste2.setText("5-6 (S.Parcial)");
+
+        lblTeste3.setForeground(new java.awt.Color(255, 255, 255));
+        lblTeste3.setText("7+ (Sucesso)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNomeCampanha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlCena3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(pnlAcoes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(btnTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTeste2)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lblTeste1)
-                                        .addGap(8, 8, 8))
-                                    .addComponent(lblTeste3, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(lblTestes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(32, 32, 32)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(lblEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addGap(29, 29, 29)
+                                                .addComponent(lblAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(79, 79, 79)
+                                            .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNomeCampanha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(pnlCena3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(btnBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGap(15, 15, 15)
+                                .addComponent(btnTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTeste2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblTeste1)
+                                .addGap(8, 8, 8))
+                            .addComponent(lblTeste3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlAcoes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAddPersonagem)
+                            .addComponent(lblBackground))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblRemoverPersonagem)
+                            .addComponent(lblEditarPersonagem))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnTeste))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTeste1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTeste2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTeste3))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblNomeCampanha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlCena3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblBackground)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAddPersonagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemoverPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblRemoverPersonagem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblEditarPersonagem)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlCena3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlAcoes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblTestes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxTeste, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTeste1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTeste2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTeste)
-                            .addComponent(lblTeste3))
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                    .addComponent(pnlAcoes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -797,7 +919,6 @@ public class TelaCombate extends javax.swing.JFrame {
 
     private void btnBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackgroundActionPerformed
         // TODO add your handling code here:
-        new TelaCombateAlt().setVisible(true);
     }//GEN-LAST:event_btnBackgroundActionPerformed
 
     private void btnAddPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonagemActionPerformed
@@ -848,6 +969,18 @@ public class TelaCombate extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnProtag1ActionPerformed
 
+    private void btnTurnoExtrabtnGolpePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTurnoExtrabtnGolpePersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTurnoExtrabtnGolpePersonagemActionPerformed
+
+    private void btnNegarDanobtnGolpePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNegarDanobtnGolpePersonagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNegarDanobtnGolpePersonagemActionPerformed
+
+    private void btnVilanesca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVilanesca1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVilanesca1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -885,11 +1018,14 @@ public class TelaCombate extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddPersonagem;
     private javax.swing.JButton btnAtqPoder1;
+    private javax.swing.JButton btnAtqPoder3;
     private javax.swing.JButton btnAtqPrecisao1;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBackground;
+    private javax.swing.JButton btnDefenderDur;
     private javax.swing.JButton btnEditarPersonagem;
     private javax.swing.JButton btnGolpePersonagem1;
+    private javax.swing.JButton btnNegarDano;
     private javax.swing.JButton btnProtag1;
     private javax.swing.JButton btnProtag2;
     private javax.swing.JButton btnProtag3;
@@ -898,6 +1034,7 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JButton btnProtag6;
     private javax.swing.JButton btnRemoverPersonagem;
     private javax.swing.JButton btnTeste;
+    private javax.swing.JButton btnTurnoExtra;
     private javax.swing.JButton btnVilanesca1;
     private javax.swing.JButton btnVilao1;
     private javax.swing.JButton btnVilao2;
@@ -963,6 +1100,7 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JLayeredPane lpnlVilao2;
     private javax.swing.JPanel pnlAcoes1;
     private javax.swing.JPanel pnlCena3;
+    private javax.swing.JPanel pnlPontosBizarros;
     private javax.swing.JSeparator separadorAcoes1;
     private javax.swing.JSeparator separadorCena;
     private javax.swing.JTextArea txtaLog;
