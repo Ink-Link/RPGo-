@@ -30,8 +30,8 @@ public class TelaCombate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        btngpProtags = new javax.swing.ButtonGroup();
+        btngpViloes = new javax.swing.ButtonGroup();
         lblAddPersonagem = new javax.swing.JLabel();
         lblRemoverPersonagem = new javax.swing.JLabel();
         pnlCena3 = new javax.swing.JPanel();
@@ -119,10 +119,6 @@ public class TelaCombate extends javax.swing.JFrame {
         lblTeste2 = new javax.swing.JLabel();
         lblTeste3 = new javax.swing.JLabel();
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("RPGo!");
         setResizable(false);
@@ -186,6 +182,8 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProtag1.setBackground(new java.awt.Color(86, 86, 86));
         btnProtag1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(0, 154, 23)));
+        btngpProtags.add(btnProtag1);
+        btnProtag1.setSelected(true);
         btnProtag1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProtag1ActionPerformed(evt);
@@ -220,6 +218,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProtag3.setBackground(new java.awt.Color(86, 86, 86));
         btnProtag3.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag3);
         lpnlProtag3.add(btnProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlProtag2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,6 +248,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProtag2.setBackground(new java.awt.Color(86, 86, 86));
         btnProtag2.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag2);
         btnProtag2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProtag2ActionPerformed(evt);
@@ -283,6 +283,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProtag4.setBackground(new java.awt.Color(86, 86, 86));
         btnProtag4.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag4);
         lpnlProtag4.add(btnProtag4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlProtag5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -312,6 +313,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProtag5.setBackground(new java.awt.Color(86, 86, 86));
         btnProtag5.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag5);
         lpnlProtag5.add(btnProtag5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlProtag6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -341,6 +343,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProtag6.setBackground(new java.awt.Color(86, 86, 86));
         btnProtag6.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag6);
         lpnlProtag6.add(btnProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlVilao1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -370,6 +373,8 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnVilao1.setBackground(new java.awt.Color(86, 86, 86));
         btnVilao1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(205, 0, 26)));
+        btngpViloes.add(btnVilao1);
+        btnVilao1.setSelected(true);
         btnVilao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVilao1ActionPerformed(evt);
@@ -404,6 +409,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnVilao2.setBackground(new java.awt.Color(86, 86, 86));
         btnVilao2.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpViloes.add(btnVilao2);
         btnVilao2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVilao2ActionPerformed(evt);
@@ -1038,11 +1044,11 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JButton btnVilanesca1;
     private javax.swing.JButton btnVilao1;
     private javax.swing.JButton btnVilao2;
+    private javax.swing.ButtonGroup btngpProtags;
+    private javax.swing.ButtonGroup btngpViloes;
     private javax.swing.JComboBox<String> cboxTeste;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblAcoesStand1;
     private javax.swing.JLabel lblAddPersonagem;
     private javax.swing.JLabel lblBackground;

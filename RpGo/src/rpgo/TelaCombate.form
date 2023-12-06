@@ -2,21 +2,10 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea2">
-          <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="rows" type="int" value="5"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
+    <Component class="javax.swing.ButtonGroup" name="btngpProtags">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btngpViloes">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -458,6 +447,10 @@
                     </MatteColorBorder>
                   </Border>
                 </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpProtags"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProtag1ActionPerformed"/>
@@ -553,6 +546,9 @@
                     </MatteColorBorder>
                   </Border>
                 </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpProtags"/>
+                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -644,6 +640,9 @@
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </MatteColorBorder>
                   </Border>
+                </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpProtags"/>
                 </Property>
               </Properties>
               <Events>
@@ -740,6 +739,9 @@
                     </MatteColorBorder>
                   </Border>
                 </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpProtags"/>
+                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -831,6 +833,9 @@
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </MatteColorBorder>
                   </Border>
+                </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpProtags"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -924,6 +929,9 @@
                     </MatteColorBorder>
                   </Border>
                 </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpProtags"/>
+                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1016,6 +1024,10 @@
                     </MatteColorBorder>
                   </Border>
                 </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpViloes"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVilao1ActionPerformed"/>
@@ -1110,6 +1122,9 @@
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </MatteColorBorder>
                   </Border>
+                </Property>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="btngpViloes"/>
                 </Property>
               </Properties>
               <Events>
