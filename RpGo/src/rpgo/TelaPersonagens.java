@@ -4,6 +4,11 @@
  */
 package rpgo;
 
+import ClassesRpGo.Personagem;
+import ClassesRpGo.Vilao;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC
@@ -17,6 +22,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+        montarTabela();
     }
 
     /**
@@ -29,7 +35,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPersonagens = new javax.swing.JTable();
         lblJogadores = new javax.swing.JLabel();
         btnAddJogador = new javax.swing.JButton();
         btnExcluir1 = new javax.swing.JButton();
@@ -41,30 +47,38 @@ public class TelaPersonagens extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Personagens da Campanha");
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(40, 40, 40));
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPersonagens.setAutoCreateRowSorter(true);
+        tblPersonagens.setBackground(new java.awt.Color(40, 40, 40));
+        tblPersonagens.setForeground(new java.awt.Color(255, 255, 255));
+        tblPersonagens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador"
+                "Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"
             }
-        ));
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
-        jTable1.setAutoscrolls(false);
-        jTable1.setGridColor(new java.awt.Color(40, 40, 40));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPersonagens.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tblPersonagens.setAutoscrolls(false);
+        tblPersonagens.setGridColor(new java.awt.Color(40, 40, 40));
+        jScrollPane1.setViewportView(tblPersonagens);
 
         lblJogadores.setForeground(new java.awt.Color(255, 255, 255));
         lblJogadores.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -116,6 +130,11 @@ public class TelaPersonagens extends javax.swing.JFrame {
 
         txtfBusca.setBackground(new java.awt.Color(40, 40, 40));
         txtfBusca.setForeground(new java.awt.Color(255, 255, 255));
+        txtfBusca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfBuscaActionPerformed(evt);
+            }
+        });
 
         btnSelecionar.setBackground(new java.awt.Color(30, 30, 30));
         btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/tick.png"))); // NOI18N
@@ -203,6 +222,42 @@ public class TelaPersonagens extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
+    private void txtfBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBuscaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfBuscaActionPerformed
+    
+    private void montarTabela() {
+    ArrayList<Personagem> personagens = Personagem.listaPersonagens;
+    ArrayList<Vilao> viloes = Vilao.listaViloes;
+    
+    
+        if (txtfBusca.getText().equals("")){
+            DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0);
+            for(int i = 0; i<(personagens.size() + viloes.size()); i++){
+                Object linha[];
+                if (i < personagens.size()) { // Printa os personagens primeiro
+                    linha = new Object[]{
+                        personagens.get(i).getNome(),
+                        personagens.get(i).getStand().getNome(),
+                        personagens.get(i).getCorpo(),
+                        personagens.get(i).getMente(),
+                        personagens.get(i).getCoragem(),
+                        "Não"};
+                }
+                else { //Ao terminar a lista de personagens, parte para os Vilões, se houver
+                    linha = new Object[]{
+                        viloes.get(i - personagens.size()).getNome(),
+                        viloes.get(i - personagens.size()).getStand().getNome(),
+                        viloes.get(i - personagens.size()).getCorpo(),
+                        viloes.get(i - personagens.size()).getMente(),
+                        viloes.get(i - personagens.size()).getCoragem(),
+                        "Sim"};
+                }
+            tabela.addRow(linha);
+            }
+            tblPersonagens.setModel(tabela);    
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -245,8 +300,8 @@ public class TelaPersonagens extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir1;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblJogadores;
+    private javax.swing.JTable tblPersonagens;
     private javax.swing.JTextField txtfBusca;
     // End of variables declaration//GEN-END:variables
 }

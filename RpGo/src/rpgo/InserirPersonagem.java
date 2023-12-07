@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package rpgo;
+import ClassesRpGo.Personagem;
+import ClassesRpGo.Vilao;
+import ClassesRpGo.Stand;
 
 /**
  *
@@ -45,9 +48,11 @@ public class InserirPersonagem extends javax.swing.JFrame {
         spnrMente = new javax.swing.JSpinner();
         spnrCoragem = new javax.swing.JSpinner();
         spnrPoder = new javax.swing.JSpinner();
-        spnrPoder1 = new javax.swing.JSpinner();
-        spnrPoder2 = new javax.swing.JSpinner();
-        spnrPoder3 = new javax.swing.JSpinner();
+        spnrVelocidade = new javax.swing.JSpinner();
+        spnrDurabilidade = new javax.swing.JSpinner();
+        spnrPrecisao = new javax.swing.JSpinner();
+        ckboxVilao = new javax.swing.JCheckBox();
+        btnSelecionarDono = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Personagem");
@@ -84,6 +89,11 @@ public class InserirPersonagem extends javax.swing.JFrame {
         btnSalvar.setBackground(new java.awt.Color(86, 86, 86));
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         lblVelocidade.setForeground(new java.awt.Color(242, 242, 242));
         lblVelocidade.setText("Velocidade");
@@ -107,11 +117,20 @@ public class InserirPersonagem extends javax.swing.JFrame {
 
         spnrPoder.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
 
-        spnrPoder1.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
+        spnrVelocidade.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
 
-        spnrPoder2.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
+        spnrDurabilidade.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
 
-        spnrPoder3.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
+        spnrPrecisao.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
+
+        ckboxVilao.setText("Vilão");
+
+        btnSelecionarDono.setText("Selecionar Dono");
+        btnSelecionarDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelecionarDonoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,45 +143,56 @@ public class InserirPersonagem extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCoragem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                .addComponent(spnrCoragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblNome)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtfNomePersonagem)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblMente)
-                                    .addComponent(lblCorpo))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(spnrCorpo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(spnrMente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(32, 32, 32))
+                            .addComponent(txtfNomePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStand)
+                            .addComponent(txtfNomeStand, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblStand)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblPrecisao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(spnrPoder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCoragem)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                        .addComponent(spnrCoragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblMente)
+                                            .addComponent(lblCorpo))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(spnrCorpo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(spnrMente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(32, 32, 32))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ckboxVilao, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblPrecisao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(spnrPrecisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPoder)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(spnrPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDurabilidade)
+                                .addGap(18, 18, 18)
+                                .addComponent(spnrDurabilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblVelocidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(spnrVelocidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPoder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(spnrPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDurabilidade)
-                        .addGap(18, 18, 18)
-                        .addComponent(spnrPoder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtfNomeStand)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblVelocidade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(spnrPoder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSelecionarDono)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -178,7 +208,7 @@ public class InserirPersonagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtfNomeStand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCorpo)
@@ -188,25 +218,25 @@ public class InserirPersonagem extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVelocidade)
-                    .addComponent(spnrPoder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnrVelocidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnrMente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMente))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDurabilidade)
-                    .addComponent(spnrPoder2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnrDurabilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnrCoragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCoragem))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spnrPoder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPrecisao)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btnSalvar)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(spnrPrecisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrecisao)
+                    .addComponent(ckboxVilao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSelecionarDono)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvar)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,6 +245,71 @@ public class InserirPersonagem extends javax.swing.JFrame {
     private void txtfNomePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNomePersonagemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfNomePersonagemActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        // TODO add your handling code here:
+        boolean eVilao = ckboxVilao.isSelected(); 
+        
+        // Verifica se o Personagem a ser criado é um Vilão ou não
+        if (eVilao) {            
+            String nomeVilao = txtfNomePersonagem.getText();
+            int corpo = (Integer) spnrCorpo.getValue();
+            int mente = (Integer) spnrMente.getValue();
+            int coragem = (Integer) spnrCoragem.getValue();
+            
+            String nomeStand = txtfNomeStand.getText();
+            String poder = (String) spnrPoder.getValue();
+            String velocidade = (String) spnrVelocidade.getValue();
+            String durabilidade = (String) spnrDurabilidade.getValue();
+            String precisao = (String) spnrPrecisao.getValue();
+            
+            Stand novoStand = new Stand(nomeStand, 
+                                        poder, 
+                                        velocidade, 
+                                        durabilidade, 
+                                        precisao);
+            
+            Vilao novoVilao = new Vilao(nomeVilao, 
+                                        corpo, 
+                                        mente, 
+                                        coragem, 
+                                        novoStand);
+            
+            Vilao.listaViloes.add(novoVilao);
+        } 
+        else {
+            String nomePersonagem = txtfNomePersonagem.getText();
+            int corpo = (Integer) spnrCorpo.getValue();
+            int mente = (Integer) spnrMente.getValue();
+            int coragem = (Integer) spnrCoragem.getValue();
+            
+            String nomeStand = txtfNomeStand.getText();
+            String poder = (String) spnrPoder.getValue();
+            String velocidade = (String) spnrVelocidade.getValue();
+            String durabilidade = (String) spnrDurabilidade.getValue();
+            String precisao = (String) spnrPrecisao.getValue();
+            
+            Stand novoStand = new Stand(nomeStand, 
+                                        poder, 
+                                        velocidade, 
+                                        durabilidade, 
+                                        precisao);
+            
+            Personagem novoPersonagem = new Personagem(nomePersonagem, 
+                                                       corpo, 
+                                                       mente, 
+                                                       coragem, 
+                                                       novoStand);
+            
+            Personagem.listaPersonagens.add(novoPersonagem);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnSelecionarDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarDonoActionPerformed
+        // TODO add your handling code here:
+        TelaRegistros telaSelecao = new TelaRegistros();
+        telaSelecao.setVisible(true);
+    }//GEN-LAST:event_btnSelecionarDonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +348,8 @@ public class InserirPersonagem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSelecionarDono;
+    private javax.swing.JCheckBox ckboxVilao;
     private javax.swing.JLabel lblCoragem;
     private javax.swing.JLabel lblCorpo;
     private javax.swing.JLabel lblCriacaoPersonagem;
@@ -265,11 +362,11 @@ public class InserirPersonagem extends javax.swing.JFrame {
     private javax.swing.JLabel lblVelocidade;
     private javax.swing.JSpinner spnrCoragem;
     private javax.swing.JSpinner spnrCorpo;
+    private javax.swing.JSpinner spnrDurabilidade;
     private javax.swing.JSpinner spnrMente;
     private javax.swing.JSpinner spnrPoder;
-    private javax.swing.JSpinner spnrPoder1;
-    private javax.swing.JSpinner spnrPoder2;
-    private javax.swing.JSpinner spnrPoder3;
+    private javax.swing.JSpinner spnrPrecisao;
+    private javax.swing.JSpinner spnrVelocidade;
     private javax.swing.JTextField txtfNomePersonagem;
     private javax.swing.JTextField txtfNomeStand;
     // End of variables declaration//GEN-END:variables

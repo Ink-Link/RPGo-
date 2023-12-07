@@ -1,6 +1,10 @@
 package ClassesRpGo;
 
+import java.util.ArrayList;
+
 public class Personagem {
+    static public ArrayList<Personagem> listaPersonagens = new ArrayList();
+    
     protected String nome;
     
     protected int corpo;
@@ -15,16 +19,19 @@ public class Personagem {
     
     protected int determinacao;
     
-    protected Stand stand = new Stand();
+    protected Stand stand;
 
-    public Personagem(String nome, int corpo, int mente, int coragem, int hp, int plano, int determinacao) {
+    public Personagem(String nome, int corpo, int mente, int coragem, Stand stand) {
         this.nome = nome;
         this.corpo = corpo;
         this.mente = mente;
         this.coragem = coragem;
-        this.hp = hp;
-        this.plano = plano;
-        this.determinacao = determinacao;
+        
+        this.hp = corpo; // Incompleto: Corpo x d6 + rolagem de Durabilidade
+        this.plano = mente;
+        this.determinacao = coragem;
+        
+        this.stand = new Stand();
     }
 
     public Personagem() {
@@ -92,4 +99,14 @@ public class Personagem {
     public void setDeterminacao(int determinacao) {
         this.determinacao = determinacao;
     }   
+
+    public Stand getStand() {
+        return stand;
+    }
+
+    public void setStand(Stand stand) {
+        this.stand = stand;
+    }
+    
+
 }
