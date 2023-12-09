@@ -3,26 +3,26 @@ package ClassesRpGo;
 public class Stand {
     private String nome;
     
-    private String power;
+    private String pwr;
     
-    private String speed;
+    private String spd;
     
     private String dur;
     
     private String pre;
 
-    public Stand(String nome, String power, String speed, String dur, String pre) {
+    public Stand(String nome, String pwr, String spd, String dur, String pre) {
         this.nome = nome;
-        this.power = power;
-        this.speed = speed;
+        this.pwr = pwr;
+        this.spd = spd;
         this.dur = dur;
         this.pre = pre;
     }  
 
     public Stand() {
         this.nome = "";
-        this.power = "";
-        this.speed = "";
+        this.pwr = "";
+        this.spd = "";
         this.dur = "";
         this.pre = "";
         
@@ -37,20 +37,20 @@ public class Stand {
         this.nome = nome;
     }
 
-    public String getPower() {
-        return power;
+    public String getPwr() {
+        return pwr;
     }
 
-    public void setPower(String power) {
-        this.power = power;
+    public void setPwr(String pwr) {
+        this.pwr = pwr;
     }
 
-    public String getSpeed() {
-        return speed;
+    public String getSpd() {
+        return spd;
     }
 
-    public void setSpeed(String speed) {
-        this.speed = speed;
+    public void setSpeed(String spd) {
+        this.spd = spd;
     }
 
     public String getDur() {

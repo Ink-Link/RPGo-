@@ -20,18 +20,22 @@ public class Personagem {
     protected int determinacao;
     
     protected Stand stand;
+    
+    protected Pessoa dono;
 
-    public Personagem(String nome, int corpo, int mente, int coragem, Stand stand) {
+    public Personagem(String nome, int corpo, int mente, int coragem, Stand stand, Pessoa dono) {
         this.nome = nome;
         this.corpo = corpo;
         this.mente = mente;
         this.coragem = coragem;
         
-        this.hp = corpo; // Incompleto: Corpo x d6 + rolagem de Durabilidade
+        this.hp = corpo; // Incompleto: HP = Corpo x d6 + rolagem de Durabilidade
         this.plano = mente;
         this.determinacao = coragem;
         
-        this.stand = new Stand();
+        this.stand = stand;
+        
+        this.dono = dono;
     }
 
     public Personagem() {
@@ -107,6 +111,13 @@ public class Personagem {
     public void setStand(Stand stand) {
         this.stand = stand;
     }
-    
+
+    public Pessoa getDono() {
+        return dono;
+    }
+
+    public void setDono(Pessoa dono) {
+        this.dono = dono;
+    }
 
 }

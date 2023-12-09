@@ -24,7 +24,6 @@ public class TelaPersonagens extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         montarTabela();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,8 +36,8 @@ public class TelaPersonagens extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPersonagens = new javax.swing.JTable();
         lblJogadores = new javax.swing.JLabel();
-        btnAddJogador = new javax.swing.JButton();
-        btnExcluir1 = new javax.swing.JButton();
+        btnAddPersonagem = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         txtfBusca = new javax.swing.JTextField();
@@ -49,7 +48,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
 
         tblPersonagens.setAutoCreateRowSorter(true);
         tblPersonagens.setBackground(new java.awt.Color(40, 40, 40));
-        tblPersonagens.setForeground(new java.awt.Color(255, 255, 255));
+        tblPersonagens.setForeground(new java.awt.Color(242, 242, 242));
         tblPersonagens.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -67,9 +66,16 @@ public class TelaPersonagens extends javax.swing.JFrame {
                 "Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"
             }
         ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
             };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -84,25 +90,25 @@ public class TelaPersonagens extends javax.swing.JFrame {
         lblJogadores.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblJogadores.setText("Personagens");
 
-        btnAddJogador.setBackground(new java.awt.Color(30, 30, 30));
-        btnAddJogador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnAddJogador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/16x16/plus.png"))); // NOI18N
-        btnAddJogador.setBorder(null);
-        btnAddJogador.setContentAreaFilled(false);
-        btnAddJogador.addActionListener(new java.awt.event.ActionListener() {
+        btnAddPersonagem.setBackground(new java.awt.Color(30, 30, 30));
+        btnAddPersonagem.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnAddPersonagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/16x16/plus.png"))); // NOI18N
+        btnAddPersonagem.setBorder(null);
+        btnAddPersonagem.setContentAreaFilled(false);
+        btnAddPersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddJogadorActionPerformed(evt);
+                btnAddPersonagemActionPerformed(evt);
             }
         });
 
-        btnExcluir1.setBackground(new java.awt.Color(30, 30, 30));
-        btnExcluir1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
-        btnExcluir1.setBorder(null);
-        btnExcluir1.setContentAreaFilled(false);
-        btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setBackground(new java.awt.Color(30, 30, 30));
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
+        btnExcluir.setBorder(null);
+        btnExcluir.setContentAreaFilled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluir1ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -161,7 +167,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar)
                                 .addGap(37, 37, 37)
-                                .addComponent(btnExcluir1)
+                                .addComponent(btnExcluir)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEditar)
                                 .addGap(18, 18, 18)
@@ -170,7 +176,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                                 .addGap(239, 239, 239)
                                 .addComponent(lblJogadores)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddJogador)))
+                                .addComponent(btnAddPersonagem)))
                         .addGap(0, 28, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -187,12 +193,12 @@ public class TelaPersonagens extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnSelecionar)
-                            .addComponent(btnExcluir1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblJogadores, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAddJogador, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnAddPersonagem, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -201,63 +207,141 @@ public class TelaPersonagens extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogadorActionPerformed
-        // TODO add your handling code here:
-        new InserirPersonagem().setVisible(true);
-    }//GEN-LAST:event_btnAddJogadorActionPerformed
+    private void btnAddPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonagemActionPerformed
+        // Cria a tela para selecionar o personagem a ser inserido
+        InserirPersonagem telaInserir = new InserirPersonagem();
+        telaInserir.setVisible(true);
+        
+        telaInserir.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evento) {montarTabela();}
+        });
+    }//GEN-LAST:event_btnAddPersonagemActionPerformed
 
-    private void btnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir1ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExcluir1ActionPerformed
+        int indice = tblPersonagens.getSelectedRow();
+        ArrayList<Personagem> personagens = Personagem.listaPersonagens;
+        ArrayList<Vilao> viloes = Vilao.listaViloes;
+        
+        if(indice>-1) {
+            Personagem personagemSelecionado = pesquisa(tblPersonagens.getValueAt(indice, 0).toString());
+            personagens.remove(personagemSelecionado);
+            viloes.remove(personagemSelecionado);
+        }
+        montarTabela();
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        // Edita o personagem selecionado na tabela
+        int indice = tblPersonagens.getSelectedRow();
+        
+        if(indice>-1) {
+            InserirPersonagem telaInserir = new InserirPersonagem(pesquisa(tblPersonagens.getValueAt(indice, 0).toString()));
+            telaInserir.setVisible(true);
+            telaInserir.addWindowListener(new java.awt.event.WindowAdapter(){
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent evento) {
+                    montarTabela();
+                }
+            });
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        montarTabela();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // TODO add your handling code here:
+        // Seleciona o personagem a ser inserido na cena de combate
+        
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBuscaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfBuscaActionPerformed
     
-    private void montarTabela() {
-    ArrayList<Personagem> personagens = Personagem.listaPersonagens;
-    ArrayList<Vilao> viloes = Vilao.listaViloes;
-    
-    
-        if (txtfBusca.getText().equals("")){
-            DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0);
-            for(int i = 0; i<(personagens.size() + viloes.size()); i++){
-                Object linha[];
-                if (i < personagens.size()) { // Printa os personagens primeiro
-                    linha = new Object[]{
-                        personagens.get(i).getNome(),
-                        personagens.get(i).getStand().getNome(),
-                        personagens.get(i).getCorpo(),
-                        personagens.get(i).getMente(),
-                        personagens.get(i).getCoragem(),
-                        "Não"};
-                }
-                else { //Ao terminar a lista de personagens, parte para os Vilões, se houver
-                    linha = new Object[]{
-                        viloes.get(i - personagens.size()).getNome(),
-                        viloes.get(i - personagens.size()).getStand().getNome(),
-                        viloes.get(i - personagens.size()).getCorpo(),
-                        viloes.get(i - personagens.size()).getMente(),
-                        viloes.get(i - personagens.size()).getCoragem(),
-                        "Sim"};
-                }
-            tabela.addRow(linha);
+    private Personagem pesquisa(String nome){ // Usada para pesquisar o personagem por nome, para edição e inserir na cena
+        ArrayList<Personagem> personagens = Personagem.listaPersonagens;
+        ArrayList<Vilao> viloes = Vilao.listaViloes;
+        
+        for (int i = 0; i<(personagens.size() + viloes.size()); i++){
+            if (i < personagens.size() && personagens.get(i).getNome().equals(nome)) {
+                return personagens.get(i); // Se o nome da linha selecionada pertencer a um pertonagem, retorna o objeto Personagem
             }
-            tblPersonagens.setModel(tabela);    
+            else if (i >= personagens.size() && viloes.get(i - personagens.size()).getNome().equals(nome)){
+                return viloes.get(i - personagens.size()); // Se pertencer a um vilão, retorna o objeto Vilao
+            }
         }
+        
+        return null;
     }
+    
+    private void montarTabela() {
+        ArrayList<Personagem> personagens = Personagem.listaPersonagens;
+        ArrayList<Vilao> viloes = Vilao.listaViloes;
+
+
+            if (txtfBusca.getText().equals("")){
+                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0);
+                for(int i = 0; i<(personagens.size() + viloes.size()); i++){
+                    Object linha[];
+                    if (i < personagens.size()) { // Printa os personagens primeiro
+                        linha = new Object[]{
+                            personagens.get(i).getNome(),
+                            personagens.get(i).getStand().getNome(),
+                            personagens.get(i).getCorpo(),
+                            personagens.get(i).getMente(),
+                            personagens.get(i).getCoragem(),
+                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            "Não"};
+                    }
+                    else { //Ao terminar a lista de personagens, parte para os Vilões, se houver
+                        linha = new Object[]{
+                            viloes.get(i - personagens.size()).getNome(),
+                            viloes.get(i - personagens.size()).getStand().getNome(),
+                            viloes.get(i - personagens.size()).getCorpo(),
+                            viloes.get(i - personagens.size()).getMente(),
+                            viloes.get(i - personagens.size()).getCoragem(),
+                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            "Sim"};
+                    }
+                tabela.addRow(linha);
+                }
+                tblPersonagens.setModel(tabela);    
+            }
+            else {
+                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0);
+                for(int i = 0; i<(personagens.size() + viloes.size()); i++){
+                    Object linha[];
+                    if (i < personagens.size() && txtfBusca.getText().equals(personagens.get(i).getNome())) { // Printa os personagens primeiro
+                        linha = new Object[]{
+                            personagens.get(i).getNome(),
+                            personagens.get(i).getStand().getNome(),
+                            personagens.get(i).getCorpo(),
+                            personagens.get(i).getMente(),
+                            personagens.get(i).getCoragem(),
+                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            "Não"};
+                        tabela.addRow(linha);
+                    }
+                    else if(i >= personagens.size() && txtfBusca.getText().equals(viloes.get(i - personagens.size()).getNome())){ //Ao terminar a lista de personagens, parte para os Vilões, se houver
+                        linha = new Object[]{
+                            viloes.get(i - personagens.size()).getNome(),
+                            viloes.get(i - personagens.size()).getStand().getNome(),
+                            viloes.get(i - personagens.size()).getCorpo(),
+                            viloes.get(i - personagens.size()).getMente(),
+                            viloes.get(i - personagens.size()).getCoragem(),
+                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            "Sim"};
+                        tabela.addRow(linha);
+                    }
+                }
+                tblPersonagens.setModel(tabela);
+            }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -294,10 +378,10 @@ public class TelaPersonagens extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddJogador;
+    private javax.swing.JButton btnAddPersonagem;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluir1;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblJogadores;

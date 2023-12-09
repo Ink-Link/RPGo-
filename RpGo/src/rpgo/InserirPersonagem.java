@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package rpgo;
+import ClassesRpGo.Pessoa;
 import ClassesRpGo.Personagem;
 import ClassesRpGo.Vilao;
 import ClassesRpGo.Stand;
@@ -12,7 +13,11 @@ import ClassesRpGo.Stand;
  * @author PC
  */
 public class InserirPersonagem extends javax.swing.JFrame {
-
+    
+    Pessoa donoSelecionado;
+    Personagem personagemEditado;
+    boolean editando;
+    
     /**
      * Creates new form InserirPersonagem
      */
@@ -20,7 +25,39 @@ public class InserirPersonagem extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+        
+        editando = false;
     }
+    
+    public InserirPersonagem(Personagem personagemSelecionado) { // Serve para preparar a tela de Criação de Personagem para edição
+        initComponents();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
+        editando = true;
+        this.personagemEditado = personagemSelecionado;
+        
+        // Preenche os atributos do personagem
+        txtfNomePersonagem.setText(personagemSelecionado.getNome());
+        spnrCorpo.setValue(personagemSelecionado.getCorpo());
+        spnrMente.setValue(personagemSelecionado.getMente());
+        spnrCoragem.setValue(personagemSelecionado.getCoragem());
+        
+        // Preenche os atributos do stand
+        txtfNomeStand.setText(personagemSelecionado.getStand().getNome());
+        spnrPoder.setValue(personagemSelecionado.getStand().getPwr());
+        spnrVelocidade.setValue(personagemSelecionado.getStand().getSpd());
+        spnrDurabilidade.setValue(personagemSelecionado.getStand().getDur());
+        spnrPrecisao.setValue(personagemSelecionado.getStand().getPre());
+        
+        // Verifica se é vilão ou não
+        if (personagemSelecionado instanceof Vilao) {
+            ckboxVilao.setSelected(true);
+        }
+        
+        // Define o dono
+        this.donoSelecionado = personagemSelecionado.getDono();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +68,7 @@ public class InserirPersonagem extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox1 = new javax.swing.JComboBox<>();
         txtfNomePersonagem = new javax.swing.JTextField();
         txtfNomeStand = new javax.swing.JTextField();
         lblCorpo = new javax.swing.JLabel();
@@ -53,6 +91,9 @@ public class InserirPersonagem extends javax.swing.JFrame {
         spnrPrecisao = new javax.swing.JSpinner();
         ckboxVilao = new javax.swing.JCheckBox();
         btnSelecionarDono = new javax.swing.JButton();
+        txtfNomeDono = new javax.swing.JTextField();
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Personagem");
@@ -123,14 +164,22 @@ public class InserirPersonagem extends javax.swing.JFrame {
 
         spnrPrecisao.setModel(new javax.swing.SpinnerListModel(new String[] {"E", "D", "C", "B", "A"}));
 
+        ckboxVilao.setForeground(new java.awt.Color(255, 255, 255));
         ckboxVilao.setText("Vilão");
 
+        btnSelecionarDono.setBackground(new java.awt.Color(86, 86, 86));
+        btnSelecionarDono.setForeground(new java.awt.Color(255, 255, 255));
         btnSelecionarDono.setText("Selecionar Dono");
         btnSelecionarDono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarDonoActionPerformed(evt);
             }
         });
+
+        txtfNomeDono.setBackground(new java.awt.Color(40, 40, 40));
+        txtfNomeDono.setForeground(new java.awt.Color(255, 255, 255));
+        txtfNomeDono.setText("Nenhum dono");
+        txtfNomeDono.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,59 +190,62 @@ public class InserirPersonagem extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNome)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtfNomePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStand)
-                            .addComponent(txtfNomeStand, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtfNomeDono, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSalvar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblCoragem)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                        .addComponent(spnrCoragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblMente)
-                                            .addComponent(lblCorpo))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(spnrCorpo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(spnrMente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(32, 32, 32))
+                                        .addComponent(lblNome)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtfNomePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblStand)
+                                    .addComponent(txtfNomeStand, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ckboxVilao, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnSelecionarDono)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalvar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblPrecisao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(spnrPrecisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPoder)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(spnrPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblDurabilidade)
-                                .addGap(18, 18, 18)
-                                .addComponent(spnrDurabilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblVelocidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(spnrVelocidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSelecionarDono)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblCoragem)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                                .addComponent(spnrCoragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(lblMente)
+                                                    .addComponent(lblCorpo))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(spnrCorpo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(spnrMente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(32, 32, 32))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ckboxVilao, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblPrecisao)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(spnrPrecisao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPoder)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(spnrPoder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblDurabilidade)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(spnrDurabilidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblVelocidade)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(spnrVelocidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(36, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,9 +285,11 @@ public class InserirPersonagem extends javax.swing.JFrame {
                     .addComponent(lblPrecisao)
                     .addComponent(ckboxVilao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelecionarDono)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvar)
+                .addComponent(txtfNomeDono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnSelecionarDono))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -250,63 +304,122 @@ public class InserirPersonagem extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean eVilao = ckboxVilao.isSelected(); 
         
-        // Verifica se o Personagem a ser criado é um Vilão ou não
-        if (eVilao) {            
-            String nomeVilao = txtfNomePersonagem.getText();
-            int corpo = (Integer) spnrCorpo.getValue();
-            int mente = (Integer) spnrMente.getValue();
-            int coragem = (Integer) spnrCoragem.getValue();
-            
-            String nomeStand = txtfNomeStand.getText();
-            String poder = (String) spnrPoder.getValue();
-            String velocidade = (String) spnrVelocidade.getValue();
-            String durabilidade = (String) spnrDurabilidade.getValue();
-            String precisao = (String) spnrPrecisao.getValue();
-            
-            Stand novoStand = new Stand(nomeStand, 
-                                        poder, 
-                                        velocidade, 
-                                        durabilidade, 
-                                        precisao);
-            
-            Vilao novoVilao = new Vilao(nomeVilao, 
-                                        corpo, 
-                                        mente, 
-                                        coragem, 
-                                        novoStand);
-            
-            Vilao.listaViloes.add(novoVilao);
-        } 
-        else {
-            String nomePersonagem = txtfNomePersonagem.getText();
-            int corpo = (Integer) spnrCorpo.getValue();
-            int mente = (Integer) spnrMente.getValue();
-            int coragem = (Integer) spnrCoragem.getValue();
-            
-            String nomeStand = txtfNomeStand.getText();
-            String poder = (String) spnrPoder.getValue();
-            String velocidade = (String) spnrVelocidade.getValue();
-            String durabilidade = (String) spnrDurabilidade.getValue();
-            String precisao = (String) spnrPrecisao.getValue();
-            
-            Stand novoStand = new Stand(nomeStand, 
-                                        poder, 
-                                        velocidade, 
-                                        durabilidade, 
-                                        precisao);
-            
-            Personagem novoPersonagem = new Personagem(nomePersonagem, 
-                                                       corpo, 
-                                                       mente, 
-                                                       coragem, 
-                                                       novoStand);
-            
-            Personagem.listaPersonagens.add(novoPersonagem);
+        if (!editando) { // Caso não estiver editando, cria um novo personagem
+            // Verifica se 'Vilão?' foi marcado para criar o personagem com a classe certa
+            if (eVilao) {            
+                String nomeVilao = txtfNomePersonagem.getText();
+                int corpo = (Integer) spnrCorpo.getValue();
+                int mente = (Integer) spnrMente.getValue();
+                int coragem = (Integer) spnrCoragem.getValue();
+
+                String nomeStand = txtfNomeStand.getText();
+                String poder = (String) spnrPoder.getValue();
+                String velocidade = (String) spnrVelocidade.getValue();
+                String durabilidade = (String) spnrDurabilidade.getValue();
+                String precisao = (String) spnrPrecisao.getValue();
+
+                Stand novoStand = new Stand(nomeStand, 
+                                            poder, 
+                                            velocidade, 
+                                            durabilidade, 
+                                            precisao);
+
+                Vilao novoVilao = new Vilao(nomeVilao, 
+                                            corpo, 
+                                            mente, 
+                                            coragem, 
+                                            novoStand,
+                                            this.donoSelecionado);
+
+                Vilao.listaViloes.add(novoVilao);
+            } 
+            else {
+                String nomePersonagem = txtfNomePersonagem.getText();
+                int corpo = (Integer) spnrCorpo.getValue();
+                int mente = (Integer) spnrMente.getValue();
+                int coragem = (Integer) spnrCoragem.getValue();
+
+                String nomeStand = txtfNomeStand.getText();
+                String poder = (String) spnrPoder.getValue();
+                String velocidade = (String) spnrVelocidade.getValue();
+                String durabilidade = (String) spnrDurabilidade.getValue();
+                String precisao = (String) spnrPrecisao.getValue();
+
+                Stand novoStand = new Stand(nomeStand, 
+                                            poder, 
+                                            velocidade, 
+                                            durabilidade, 
+                                            precisao);
+
+                Personagem novoPersonagem = new Personagem(nomePersonagem, 
+                                                           corpo, 
+                                                           mente, 
+                                                           coragem, 
+                                                           novoStand,
+                                                           this.donoSelecionado);
+
+                Personagem.listaPersonagens.add(novoPersonagem);
+            }
         }
+        else { //Caso esteja editando, sobrescreve os dados do personagem existente
+            if (eVilao) {            
+                String nomeVilao = txtfNomePersonagem.getText();
+                int corpo = (Integer) spnrCorpo.getValue();
+                int mente = (Integer) spnrMente.getValue();
+                int coragem = (Integer) spnrCoragem.getValue();
+
+                String nomeStand = txtfNomeStand.getText();
+                String poder = (String) spnrPoder.getValue();
+                String velocidade = (String) spnrVelocidade.getValue();
+                String durabilidade = (String) spnrDurabilidade.getValue();
+                String precisao = (String) spnrPrecisao.getValue();
+
+                Stand novoStand = new Stand(nomeStand, 
+                                            poder, 
+                                            velocidade, 
+                                            durabilidade, 
+                                            precisao);
+
+                this.personagemEditado.setNome(nomeVilao); 
+                this.personagemEditado.setCorpo(corpo); 
+                this.personagemEditado.setMente(mente);
+                this.personagemEditado.setCoragem(coragem);
+                this.personagemEditado.setStand(novoStand);
+                this.personagemEditado.setDono(this.donoSelecionado);
+            } 
+            else {
+                String nomePersonagem = txtfNomePersonagem.getText();
+                int corpo = (Integer) spnrCorpo.getValue();
+                int mente = (Integer) spnrMente.getValue();
+                int coragem = (Integer) spnrCoragem.getValue();
+
+                String nomeStand = txtfNomeStand.getText();
+                String poder = (String) spnrPoder.getValue();
+                String velocidade = (String) spnrVelocidade.getValue();
+                String durabilidade = (String) spnrDurabilidade.getValue();
+                String precisao = (String) spnrPrecisao.getValue();
+
+                Stand novoStand = new Stand(nomeStand, 
+                                            poder, 
+                                            velocidade, 
+                                            durabilidade, 
+                                            precisao);
+
+                this.personagemEditado.setNome(nomePersonagem); 
+                this.personagemEditado.setCorpo(corpo); 
+                this.personagemEditado.setMente(mente);
+                this.personagemEditado.setCoragem(coragem);
+                this.personagemEditado.setStand(novoStand);
+                this.personagemEditado.setDono(this.donoSelecionado);
+            }
+        }
+        
+        dispose();
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSelecionarDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarDonoActionPerformed
-        // TODO add your handling code here:
+        // Abre a tela de registroso para que o dono do Personagem seja definido:
         TelaRegistros telaSelecao = new TelaRegistros();
         telaSelecao.setVisible(true);
     }//GEN-LAST:event_btnSelecionarDonoActionPerformed
@@ -350,6 +463,7 @@ public class InserirPersonagem extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSelecionarDono;
     private javax.swing.JCheckBox ckboxVilao;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lblCoragem;
     private javax.swing.JLabel lblCorpo;
     private javax.swing.JLabel lblCriacaoPersonagem;
@@ -367,6 +481,7 @@ public class InserirPersonagem extends javax.swing.JFrame {
     private javax.swing.JSpinner spnrPoder;
     private javax.swing.JSpinner spnrPrecisao;
     private javax.swing.JSpinner spnrVelocidade;
+    private javax.swing.JTextField txtfNomeDono;
     private javax.swing.JTextField txtfNomePersonagem;
     private javax.swing.JTextField txtfNomeStand;
     // End of variables declaration//GEN-END:variables
