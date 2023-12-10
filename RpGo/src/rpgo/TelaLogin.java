@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package rpgo;
 
-/**
- *
- * @author Gabriel Henrique
- */
+import ClassesRpGo.Funcionario;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 public class TelaLogin extends javax.swing.JFrame {
 
     /**
@@ -15,8 +12,42 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
+        txtfUsuario.setText("Usuário");
+        txtfUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (txtfUsuario.getText().equals("Usuário")) {
+                txtfUsuario.setText("");
+                txtfUsuario.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (txtfUsuario.getText().isEmpty()) {
+                txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
+                txtfUsuario.setText("Usuário");
+            }
+        }
+        });
+
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+        passfSenha.setForeground(new java.awt.Color(169, 169, 169));
+        passfSenha.setText("*********");
+        passfSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (String.valueOf(passfSenha.getPassword()).equals("*********")) {
+                passfSenha.setText("");
+                passfSenha.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (String.valueOf(passfSenha.getPassword()).isEmpty()) {
+                passfSenha.setForeground(new java.awt.Color(169, 169, 169));
+                passfSenha.setText("*********");
+            }
+        }
+        });
+        ;
     }
 
     /**
@@ -56,7 +87,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         txtfUsuario.setBackground(new java.awt.Color(40, 40, 40));
         txtfUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        txtfUsuario.setText("Usuário");
         txtfUsuario.setToolTipText("Insira o nome de usuário");
         txtfUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +111,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         passfSenha.setBackground(new java.awt.Color(40, 40, 40));
         passfSenha.setForeground(new java.awt.Color(255, 255, 255));
-        passfSenha.setText("SenhaUsuário");
         passfSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passfSenhaActionPerformed(evt);
@@ -149,9 +178,27 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMestreActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        this.dispose();       
-        new TelaCampanhas().setVisible(true);
+        ArrayList <Funcionario> funcionarios = new ArrayList<Funcionario>();
+        
+        funcionarios = Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
+        
+        boolean flag = false;
+        
+        for(int i = 0; i < funcionarios.size(); i++){
+            if (funcionarios.get(i).getUsuario().equals(txtfUsuario.getText()) && funcionarios.get(i).getSenha().equals(passfSenha.getText())){
+                flag = true;
+                
+                this.dispose();       
+                
+                new TelaCampanhas().setVisible(true);
+            }
+        }
+        if(flag == false){
+            JOptionPane.showMessageDialog(this, "Usuário não está cadastrado!");
+            
+            JOptionPane.showMessageDialog(this, "Realize o cadastro do usuário");
+        }
+        
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void passfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passfSenhaActionPerformed

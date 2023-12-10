@@ -2,6 +2,8 @@
 package ClassesRpGo;
 
 public abstract class Pessoa {
+    public static int ID = 0;
+    
     protected int id;
     
     protected String nome;

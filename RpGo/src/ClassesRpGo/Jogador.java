@@ -16,6 +16,5 @@ public class Jogador extends Pessoa{
     public void recebePersonagem(Personagem personagem){
         listaDePersonagens.add(personagem);   
             
-        }
-                
+    }          
 }
