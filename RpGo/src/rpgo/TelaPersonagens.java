@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author PC
+ * @author Guilherme
  */
 public class TelaPersonagens extends javax.swing.JFrame {
     Personagem personagemSelecionado = null;
@@ -286,7 +286,13 @@ public class TelaPersonagens extends javax.swing.JFrame {
 
 
             if (txtfBusca.getText().equals("")){
-                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0);
+                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0){
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+                };
+                
                 for(int i = 0; i<(personagens.size() + viloes.size()); i++){
                     Object linha[];
                     if (i < personagens.size()) { // Printa os personagens primeiro
@@ -311,10 +317,16 @@ public class TelaPersonagens extends javax.swing.JFrame {
                     }
                 tabela.addRow(linha);
                 }
-                tblPersonagens.setModel(tabela);    
+                tblPersonagens.setModel(tabela);
+                tblPersonagens.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
             }
             else {
-                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0);
+                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0){
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+                };
                 for(int i = 0; i<(personagens.size() + viloes.size()); i++){
                     Object linha[];
                     if (i < personagens.size() && txtfBusca.getText().equals(personagens.get(i).getNome())) { // Printa os personagens primeiro
@@ -341,6 +353,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                     }
                 }
                 tblPersonagens.setModel(tabela);
+                tblPersonagens.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
             }
     }
     
