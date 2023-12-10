@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package rpgo;
 import ClassesRpGo.Pessoa;
 import ClassesRpGo.Personagem;
@@ -10,7 +6,7 @@ import ClassesRpGo.Stand;
 
 /**
  *
- * @author PC
+ * @author Guilherme
  */
 public class InserirPersonagem extends javax.swing.JFrame {
     
