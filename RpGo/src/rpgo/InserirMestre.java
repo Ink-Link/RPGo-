@@ -253,7 +253,8 @@ public class InserirMestre extends javax.swing.JFrame {
     }//GEN-LAST:event_txtfUsuarioActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-    // Obtendo os dados da interface gráfica
+        boolean flag = true;
+// Obtendo os dados da interface gráfica
     String nome = txtfNomeFuncionario.getText();
     String usuario = txtfUsuario.getText();
     String senha = txtfSenha.getText();
@@ -263,16 +264,34 @@ public class InserirMestre extends javax.swing.JFrame {
     Funcionario novoFuncionario = new Funcionario(Pessoa.ID, nome, dataDeNascimento, usuario, senha);
     Pessoa.ID += 1;
     // Verificando se o funcionário já existe
+    if(txtfNomeFuncionario.getText().equals("Nome")){
+        JOptionPane.showMessageDialog(this, "Escreva algo no campo Nome");
+        
+        flag = false;
+    }
+    if(txtfUsuario.getText().equals("Usuário")){
+        JOptionPane.showMessageDialog(this, "Escreva algo no campo Usuário");  
+        
+        flag = false;
+    }
+    if(txtfSenha.getText().equals("********")){
+        JOptionPane.showMessageDialog(this, "Escreva algo no campo de Senha");
+        
+        flag = false;
+    }
     if(!checkIfExists(novoFuncionario)) {
-        // Salvando no arquivo se não existir
+        if(flag == true){
         saveToFile(novoFuncionario);
+        
+        dispose();
+        }
     }
     else{
         // Exibir mensagem de que o funcionário já existe
         JOptionPane.showMessageDialog(this, "Funcionário já existe!");
-    }
-    dispose();
-    
+        
+        dispose();
+    }    
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtfIdMestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfIdMestreActionPerformed

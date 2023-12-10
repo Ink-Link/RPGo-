@@ -1,6 +1,7 @@
 package rpgo;
 
 import ClassesRpGo.Funcionario;
+import ClassesRpGo.Pessoa;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -178,14 +179,14 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarMestreActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        ArrayList <Funcionario> funcionarios = new ArrayList<Funcionario>();
+        ArrayList <Pessoa> funcionarios = new ArrayList<Pessoa>();
         
         funcionarios = Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
         
         boolean flag = false;
         
         for(int i = 0; i < funcionarios.size(); i++){
-            if (funcionarios.get(i).getUsuario().equals(txtfUsuario.getText()) && funcionarios.get(i).getSenha().equals(passfSenha.getText())){
+            if (((Funcionario)funcionarios.get(i)).getUsuario().equals(txtfUsuario.getText()) && ((Funcionario)funcionarios.get(i)).getSenha().equals(passfSenha.getText())){
                 flag = true;
                 
                 this.dispose();       

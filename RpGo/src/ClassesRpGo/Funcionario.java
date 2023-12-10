@@ -38,19 +38,20 @@ public class Funcionario extends Pessoa{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public static ArrayList<Funcionario> lerFuncionariosDoArquivo(String caminhoArquivo) {
-        ArrayList<Funcionario> funcionarios = new ArrayList<>();
+    public static ArrayList<Pessoa> lerFuncionariosDoArquivo(String caminhoArquivo) {
+        ArrayList<Pessoa> funcionarios = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
             String linha;
 
             while ((linha = reader.readLine()) != null) {
                 Funcionario funcionario = fromFileString(linha);
-                if (Pessoa.ID <= funcionario.getId()){
-                    Pessoa.ID = funcionario.getId() + 1;
+                if(funcionario != null){
+                    if(Pessoa.ID <= funcionario.getId()){
+                        Pessoa.ID = funcionario.getId() + 1;
+                    }
+                    funcionarios.add(funcionario);
                 }
-                funcionarios.add(funcionario);
-                
             }
         } catch (IOException e) {
             e.printStackTrace();

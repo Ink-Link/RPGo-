@@ -1,6 +1,8 @@
 package rpgo;
 
 import ClassesRpGo.Funcionario;
+import ClassesRpGo.Jogador;
+import ClassesRpGo.Pessoa;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -11,55 +13,115 @@ public class TelaRegistros extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
-        montarTabela();
+        montarTabela(new Funcionario());
+        montarTabela(new Jogador());
     }
     
-   private void montarTabela() {
-        ArrayList<Funcionario> mestres = Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt"); 
-        
-        if (txtfBusca.getText().equals("")){
-               DefaultTableModel tabela = new DefaultTableModel(new Object[] {"ID", "Usuário", "Nome"}, 0) {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    // Tornar todas as células não editáveis
-                    return false;
+   private void montarTabela(Pessoa obj) {
+       DefaultTableModel tabela;
+       ArrayList<Pessoa> pessoas;
+       Funcionario mestre = null;
+       Jogador jogador = null;
+       if(obj instanceof Funcionario){
+            pessoas = Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
+                tabela = new DefaultTableModel(new Object[]{"ID", "Usuário", "Nome"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+       }
+       else{
+          pessoas = Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt");
+            tabela = new DefaultTableModel(new Object[]{"ID", "Nome", "Data de Nascimento"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+       } 
+       if (txtfBusca.getText().equals("")) {
+            for (int i = 0; i < pessoas.size(); i++) {
+                Pessoa pessoa = pessoas.get(i);
+                if(pessoa instanceof Funcionario){
+                
+                    mestre = (Funcionario)pessoa;
                 }
+                else{
+                    jogador = (Jogador)pessoa;
+                }
+                
+                
+            if (mestre != null) {
+                Object linha[] = new Object[]{
+                    mestre.getId(),
+                    mestre.getUsuario(),
+                    mestre.getNome()
                 };
 
-                for(int i = 0; i < mestres.size(); i++){
-                        Funcionario mestre = mestres.get(i);
-
-                        // Verificar se o mestre não é nulo
-                    if (mestre != null) {
-                        Object linha[] = new Object[]{
-                        mestre.getId(),
-                        mestre.getUsuario(),
-                        mestre.getNome()
-                    };
-
-                    tabela.addRow(linha);
-                    }
-                }
-
-                tblFuncionarios.setModel(tabela);
-
-   
-        }
-            else {
-                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"ID, Usuário, Nome"},0);
-                for(int i = 0; i<(mestres.size()); i++){
-                    Object linha[];
-                    if (i < mestres.size() && txtfBusca.getText().equals(mestres.get(i).getNome())) { // Printa os personagens primeiro
-                        linha = new Object[]{
-                            mestres.get(i).getId(),
-                            mestres.get(i).getUsuario(),
-                            mestres.get(i).getNome()};
-                        tabela.addRow(linha);
-                    }
-                }
-                tblFuncionarios.setModel(tabela);
+                tabela.addRow(linha);
             }
+            else if(jogador != null){
+                Object linha[] = new Object[]{
+                    jogador.getId(),
+                    jogador.getNome(),
+                    jogador.getDataDeNascimento()
+                };
+
+                tabela.addRow(linha);
+            }
+        }
+        if(obj instanceof Funcionario){
+            tblFuncionarios.setModel(tabela);
+            tblFuncionarios.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
+        }else{
+            tblJogadores.setModel(tabela);
+            tblJogadores.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
+        }
+        
+    } else {
+        for (int i = 0; i < (pessoas.size()); i++) {
+            Object linha[];
+            if (i < pessoas.size() && txtfBusca.getText().equals(pessoas.get(i).getNome())) {
+                Pessoa pessoa = pessoas.get(i);
+                if(pessoa instanceof Funcionario){
+                
+                    mestre = (Funcionario)pessoa;
+                }
+                else{
+                    jogador = (Jogador)pessoa;
+                }
+                
+                
+            if (mestre != null) {
+                linha = new Object[]{
+                    mestre.getId(),
+                    mestre.getUsuario(),
+                    mestre.getNome()
+                };
+
+                tabela.addRow(linha);
+            }
+            else if(jogador != null){
+                linha = new Object[]{
+                    jogador.getId(),
+                    jogador.getNome(),
+                    jogador.getDataDeNascimento()
+                };
+
+                tabela.addRow(linha);
+            }
+        }
+        if(obj instanceof Funcionario){
+            tblFuncionarios.setModel(tabela);
+            tblFuncionarios.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
+        }else{
+            tblJogadores.setModel(tabela);
+            tblJogadores.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
+        }
     }
+       }
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -259,7 +321,7 @@ public class TelaRegistros extends javax.swing.JFrame {
                                     .addComponent(btnSelecionar, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnExcluir1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)

@@ -1,4 +1,3 @@
-
 package ClassesRpGo;
 
 public abstract class Pessoa {
