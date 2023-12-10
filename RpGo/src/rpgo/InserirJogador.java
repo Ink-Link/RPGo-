@@ -4,6 +4,17 @@
  */
 package rpgo;
 
+import ClassesRpGo.Funcionario;
+import ClassesRpGo.Jogador;
+import ClassesRpGo.Pessoa;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author PC
@@ -15,8 +26,55 @@ public class InserirJogador extends javax.swing.JFrame {
      */
     public InserirJogador() {
         initComponents();
+        txtfNome.setForeground(new java.awt.Color(169, 169, 169));
+        txtfNome.setText("Nome");
+        txtfNome.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (txtfNome.getText().equals("Nome")) {
+                txtfNome.setText("");
+                txtfNome.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (txtfNome.getText().isEmpty()) {
+                txtfNome.setForeground(new java.awt.Color(169, 169, 169));
+                txtfNome.setText("Usuário");
+            }
+        }
+        });
+        txtfIdJogador.setText(Integer.toString(Pessoa.ID));
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+    }
+    private void saveToFile(Jogador jogador) {
+        // Caminho do arquivo
+        String fileName = "src\\Save\\Jogadores.txt";
+
+        // Convertendo jogador para string e salvando no arquivo
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            writer.write(jogador.toFileString());
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean checkIfExists(Jogador jogador) {
+        // Caminho do arquivo
+        String fileName = "src\\Save\\Jogadores.txt";
+
+        // Verificando se o jogador já existe no arquivo
+        try {
+            Path path = Paths.get(fileName);
+            if (Files.exists(path)) {
+                return Files.lines(path).anyMatch(line -> line.contains(jogador.getNome()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     /**
@@ -34,8 +92,8 @@ public class InserirJogador extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         txtfNome = new javax.swing.JTextField();
         lblRegistroJogador = new javax.swing.JLabel();
-        ftxtfDataNascimento = new javax.swing.JFormattedTextField();
-        spnrId = new javax.swing.JSpinner();
+        txtDataJogador = new javax.swing.JFormattedTextField();
+        txtfIdJogador = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Jogador");
@@ -52,6 +110,11 @@ public class InserirJogador extends javax.swing.JFrame {
         btnSalvar.setBackground(new java.awt.Color(86, 86, 86));
         btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         txtfNome.setBackground(new java.awt.Color(40, 40, 40));
         txtfNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -61,11 +124,23 @@ public class InserirJogador extends javax.swing.JFrame {
         lblRegistroJogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegistroJogador.setText("Cadastro de Jogador");
 
-        ftxtfDataNascimento.setBackground(new java.awt.Color(40, 40, 40));
-        ftxtfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        ftxtfDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+        txtDataJogador.setBackground(new java.awt.Color(40, 40, 40));
+        txtDataJogador.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            txtDataJogador.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/ ####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDataJogador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtfDataNascimentoActionPerformed(evt);
+                txtDataJogadorActionPerformed(evt);
+            }
+        });
+
+        txtfIdJogador.setEnabled(false);
+        txtfIdJogador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfIdJogadorActionPerformed(evt);
             }
         });
 
@@ -79,17 +154,21 @@ public class InserirJogador extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(ftxtfDataNascimento)
-                            .addGap(88, 88, 88)
+                            .addComponent(txtDataJogador)
+                            .addGap(87, 87, 87)
                             .addComponent(btnSalvar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblNome))
-                            .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(spnrId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(txtfIdJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(1, 1, 1))))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addComponent(lblRegistroJogador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -105,22 +184,57 @@ public class InserirJogador extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(spnrId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfIdJogador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvar))
+                    .addComponent(btnSalvar)
+                    .addComponent(txtDataJogador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ftxtfDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtfDataNascimentoActionPerformed
+    private void txtDataJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataJogadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtfDataNascimentoActionPerformed
+    }//GEN-LAST:event_txtDataJogadorActionPerformed
+
+    private void txtfIdJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfIdJogadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfIdJogadorActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+    boolean flag = true;
+        
+    String nome = txtfNome.getText();
+    String dataDeNascimento = txtDataJogador.getText();
+
+    // Criando uma instância de Funcionario
+    Jogador jogador = new Jogador(Pessoa.ID, nome, dataDeNascimento);
+    // Verificando se o funcionário já existe
+    if(txtfNome.getText().equals("Nome")){
+        JOptionPane.showMessageDialog(this, "Escreva algo no campo Nome");
+        
+        flag = false;
+    }
+    
+    if(!checkIfExists(jogador)) {
+        if(flag == true){
+        saveToFile(jogador);
+        Pessoa.ID += 1;
+        
+        dispose();
+        }
+    }
+    else{
+        // Exibir mensagem de que o funcionário já existe
+        JOptionPane.showMessageDialog(this, "Jogador já existe!");
+        
+        dispose();
+    }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,12 +276,12 @@ public class InserirJogador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JFormattedTextField ftxtfDataNascimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblRegistroJogador;
-    private javax.swing.JSpinner spnrId;
+    private javax.swing.JFormattedTextField txtDataJogador;
+    private javax.swing.JTextField txtfIdJogador;
     private javax.swing.JTextField txtfNome;
     // End of variables declaration//GEN-END:variables
 }

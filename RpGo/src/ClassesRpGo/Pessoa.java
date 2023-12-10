@@ -1,5 +1,12 @@
 package ClassesRpGo;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;  // Certifique-se de importar java.util.List
+
 public abstract class Pessoa {
     public static int ID = 0;
     
@@ -19,6 +26,26 @@ public abstract class Pessoa {
         this.id = id;
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public static void removerPessoaDoArquivo(String chave, String caminhoArquivo, boolean removerPorUsuario) {
+        try {
+            List<String> linhas = Files.readAllLines(Paths.get(caminhoArquivo), StandardCharsets.UTF_8);
+            List<String> novasLinhas = new ArrayList<String>();
+
+            for (String linha : linhas) {
+                String[] partes = linha.split(";");
+                String chaveLinha = removerPorUsuario ? partes[3] : partes[0];
+
+                if (!chaveLinha.equals(chave)) {
+                    novasLinhas.add(linha);
+                }
+            }
+
+            Files.write(Paths.get(caminhoArquivo), novasLinhas, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getId() {

@@ -3,125 +3,105 @@ package rpgo;
 import ClassesRpGo.Funcionario;
 import ClassesRpGo.Jogador;
 import ClassesRpGo.Pessoa;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class TelaRegistros extends javax.swing.JFrame {
 
+
     public TelaRegistros() {
         initComponents();
+        txtfBusca.setBackground(new java.awt.Color(40, 40, 40));
+        txtfBusca.setForeground(new java.awt.Color(255, 255, 255));
+        txtfBusca.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            txtfBuscaActionPerformed(evt);
+        }
+        });
+        btnBuscar.setBackground(new java.awt.Color(30, 30, 30));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 24));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/search.png")));
+        btnBuscar.setToolTipText("Buscar");
+        btnBuscar.setBorder(null);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnBuscarActionPerformed(evt);
+        }
+    });
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
-        montarTabela(new Funcionario());
-        montarTabela(new Jogador());
+        montarTabelas();
+        
     }
     
-   private void montarTabela(Pessoa obj) {
-       DefaultTableModel tabela;
-       ArrayList<Pessoa> pessoas;
-       Funcionario mestre = null;
-       Jogador jogador = null;
-       if(obj instanceof Funcionario){
-            pessoas = Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
-                tabela = new DefaultTableModel(new Object[]{"ID", "Usuário", "Nome"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-       }
-       else{
-          pessoas = Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt");
-            tabela = new DefaultTableModel(new Object[]{"ID", "Nome", "Data de Nascimento"}, 0) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-       } 
-       if (txtfBusca.getText().equals("")) {
-            for (int i = 0; i < pessoas.size(); i++) {
-                Pessoa pessoa = pessoas.get(i);
-                if(pessoa instanceof Funcionario){
-                
-                    mestre = (Funcionario)pessoa;
-                }
-                else{
-                    jogador = (Jogador)pessoa;
-                }
-                
-                
-            if (mestre != null) {
-                Object linha[] = new Object[]{
-                    mestre.getId(),
-                    mestre.getUsuario(),
-                    mestre.getNome()
-                };
-
-                tabela.addRow(linha);
-            }
-            else if(jogador != null){
-                Object linha[] = new Object[]{
-                    jogador.getId(),
-                    jogador.getNome(),
-                    jogador.getDataDeNascimento()
-                };
-
-                tabela.addRow(linha);
-            }
-        }
-        if(obj instanceof Funcionario){
-            tblFuncionarios.setModel(tabela);
-            tblFuncionarios.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
-        }else{
-            tblJogadores.setModel(tabela);
-            tblJogadores.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
-        }
-        
-    } else {
-        for (int i = 0; i < (pessoas.size()); i++) {
-            Object linha[];
-            if (i < pessoas.size() && txtfBusca.getText().equals(pessoas.get(i).getNome())) {
-                Pessoa pessoa = pessoas.get(i);
-                if(pessoa instanceof Funcionario){
-                
-                    mestre = (Funcionario)pessoa;
-                }
-                else{
-                    jogador = (Jogador)pessoa;
-                }
-                
-                
-            if (mestre != null) {
-                linha = new Object[]{
-                    mestre.getId(),
-                    mestre.getUsuario(),
-                    mestre.getNome()
-                };
-
-                tabela.addRow(linha);
-            }
-            else if(jogador != null){
-                linha = new Object[]{
-                    jogador.getId(),
-                    jogador.getNome(),
-                    jogador.getDataDeNascimento()
-                };
-
-                tabela.addRow(linha);
-            }
-        }
-        if(obj instanceof Funcionario){
-            tblFuncionarios.setModel(tabela);
-            tblFuncionarios.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
-        }else{
-            tblJogadores.setModel(tabela);
-            tblJogadores.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
-        }
+    private void montarTabelas() {
+        montarTabela(tblFuncionarios, Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt"));
+        montarTabela(tblJogadores, Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt"));
     }
-       }
+    private void montarTabela(javax.swing.JTable tabela, ArrayList<Pessoa> pessoas) {
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        if (tabela == tblFuncionarios) {
+            modelo.setColumnIdentifiers(new Object[]{"ID", "Usuário", "Nome"});
+        } else if (tabela == tblJogadores) {
+            modelo.setColumnIdentifiers(new Object[]{"ID", "Nome", "Data de Nascimento"});
+        }
+
+        for (Pessoa pessoa : pessoas) {
+            if (pessoa instanceof Funcionario && tabela == tblFuncionarios) {
+                Funcionario mestre = (Funcionario) pessoa;
+                modelo.addRow(new Object[]{mestre.getId(), mestre.getUsuario(), mestre.getNome()});
+            } else if (pessoa instanceof Jogador && tabela == tblJogadores) {
+                Jogador jogador = (Jogador) pessoa;
+                modelo.addRow(new Object[]{jogador.getId(), jogador.getNome(), jogador.getDataDeNascimento()});
+            }
+        }
+
+        tabela.setModel(modelo);
+        tabela.getTableHeader().setReorderingAllowed(false);
+    }
+    private void pesquisarEAtualizar(javax.swing.JTable tabela, ArrayList<Pessoa> pessoas, String termoBusca) {
+        ArrayList<Pessoa> resultados = new ArrayList<>();
+
+        for (Pessoa pessoa : pessoas) {
+            if (pessoa.getNome().toLowerCase().contains(termoBusca)) {
+                resultados.add(pessoa);
+            }
+        }
+
+        montarTabela(tabela, resultados);
+    }
+    private void excluirPessoa(javax.swing.JTable tabela, boolean removerPorUsuario) {
+    DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+    int linhaSelecionada = tabela.getSelectedRow();
+
+    if (linhaSelecionada != -1) {
+        int id = (int) modelo.getValueAt(linhaSelecionada, 0);  // Obter o ID da pessoa a ser removida
+
+        modelo.removeRow(linhaSelecionada);
+
+        // Chame o método para remover a pessoa do arquivo aqui
+        if (tabela == tblFuncionarios) {
+            Funcionario.removerPessoaDoArquivo(String.valueOf(id), "src\\Save\\Funcionarios.txt", removerPorUsuario);
+        } else if (tabela == tblJogadores) {
+            Jogador.removerPessoaDoArquivo(String.valueOf(id), "src\\Save\\Jogadores.txt", removerPorUsuario);
+        }
+
+        // Limpe a seleção da tabela
+        tabela.clearSelection();
+    }
 }
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -342,7 +322,17 @@ public class TelaRegistros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        String termoBusca = txtfBusca.getText().toLowerCase();
+
+    if (termoBusca.isEmpty()) {
+        // Se o campo de busca estiver vazio, exibe ambas as tabelas normalmente
+        montarTabelas();
+    } else {
+        // Se houver texto de busca, realiza a pesquisa
+        pesquisarEAtualizar(tblFuncionarios, Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt"), termoBusca);
+        pesquisarEAtualizar(tblJogadores, Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt"), termoBusca);
+    }
+    
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -350,17 +340,26 @@ public class TelaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir1ActionPerformed
-        // TODO add your handling code here:
+        excluirPessoa(tblFuncionarios, true);
+        excluirPessoa(tblJogadores, false);
     }//GEN-LAST:event_btnExcluir1ActionPerformed
 
     private void btnAddJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogadorActionPerformed
-        // TODO add your handling code here:
-        new InserirJogador().setVisible(true);
+        InserirJogador tela = new InserirJogador();
+        tela.setVisible(true);
+        tela.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evento) {montarTabelas();}
+        });
     }//GEN-LAST:event_btnAddJogadorActionPerformed
 
     private void btnAddMestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMestreActionPerformed
-        // TODO add your handling code here:
-        new InserirMestre().setVisible(true);
+        InserirMestre tela = new InserirMestre();
+        tela.setVisible(true);
+        tela.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evento) {montarTabelas();}
+        });
     }//GEN-LAST:event_btnAddMestreActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
@@ -368,12 +367,18 @@ public class TelaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBuscaActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtfBuscaActionPerformed
+    private Pessoa pesquisa(String nome) { // Usada para pesquisar o personagem por nome, para edição e inserir na cena
+        ArrayList<Pessoa> mestres = Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
+        ArrayList<Pessoa> jogadores = Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt");
 
-    /**
-     * @param args the command line arguments
-     */
+        for (int i = 0; i < (mestres.size() + jogadores.size()); i++) {
+
+        }
+
+        return null;
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -2,9 +2,12 @@ package ClassesRpGo;
 
 import static ClassesRpGo.Funcionario.fromFileString;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Jogador extends Pessoa{
     ArrayList <Personagem> listaDePersonagens = new ArrayList <Personagem>();
@@ -20,6 +23,39 @@ public class Jogador extends Pessoa{
     public void recebePersonagem(Personagem personagem){
         listaDePersonagens.add(personagem);   
             
+    }
+    public static void removerPessoaDoArquivo(String identificador, String caminhoArquivo) {
+    // Lógica para remover a pessoa do arquivo com base no identificador (ID)
+    try {
+        List<String> linhas = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo));
+        String linha;
+
+        while ((linha = reader.readLine()) != null) {
+            // Verifica se a linha começa com o identificador
+            if (linha.startsWith(identificador + ";")) {
+                continue; // Ignora a linha se a linha começa com o identificador
+            }
+
+            linhas.add(linha);
+        }
+
+        reader.close();
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(caminhoArquivo));
+        for (String novaLinha : linhas) {
+            writer.write(novaLinha);
+            writer.newLine();
+        }
+
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+    public String toFileString() {
+        return getId() + ";" + getNome() + ";" + getDataDeNascimento();
     }
     public static ArrayList<Pessoa> lerJogadorDoArquivo(String caminhoArquivo) {
         ArrayList<Pessoa> jogadores = new ArrayList<>();

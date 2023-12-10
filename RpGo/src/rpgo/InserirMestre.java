@@ -18,7 +18,6 @@ public class InserirMestre extends javax.swing.JFrame {
      */
     public InserirMestre(){
         initComponents();
-        Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
         txtfIdMestre.setText(Integer.toString(Pessoa.ID));
         txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
         txtfUsuario.setText("Usuário");
@@ -262,7 +261,6 @@ public class InserirMestre extends javax.swing.JFrame {
 
     // Criando uma instância de Funcionario
     Funcionario novoFuncionario = new Funcionario(Pessoa.ID, nome, dataDeNascimento, usuario, senha);
-    Pessoa.ID += 1;
     // Verificando se o funcionário já existe
     if(txtfNomeFuncionario.getText().equals("Nome")){
         JOptionPane.showMessageDialog(this, "Escreva algo no campo Nome");
@@ -282,6 +280,7 @@ public class InserirMestre extends javax.swing.JFrame {
     if(!checkIfExists(novoFuncionario)) {
         if(flag == true){
         saveToFile(novoFuncionario);
+        Pessoa.ID += 1;
         
         dispose();
         }

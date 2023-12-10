@@ -1,6 +1,7 @@
 package rpgo;
 
 import ClassesRpGo.Funcionario;
+import ClassesRpGo.Jogador;
 import ClassesRpGo.Pessoa;
 
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        Funcionario.lerFuncionariosDoArquivo("src\\Save\\Funcionarios.txt");
+        Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt");
         txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
         txtfUsuario.setText("Usuário");
         txtfUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
