@@ -4,14 +4,33 @@
  */
 package rpgo;
 
-import rpgo.*;
+import java.util.Stack;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.ArrayList;
+import ClassesRpGo.Personagem;
+import ClassesRpGo.Vilao;
 
 /**
  *
  * @author Gabriel Henrique
  */
 public class TelaCombate extends javax.swing.JFrame {
-
+    Integer matrizProtag[][] = {{0,0,0},
+                                {0,0,0}};
+    Integer novaMatrizProtag[][];
+        
+    Integer matrizVilao[]= {0,0};
+    Integer novaMatrizVilao[];
+    
+    ArrayList<Personagem> listaPersonagens = new ArrayList<Personagem>();
+    Dictionary<String, javax.swing.JLabel[]> dictProtagonistas = new Hashtable<>();
+    Dictionary<String, javax.swing.JButton> dictBotoesProtags = new Hashtable<>();
+    
+    ArrayList<Vilao> listaViloes = new ArrayList<Vilao>();
+    Dictionary<String, javax.swing.JLabel[]> dictViloes = new Hashtable<>();
+    Dictionary<String, javax.swing.JButton> dictBotoesViloes = new Hashtable<>();
+    
     /**
      * Creates new form TelaCombate
      */
@@ -19,6 +38,38 @@ public class TelaCombate extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+        
+        javax.swing.JLabel listaProtag0 [] = {lblNomeProtag0, lblVidaProtag0, lblPlanoProtag0, lblDetermProtag0};
+        javax.swing.JLabel listaProtag1 [] = {lblNomeProtag1, lblVidaProtag1, lblPlanoProtag1, lblDetermProtag1};
+        javax.swing.JLabel listaProtag2 [] = {lblNomeProtag2, lblVidaProtag2, lblPlanoProtag2, lblDetermProtag2};
+        javax.swing.JLabel listaProtag3 [] = {lblNomeProtag3, lblVidaProtag3, lblPlanoProtag3, lblDetermProtag3};
+        javax.swing.JLabel listaProtag4 [] = {lblNomeProtag4, lblVidaProtag4, lblPlanoProtag4, lblDetermProtag4};
+        javax.swing.JLabel listaProtag5 [] = {lblNomeProtag5, lblVidaProtag5, lblPlanoProtag5, lblDetermProtag5};
+        
+        dictProtagonistas.put("Protag0", listaProtag0);
+        dictProtagonistas.put("Protag1", listaProtag1);
+        dictProtagonistas.put("Protag2", listaProtag2);
+        dictProtagonistas.put("Protag3", listaProtag3);
+        dictProtagonistas.put("Protag4", listaProtag4);
+        dictProtagonistas.put("Protag5", listaProtag5);
+        
+        
+        javax.swing.JLabel listaVilao0 [] = {lblNomeVilao0, lblVidaVilao0, lblPlanoVilao0, lblDetermVilao0};
+        javax.swing.JLabel listaVilao1 [] = {lblNomeVilao1, lblVidaVilao1, lblPlanoVilao1, lblDetermVilao1};
+        
+        dictViloes.put("Vilao0", listaVilao0);
+        dictViloes.put("Vilao1", listaVilao1);
+        
+        dictBotoesProtags.put("btnProtag0",btnProtag0);
+        dictBotoesProtags.put("btnProtag1",btnProtag1);
+        dictBotoesProtags.put("btnProtag2",btnProtag2);
+        dictBotoesProtags.put("btnProtag3",btnProtag3);
+        dictBotoesProtags.put("btnProtag4",btnProtag4);
+        dictBotoesProtags.put("btnProtag5",btnProtag5);
+        
+        dictBotoesViloes.put("btnVilao0", btnVilao0);
+        dictBotoesViloes.put("btnVilao1", btnVilao1);
+        
     }
 
     /**
@@ -39,24 +90,30 @@ public class TelaCombate extends javax.swing.JFrame {
         lblProtCena = new javax.swing.JLabel();
         separadorCena = new javax.swing.JSeparator();
         lblTurno = new javax.swing.JLabel();
-        lpnlProtag1 = new javax.swing.JLayeredPane();
-        lblVidaProtag1 = new javax.swing.JLabel();
-        lblPlanoProtag1 = new javax.swing.JLabel();
-        lblDetermProtag1 = new javax.swing.JLabel();
-        lblNomeProtag1 = new javax.swing.JLabel();
-        btnProtag1 = new javax.swing.JButton();
-        lpnlProtag3 = new javax.swing.JLayeredPane();
-        lblPlanoProtag3 = new javax.swing.JLabel();
-        lblDetermProtag3 = new javax.swing.JLabel();
-        lblVidaProtag3 = new javax.swing.JLabel();
-        lblNomeProtag3 = new javax.swing.JLabel();
-        btnProtag3 = new javax.swing.JButton();
+        lpnlProtag0 = new javax.swing.JLayeredPane();
+        lblVidaProtag0 = new javax.swing.JLabel();
+        lblPlanoProtag0 = new javax.swing.JLabel();
+        lblDetermProtag0 = new javax.swing.JLabel();
+        lblNomeProtag0 = new javax.swing.JLabel();
+        btnProtag0 = new javax.swing.JButton();
         lpnlProtag2 = new javax.swing.JLayeredPane();
         lblPlanoProtag2 = new javax.swing.JLabel();
         lblDetermProtag2 = new javax.swing.JLabel();
         lblVidaProtag2 = new javax.swing.JLabel();
         lblNomeProtag2 = new javax.swing.JLabel();
         btnProtag2 = new javax.swing.JButton();
+        lpnlProtag1 = new javax.swing.JLayeredPane();
+        lblPlanoProtag1 = new javax.swing.JLabel();
+        lblDetermProtag1 = new javax.swing.JLabel();
+        lblVidaProtag1 = new javax.swing.JLabel();
+        lblNomeProtag1 = new javax.swing.JLabel();
+        btnProtag1 = new javax.swing.JButton();
+        lpnlProtag3 = new javax.swing.JLayeredPane();
+        lblDetermProtag3 = new javax.swing.JLabel();
+        lblPlanoProtag3 = new javax.swing.JLabel();
+        lblVidaProtag3 = new javax.swing.JLabel();
+        lblNomeProtag3 = new javax.swing.JLabel();
+        btnProtag3 = new javax.swing.JButton();
         lpnlProtag4 = new javax.swing.JLayeredPane();
         lblDetermProtag4 = new javax.swing.JLabel();
         lblPlanoProtag4 = new javax.swing.JLabel();
@@ -69,24 +126,18 @@ public class TelaCombate extends javax.swing.JFrame {
         lblVidaProtag5 = new javax.swing.JLabel();
         lblNomeProtag5 = new javax.swing.JLabel();
         btnProtag5 = new javax.swing.JButton();
-        lpnlProtag6 = new javax.swing.JLayeredPane();
-        lblDetermProtag6 = new javax.swing.JLabel();
-        lblPlanoProtag6 = new javax.swing.JLabel();
-        lblVidaProtag6 = new javax.swing.JLabel();
-        lblNomeProtag6 = new javax.swing.JLabel();
-        btnProtag6 = new javax.swing.JButton();
+        lpnlVilao0 = new javax.swing.JLayeredPane();
+        lblDetermVilao0 = new javax.swing.JLabel();
+        lblPlanoVilao0 = new javax.swing.JLabel();
+        lblVidaVilao0 = new javax.swing.JLabel();
+        lblNomeVilao0 = new javax.swing.JLabel();
+        btnVilao0 = new javax.swing.JButton();
         lpnlVilao1 = new javax.swing.JLayeredPane();
         lblDetermVilao1 = new javax.swing.JLabel();
         lblPlanoVilao1 = new javax.swing.JLabel();
         lblVidaVilao1 = new javax.swing.JLabel();
         lblNomeVilao1 = new javax.swing.JLabel();
         btnVilao1 = new javax.swing.JButton();
-        lpnlVilao2 = new javax.swing.JLayeredPane();
-        lblDetermVilao2 = new javax.swing.JLabel();
-        lblPlanoVilao2 = new javax.swing.JLabel();
-        lblVidaVilao2 = new javax.swing.JLabel();
-        lblNomeVilao2 = new javax.swing.JLabel();
-        btnVilao2 = new javax.swing.JButton();
         pnlPontosBizarros = new javax.swing.JPanel();
         lblPontosBizarros = new javax.swing.JLabel();
         btnTeste = new javax.swing.JButton();
@@ -101,8 +152,8 @@ public class TelaCombate extends javax.swing.JFrame {
         lblAcoesStand1 = new javax.swing.JLabel();
         btnAtqPoder1 = new javax.swing.JButton();
         btnAtqPrecisao1 = new javax.swing.JButton();
-        btnVilanesca1 = new javax.swing.JButton();
-        btnGolpePersonagem1 = new javax.swing.JButton();
+        btnAcaoVilanesca = new javax.swing.JButton();
+        btnGolpePersonagem = new javax.swing.JButton();
         lblPersonagem1 = new javax.swing.JLabel();
         separadorAcoes1 = new javax.swing.JSeparator();
         btnDefenderDur = new javax.swing.JButton();
@@ -153,73 +204,42 @@ public class TelaCombate extends javax.swing.JFrame {
         lblTurno.setForeground(new java.awt.Color(255, 255, 255));
         lblTurno.setText("Turno: Prot1 - Prot5 - Vilao2 - Prot2 - Vilao1 - Prot3 - Prot4 - Prot6");
 
-        lpnlProtag1.setBackground(new java.awt.Color(30, 30, 30));
-        lpnlProtag1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lpnlProtag1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        lpnlProtag0.setBackground(new java.awt.Color(30, 30, 30));
+        lpnlProtag0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lpnlProtag0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblVidaProtag1.setForeground(new java.awt.Color(242, 242, 242));
-        lblVidaProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
-        lblVidaProtag1.setText("00");
-        lblVidaProtag1.setToolTipText("Vida");
-        lpnlProtag1.add(lblVidaProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+        lblVidaProtag0.setForeground(new java.awt.Color(242, 242, 242));
+        lblVidaProtag0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
+        lblVidaProtag0.setText("00");
+        lblVidaProtag0.setToolTipText("Vida");
+        lpnlProtag0.add(lblVidaProtag0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
 
-        lblPlanoProtag1.setForeground(new java.awt.Color(242, 242, 242));
-        lblPlanoProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
-        lblPlanoProtag1.setText("00");
-        lblPlanoProtag1.setToolTipText("Planos");
-        lpnlProtag1.add(lblPlanoProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
+        lblPlanoProtag0.setForeground(new java.awt.Color(242, 242, 242));
+        lblPlanoProtag0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
+        lblPlanoProtag0.setText("00");
+        lblPlanoProtag0.setToolTipText("Planos");
+        lpnlProtag0.add(lblPlanoProtag0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
 
-        lblDetermProtag1.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
-        lblDetermProtag1.setText("00");
-        lblDetermProtag1.setToolTipText("Determinação");
-        lpnlProtag1.add(lblDetermProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+        lblDetermProtag0.setForeground(new java.awt.Color(242, 242, 242));
+        lblDetermProtag0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
+        lblDetermProtag0.setText("00");
+        lblDetermProtag0.setToolTipText("Determinação");
+        lpnlProtag0.add(lblDetermProtag0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
 
-        lblNomeProtag1.setForeground(new java.awt.Color(242, 242, 242));
-        lblNomeProtag1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeProtag1.setText("{Nome}");
-        lpnlProtag1.add(lblNomeProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
+        lblNomeProtag0.setForeground(new java.awt.Color(242, 242, 242));
+        lblNomeProtag0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeProtag0.setText("Nenhum");
+        lpnlProtag0.add(lblNomeProtag0, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
 
-        btnProtag1.setBackground(new java.awt.Color(86, 86, 86));
-        btnProtag1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(0, 154, 23)));
-        btngpProtags.add(btnProtag1);
-        btnProtag1.setSelected(true);
-        btnProtag1.addActionListener(new java.awt.event.ActionListener() {
+        btnProtag0.setBackground(new java.awt.Color(86, 86, 86));
+        btnProtag0.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(0, 154, 23)));
+        btngpProtags.add(btnProtag0);
+        btnProtag0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProtag1ActionPerformed(evt);
+                btnProtag0ActionPerformed(evt);
             }
         });
-        lpnlProtag1.add(btnProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
-
-        lpnlProtag3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblPlanoProtag3.setForeground(new java.awt.Color(242, 242, 242));
-        lblPlanoProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
-        lblPlanoProtag3.setText("00");
-        lblPlanoProtag3.setToolTipText("Planos");
-        lpnlProtag3.add(lblPlanoProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
-
-        lblDetermProtag3.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
-        lblDetermProtag3.setText("00");
-        lblDetermProtag3.setToolTipText("Determinação");
-        lpnlProtag3.add(lblDetermProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
-
-        lblVidaProtag3.setForeground(new java.awt.Color(242, 242, 242));
-        lblVidaProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
-        lblVidaProtag3.setText("00");
-        lblVidaProtag3.setToolTipText("Vida");
-        lpnlProtag3.add(lblVidaProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
-
-        lblNomeProtag3.setForeground(new java.awt.Color(242, 242, 242));
-        lblNomeProtag3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeProtag3.setText("{Nome}");
-        lpnlProtag3.add(lblNomeProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
-
-        btnProtag3.setBackground(new java.awt.Color(86, 86, 86));
-        btnProtag3.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
-        btngpProtags.add(btnProtag3);
-        lpnlProtag3.add(btnProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
+        lpnlProtag0.add(btnProtag0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlProtag2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -243,7 +263,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblNomeProtag2.setForeground(new java.awt.Color(242, 242, 242));
         lblNomeProtag2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeProtag2.setText("{Nome}");
+        lblNomeProtag2.setText("Nenhum");
         lpnlProtag2.add(lblNomeProtag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
 
         btnProtag2.setBackground(new java.awt.Color(86, 86, 86));
@@ -255,6 +275,76 @@ public class TelaCombate extends javax.swing.JFrame {
             }
         });
         lpnlProtag2.add(btnProtag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
+
+        lpnlProtag1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblPlanoProtag1.setForeground(new java.awt.Color(242, 242, 242));
+        lblPlanoProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
+        lblPlanoProtag1.setText("00");
+        lblPlanoProtag1.setToolTipText("Planos");
+        lpnlProtag1.add(lblPlanoProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
+
+        lblDetermProtag1.setForeground(new java.awt.Color(242, 242, 242));
+        lblDetermProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
+        lblDetermProtag1.setText("00");
+        lblDetermProtag1.setToolTipText("Determinação");
+        lpnlProtag1.add(lblDetermProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+
+        lblVidaProtag1.setForeground(new java.awt.Color(242, 242, 242));
+        lblVidaProtag1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
+        lblVidaProtag1.setText("00");
+        lblVidaProtag1.setToolTipText("Vida");
+        lpnlProtag1.add(lblVidaProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+
+        lblNomeProtag1.setForeground(new java.awt.Color(242, 242, 242));
+        lblNomeProtag1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeProtag1.setText("Nenhum");
+        lpnlProtag1.add(lblNomeProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
+
+        btnProtag1.setBackground(new java.awt.Color(86, 86, 86));
+        btnProtag1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag1);
+        btnProtag1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProtag1ActionPerformed(evt);
+            }
+        });
+        lpnlProtag1.add(btnProtag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
+
+        lpnlProtag3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDetermProtag3.setForeground(new java.awt.Color(242, 242, 242));
+        lblDetermProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
+        lblDetermProtag3.setText("00");
+        lblDetermProtag3.setToolTipText("Determinação");
+        lpnlProtag3.add(lblDetermProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+
+        lblPlanoProtag3.setForeground(new java.awt.Color(242, 242, 242));
+        lblPlanoProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
+        lblPlanoProtag3.setText("00");
+        lblPlanoProtag3.setToolTipText("Planos");
+        lpnlProtag3.add(lblPlanoProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
+
+        lblVidaProtag3.setForeground(new java.awt.Color(242, 242, 242));
+        lblVidaProtag3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
+        lblVidaProtag3.setText("00");
+        lblVidaProtag3.setToolTipText("Vida");
+        lpnlProtag3.add(lblVidaProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+
+        lblNomeProtag3.setForeground(new java.awt.Color(242, 242, 242));
+        lblNomeProtag3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeProtag3.setText("Nenhum");
+        lpnlProtag3.add(lblNomeProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
+
+        btnProtag3.setBackground(new java.awt.Color(86, 86, 86));
+        btnProtag3.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        btngpProtags.add(btnProtag3);
+        btnProtag3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProtag3ActionPerformed(evt);
+            }
+        });
+        lpnlProtag3.add(btnProtag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlProtag4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -278,7 +368,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblNomeProtag4.setForeground(new java.awt.Color(242, 242, 242));
         lblNomeProtag4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeProtag4.setText("{Nome}");
+        lblNomeProtag4.setText("Nenhum");
         lpnlProtag4.add(lblNomeProtag4, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
 
         btnProtag4.setBackground(new java.awt.Color(86, 86, 86));
@@ -308,7 +398,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblNomeProtag5.setForeground(new java.awt.Color(242, 242, 242));
         lblNomeProtag5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeProtag5.setText("{Nome}");
+        lblNomeProtag5.setText("Nenhum");
         lpnlProtag5.add(lblNomeProtag5, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
 
         btnProtag5.setBackground(new java.awt.Color(86, 86, 86));
@@ -316,35 +406,40 @@ public class TelaCombate extends javax.swing.JFrame {
         btngpProtags.add(btnProtag5);
         lpnlProtag5.add(btnProtag5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
-        lpnlProtag6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        lpnlVilao0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDetermProtag6.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermProtag6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
-        lblDetermProtag6.setText("00");
-        lblDetermProtag6.setToolTipText("Determinação");
-        lpnlProtag6.add(lblDetermProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
+        lblDetermVilao0.setForeground(new java.awt.Color(242, 242, 242));
+        lblDetermVilao0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
+        lblDetermVilao0.setText("00");
+        lblDetermVilao0.setToolTipText("Determinação");
+        lpnlVilao0.add(lblDetermVilao0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
 
-        lblPlanoProtag6.setForeground(new java.awt.Color(242, 242, 242));
-        lblPlanoProtag6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
-        lblPlanoProtag6.setText("00");
-        lblPlanoProtag6.setToolTipText("Planos");
-        lpnlProtag6.add(lblPlanoProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
+        lblPlanoVilao0.setForeground(new java.awt.Color(242, 242, 242));
+        lblPlanoVilao0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
+        lblPlanoVilao0.setText("00");
+        lblPlanoVilao0.setToolTipText("Planos");
+        lpnlVilao0.add(lblPlanoVilao0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
 
-        lblVidaProtag6.setForeground(new java.awt.Color(242, 242, 242));
-        lblVidaProtag6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
-        lblVidaProtag6.setText("00");
-        lblVidaProtag6.setToolTipText("Vida");
-        lpnlProtag6.add(lblVidaProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
+        lblVidaVilao0.setForeground(new java.awt.Color(242, 242, 242));
+        lblVidaVilao0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
+        lblVidaVilao0.setText("00");
+        lblVidaVilao0.setToolTipText("Vida");
+        lpnlVilao0.add(lblVidaVilao0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
 
-        lblNomeProtag6.setForeground(new java.awt.Color(242, 242, 242));
-        lblNomeProtag6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeProtag6.setText("{Nome}");
-        lpnlProtag6.add(lblNomeProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
+        lblNomeVilao0.setForeground(new java.awt.Color(242, 242, 242));
+        lblNomeVilao0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNomeVilao0.setText("Nenhum");
+        lpnlVilao0.add(lblNomeVilao0, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
 
-        btnProtag6.setBackground(new java.awt.Color(86, 86, 86));
-        btnProtag6.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
-        btngpProtags.add(btnProtag6);
-        lpnlProtag6.add(btnProtag6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
+        btnVilao0.setBackground(new java.awt.Color(86, 86, 86));
+        btnVilao0.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(205, 0, 26)));
+        btngpViloes.add(btnVilao0);
+        btnVilao0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVilao0ActionPerformed(evt);
+            }
+        });
+        lpnlVilao0.add(btnVilao0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         lpnlVilao1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -368,54 +463,18 @@ public class TelaCombate extends javax.swing.JFrame {
 
         lblNomeVilao1.setForeground(new java.awt.Color(242, 242, 242));
         lblNomeVilao1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeVilao1.setText("{Nome}");
+        lblNomeVilao1.setText("Nenhum");
         lpnlVilao1.add(lblNomeVilao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
 
         btnVilao1.setBackground(new java.awt.Color(86, 86, 86));
-        btnVilao1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(205, 0, 26)));
+        btnVilao1.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
         btngpViloes.add(btnVilao1);
-        btnVilao1.setSelected(true);
         btnVilao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVilao1ActionPerformed(evt);
             }
         });
         lpnlVilao1.add(btnVilao1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
-
-        lpnlVilao2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblDetermVilao2.setForeground(new java.awt.Color(242, 242, 242));
-        lblDetermVilao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Determinacao1.png"))); // NOI18N
-        lblDetermVilao2.setText("00");
-        lblDetermVilao2.setToolTipText("Determinação");
-        lpnlVilao2.add(lblDetermVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 80, -1));
-
-        lblPlanoVilao2.setForeground(new java.awt.Color(242, 242, 242));
-        lblPlanoVilao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Planos.png"))); // NOI18N
-        lblPlanoVilao2.setText("00");
-        lblPlanoVilao2.setToolTipText("Planos");
-        lpnlVilao2.add(lblPlanoVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
-
-        lblVidaVilao2.setForeground(new java.awt.Color(242, 242, 242));
-        lblVidaVilao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/18px-Vida.png"))); // NOI18N
-        lblVidaVilao2.setText("00");
-        lblVidaVilao2.setToolTipText("Vida");
-        lpnlVilao2.add(lblVidaVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
-
-        lblNomeVilao2.setForeground(new java.awt.Color(242, 242, 242));
-        lblNomeVilao2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNomeVilao2.setText("{Nome}");
-        lpnlVilao2.add(lblNomeVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 10, 80, -1));
-
-        btnVilao2.setBackground(new java.awt.Color(86, 86, 86));
-        btnVilao2.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
-        btngpViloes.add(btnVilao2);
-        btnVilao2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVilao2ActionPerformed(evt);
-            }
-        });
-        lpnlVilao2.add(btnVilao2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 110));
 
         pnlPontosBizarros.setBackground(new java.awt.Color(200, 200, 200));
 
@@ -445,17 +504,17 @@ public class TelaCombate extends javax.swing.JFrame {
                     .addGroup(pnlCena3Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lpnlProtag1)
-                            .addComponent(lpnlProtag4))
+                            .addComponent(lpnlProtag0)
+                            .addComponent(lpnlProtag3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblProtCena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lpnlProtag2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                            .addComponent(lpnlProtag5))
+                            .addComponent(lpnlProtag1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                            .addComponent(lpnlProtag4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lpnlProtag3)
-                            .addComponent(lpnlProtag6))
+                            .addComponent(lpnlProtag2)
+                            .addComponent(lpnlProtag5))
                         .addGap(6, 6, 6))
                     .addGroup(pnlCena3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -465,8 +524,8 @@ public class TelaCombate extends javax.swing.JFrame {
                         .addGap(102, 102, 102)
                         .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lpnlVilao1)
-                                .addComponent(lpnlVilao2))
+                                .addComponent(lpnlVilao0)
+                                .addComponent(lpnlVilao1))
                             .addComponent(lblViloesCena, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(51, 51, 51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCena3Layout.createSequentialGroup()
@@ -487,17 +546,17 @@ public class TelaCombate extends javax.swing.JFrame {
                     .addComponent(lblViloesCena))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lpnlProtag1)
-                    .addComponent(lpnlProtag3)
+                    .addComponent(lpnlProtag0)
                     .addComponent(lpnlProtag2)
-                    .addComponent(lpnlVilao1))
+                    .addComponent(lpnlProtag1)
+                    .addComponent(lpnlVilao0))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lpnlProtag4, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                    .addComponent(lpnlProtag3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                    .addComponent(lpnlProtag4, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lpnlProtag5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lpnlProtag6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lpnlVilao2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lpnlVilao1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(pnlCena3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlPontosBizarros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTurno))
@@ -506,7 +565,7 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addGroup(pnlCena3Layout.createSequentialGroup()
                     .addGap(20, 20, 20)
                     .addComponent(separadorCena, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(24, Short.MAX_VALUE)))
+                    .addContainerGap(25, Short.MAX_VALUE)))
         );
 
         btnTeste.setBackground(new java.awt.Color(86, 86, 86));
@@ -602,30 +661,30 @@ public class TelaCombate extends javax.swing.JFrame {
         btnAtqPrecisao1.setMinimumSize(new java.awt.Dimension(122, 26));
         btnAtqPrecisao1.setPreferredSize(new java.awt.Dimension(122, 26));
 
-        btnVilanesca1.setBackground(new java.awt.Color(86, 86, 86));
-        btnVilanesca1.setForeground(new java.awt.Color(255, 255, 255));
-        btnVilanesca1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
-        btnVilanesca1.setText("Ação Vilanesca");
-        btnVilanesca1.setToolTipText("Apenas para vilões, rola 1d6+Pontos Bizarros conta Mente");
-        btnVilanesca1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        btnVilanesca1.setMaximumSize(new java.awt.Dimension(122, 26));
-        btnVilanesca1.setMinimumSize(new java.awt.Dimension(122, 26));
-        btnVilanesca1.setPreferredSize(new java.awt.Dimension(122, 26));
-        btnVilanesca1.addActionListener(new java.awt.event.ActionListener() {
+        btnAcaoVilanesca.setBackground(new java.awt.Color(86, 86, 86));
+        btnAcaoVilanesca.setForeground(new java.awt.Color(255, 255, 255));
+        btnAcaoVilanesca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/15px-Menacing.png"))); // NOI18N
+        btnAcaoVilanesca.setText("Ação Vilanesca");
+        btnAcaoVilanesca.setToolTipText("Apenas para vilões, rola 1d6+Pontos Bizarros conta Mente");
+        btnAcaoVilanesca.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnAcaoVilanesca.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnAcaoVilanesca.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnAcaoVilanesca.setPreferredSize(new java.awt.Dimension(122, 26));
+        btnAcaoVilanesca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVilanesca1ActionPerformed(evt);
+                btnAcaoVilanescaActionPerformed(evt);
             }
         });
 
-        btnGolpePersonagem1.setBackground(new java.awt.Color(86, 86, 86));
-        btnGolpePersonagem1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGolpePersonagem1.setText("Golpe/Defesa");
-        btnGolpePersonagem1.setToolTipText("Utiliza o atributo de Corpo do Personagem");
-        btnGolpePersonagem1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        btnGolpePersonagem1.setMaximumSize(new java.awt.Dimension(122, 26));
-        btnGolpePersonagem1.setMinimumSize(new java.awt.Dimension(122, 26));
-        btnGolpePersonagem1.setPreferredSize(new java.awt.Dimension(122, 26));
-        btnGolpePersonagem1.addActionListener(new java.awt.event.ActionListener() {
+        btnGolpePersonagem.setBackground(new java.awt.Color(86, 86, 86));
+        btnGolpePersonagem.setForeground(new java.awt.Color(255, 255, 255));
+        btnGolpePersonagem.setText("Golpe/Defesa");
+        btnGolpePersonagem.setToolTipText("Utiliza o atributo de Corpo do Personagem");
+        btnGolpePersonagem.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnGolpePersonagem.setMaximumSize(new java.awt.Dimension(122, 26));
+        btnGolpePersonagem.setMinimumSize(new java.awt.Dimension(122, 26));
+        btnGolpePersonagem.setPreferredSize(new java.awt.Dimension(122, 26));
+        btnGolpePersonagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGolpePersonagemActionPerformed(evt);
             }
@@ -705,8 +764,8 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlAcoes1Layout.createSequentialGroup()
                         .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnGolpePersonagem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVilanesca1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnGolpePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAcaoVilanesca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTurnoExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -728,7 +787,7 @@ public class TelaCombate extends javax.swing.JFrame {
                     .addComponent(lblAcoesStand1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnGolpePersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGolpePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnAtqPoder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnDefenderDur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -736,7 +795,7 @@ public class TelaCombate extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlAcoes1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtqPrecisao1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVilanesca1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAcaoVilanesca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAtqPoder3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNegarDano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -872,9 +931,9 @@ public class TelaCombate extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -905,15 +964,15 @@ public class TelaCombate extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblTeste2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTeste3))))
+                                .addComponent(lblTeste3)))
+                        .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblNomeCampanha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlCena3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
+                        .addComponent(pnlCena3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlAcoes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
@@ -928,8 +987,28 @@ public class TelaCombate extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackgroundActionPerformed
 
     private void btnAddPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonagemActionPerformed
-        // TODO add your handling code here:
-        new TelaPersonagens().setVisible(true);
+        // Abre a tela de personagens :
+        TelaPersonagens selecaoPersonagem = new TelaPersonagens();
+        selecaoPersonagem.setVisible(true);
+        selecaoPersonagem.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                System.out.println("FECHOU A TELA");
+                if (selecaoPersonagem.personagemSelecionado != null) { // Caso um personagem tenha sido selecionado
+                System.out.println("NAO E NULL");
+                    if (selecaoPersonagem.personagemSelecionado instanceof Vilao) {
+                        System.out.println("E VILAO");
+                        listaViloes.add((Vilao) selecaoPersonagem.personagemSelecionado);
+                        situarVilao();
+                    }
+                    else {
+                        System.out.println("E PERSONAGEM");
+                        listaPersonagens.add(selecaoPersonagem.personagemSelecionado);
+                        situarPersonagem();
+                    }
+                }
+            }
+        });
     }//GEN-LAST:event_btnAddPersonagemActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -952,28 +1031,27 @@ public class TelaCombate extends javax.swing.JFrame {
 
     private void btnGolpePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolpePersonagemActionPerformed
         // TODO add your handling code here:
-        // TCHARAN!! Código novo.
     }//GEN-LAST:event_btnGolpePersonagemActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnProtag2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag2ActionPerformed
+    private void btnProtag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag1ActionPerformed
+        // Modifica a matriz de seleção para indicar Protag1
+    }//GEN-LAST:event_btnProtag1ActionPerformed
+
+    private void btnVilao0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVilao0ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnProtag2ActionPerformed
+    }//GEN-LAST:event_btnVilao0ActionPerformed
 
     private void btnVilao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVilao1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVilao1ActionPerformed
 
-    private void btnVilao2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVilao2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVilao2ActionPerformed
-
-    private void btnProtag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProtag1ActionPerformed
+    private void btnProtag0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag0ActionPerformed
+        // Modifica a matriz de seleção para indicar Protag0
+    }//GEN-LAST:event_btnProtag0ActionPerformed
 
     private void btnTurnoExtrabtnGolpePersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTurnoExtrabtnGolpePersonagemActionPerformed
         // TODO add your handling code here:
@@ -983,10 +1061,79 @@ public class TelaCombate extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNegarDanobtnGolpePersonagemActionPerformed
 
-    private void btnVilanesca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVilanesca1ActionPerformed
+    private void btnAcaoVilanescaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcaoVilanescaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnVilanesca1ActionPerformed
+    }//GEN-LAST:event_btnAcaoVilanescaActionPerformed
 
+    private void btnProtag2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag2ActionPerformed
+        // Modifica a matriz de seleção para indicar Protag1
+    }//GEN-LAST:event_btnProtag2ActionPerformed
+
+    private void btnProtag3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag3ActionPerformed
+        // Modifica a matriz de seleção para indicar Protag1
+        
+        Integer novaMatrizProtag[][] = {{0,0,0},
+                                        {1,0,0}};
+        
+        
+        //mudarBorda();
+    }//GEN-LAST:event_btnProtag3ActionPerformed
+
+    
+    private void situarPersonagem() {
+        if (!listaPersonagens.isEmpty()){
+            Personagem personagemAtual = listaPersonagens.get(listaPersonagens.size()-1);
+            int posicao = listaPersonagens.indexOf(personagemAtual);
+            String nomeAtual = "Protag" + (posicao);
+            System.out.println(nomeAtual);
+
+            javax.swing.JLabel botoes [] = dictProtagonistas.get(nomeAtual);
+            System.out.println(botoes[0]);
+
+            botoes[0].setText(personagemAtual.getNome()); // Nome do personagem
+            botoes[1].setText(Integer.toString(personagemAtual.getHp())); // Vida
+            botoes[2].setText(Integer.toString(personagemAtual.getPlano())); // Plano
+            botoes[3].setText(Integer.toString(personagemAtual.getDeterminacao())); // Determinação
+        }
+    }
+    
+    private void situarVilao() {
+        if (!listaViloes.isEmpty()){
+            Vilao vilaoAtual = listaViloes.get(listaViloes.size()-1);
+            int posicao = listaViloes.indexOf(vilaoAtual);
+            String nomeAtual = "Vilao" + (posicao);
+            System.out.println(nomeAtual);
+
+            javax.swing.JLabel botoes [] = dictViloes.get(nomeAtual);
+
+            botoes[0].setText(vilaoAtual.getNome()); // Nome do vilão
+            botoes[1].setText(Integer.toString(vilaoAtual.getHp())); // Vida
+            botoes[2].setText(Integer.toString(vilaoAtual.getPlano())); // Plano
+            botoes[3].setText(Integer.toString(vilaoAtual.getDeterminacao())); // Determinação
+        }
+    }
+    
+    private void mudarBorda() {
+        String botaoAntigo = "";
+        String botaoNovo = "";
+        
+        for (int posicaoLinha = 0 ; posicaoLinha<6 ; posicaoLinha++){
+            for (int posicaoColuna = 0 ; posicaoColuna<6 ; posicaoColuna++){
+                if (matrizProtag[posicaoLinha][posicaoColuna] == 1) {
+                    botaoAntigo = "btnProtag" + Integer.toString(posicaoColuna + (3*posicaoLinha));
+                }
+                
+                if (novaMatrizProtag[posicaoLinha][posicaoColuna] == 1) {
+                    botaoNovo = "btnProtag" + Integer.toString(posicaoColuna + (3*posicaoLinha));
+                }
+            }
+        }
+        Integer matrizProtag[][] = novaMatrizProtag;
+        
+        dictBotoesProtags.get(botaoAntigo).setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(50, 50, 50)));
+        dictBotoesProtags.get(botaoNovo).setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(0, 154, 23)));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -1022,6 +1169,7 @@ public class TelaCombate extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcaoVilanesca;
     private javax.swing.JButton btnAddPersonagem;
     private javax.swing.JButton btnAtqPoder1;
     private javax.swing.JButton btnAtqPoder3;
@@ -1030,20 +1178,19 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JButton btnBackground;
     private javax.swing.JButton btnDefenderDur;
     private javax.swing.JButton btnEditarPersonagem;
-    private javax.swing.JButton btnGolpePersonagem1;
+    private javax.swing.JButton btnGolpePersonagem;
     private javax.swing.JButton btnNegarDano;
+    private javax.swing.JButton btnProtag0;
     private javax.swing.JButton btnProtag1;
     private javax.swing.JButton btnProtag2;
     private javax.swing.JButton btnProtag3;
     private javax.swing.JButton btnProtag4;
     private javax.swing.JButton btnProtag5;
-    private javax.swing.JButton btnProtag6;
     private javax.swing.JButton btnRemoverPersonagem;
     private javax.swing.JButton btnTeste;
     private javax.swing.JButton btnTurnoExtra;
-    private javax.swing.JButton btnVilanesca1;
+    private javax.swing.JButton btnVilao0;
     private javax.swing.JButton btnVilao1;
-    private javax.swing.JButton btnVilao2;
     private javax.swing.ButtonGroup btngpProtags;
     private javax.swing.ButtonGroup btngpViloes;
     private javax.swing.JComboBox<String> cboxTeste;
@@ -1052,33 +1199,33 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JLabel lblAcoesStand1;
     private javax.swing.JLabel lblAddPersonagem;
     private javax.swing.JLabel lblBackground;
+    private javax.swing.JLabel lblDetermProtag0;
     private javax.swing.JLabel lblDetermProtag1;
     private javax.swing.JLabel lblDetermProtag2;
     private javax.swing.JLabel lblDetermProtag3;
     private javax.swing.JLabel lblDetermProtag4;
     private javax.swing.JLabel lblDetermProtag5;
-    private javax.swing.JLabel lblDetermProtag6;
+    private javax.swing.JLabel lblDetermVilao0;
     private javax.swing.JLabel lblDetermVilao1;
-    private javax.swing.JLabel lblDetermVilao2;
     private javax.swing.JLabel lblEditarPersonagem;
     private javax.swing.JLabel lblNomeCampanha;
+    private javax.swing.JLabel lblNomeProtag0;
     private javax.swing.JLabel lblNomeProtag1;
     private javax.swing.JLabel lblNomeProtag2;
     private javax.swing.JLabel lblNomeProtag3;
     private javax.swing.JLabel lblNomeProtag4;
     private javax.swing.JLabel lblNomeProtag5;
-    private javax.swing.JLabel lblNomeProtag6;
+    private javax.swing.JLabel lblNomeVilao0;
     private javax.swing.JLabel lblNomeVilao1;
-    private javax.swing.JLabel lblNomeVilao2;
     private javax.swing.JLabel lblPersonagem1;
+    private javax.swing.JLabel lblPlanoProtag0;
     private javax.swing.JLabel lblPlanoProtag1;
     private javax.swing.JLabel lblPlanoProtag2;
     private javax.swing.JLabel lblPlanoProtag3;
     private javax.swing.JLabel lblPlanoProtag4;
     private javax.swing.JLabel lblPlanoProtag5;
-    private javax.swing.JLabel lblPlanoProtag6;
+    private javax.swing.JLabel lblPlanoVilao0;
     private javax.swing.JLabel lblPlanoVilao1;
-    private javax.swing.JLabel lblPlanoVilao2;
     private javax.swing.JLabel lblPontosBizarros;
     private javax.swing.JLabel lblProtCena;
     private javax.swing.JLabel lblRemoverPersonagem;
@@ -1087,23 +1234,23 @@ public class TelaCombate extends javax.swing.JFrame {
     private javax.swing.JLabel lblTeste3;
     private javax.swing.JLabel lblTestes;
     private javax.swing.JLabel lblTurno;
+    private javax.swing.JLabel lblVidaProtag0;
     private javax.swing.JLabel lblVidaProtag1;
     private javax.swing.JLabel lblVidaProtag2;
     private javax.swing.JLabel lblVidaProtag3;
     private javax.swing.JLabel lblVidaProtag4;
     private javax.swing.JLabel lblVidaProtag5;
-    private javax.swing.JLabel lblVidaProtag6;
+    private javax.swing.JLabel lblVidaVilao0;
     private javax.swing.JLabel lblVidaVilao1;
-    private javax.swing.JLabel lblVidaVilao2;
     private javax.swing.JLabel lblViloesCena;
+    private javax.swing.JLayeredPane lpnlProtag0;
     private javax.swing.JLayeredPane lpnlProtag1;
     private javax.swing.JLayeredPane lpnlProtag2;
     private javax.swing.JLayeredPane lpnlProtag3;
     private javax.swing.JLayeredPane lpnlProtag4;
     private javax.swing.JLayeredPane lpnlProtag5;
-    private javax.swing.JLayeredPane lpnlProtag6;
+    private javax.swing.JLayeredPane lpnlVilao0;
     private javax.swing.JLayeredPane lpnlVilao1;
-    private javax.swing.JLayeredPane lpnlVilao2;
     private javax.swing.JPanel pnlAcoes1;
     private javax.swing.JPanel pnlCena3;
     private javax.swing.JPanel pnlPontosBizarros;

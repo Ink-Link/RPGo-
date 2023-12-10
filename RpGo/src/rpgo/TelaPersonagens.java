@@ -14,7 +14,8 @@ import javax.swing.table.DefaultTableModel;
  * @author PC
  */
 public class TelaPersonagens extends javax.swing.JFrame {
-
+    Personagem personagemSelecionado = null;
+    
     /**
      * Creates new form TelaPersonagens
      */
@@ -249,13 +250,18 @@ public class TelaPersonagens extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        // Faz a busca a partir do que estiver no campo de pesquisa
         montarTabela();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // Seleciona o personagem a ser inserido na cena de combate
-        
+        // Manda os dados do Personagem selecionado para a TelaCombate
+        int indice = tblPersonagens.getSelectedRow();
+        if(indice>-1) {
+            this.personagemSelecionado = pesquisa(tblPersonagens.getValueAt(indice, 0).toString());
+            System.out.println(personagemSelecionado);
+        }
+        dispose();        
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBuscaActionPerformed
