@@ -135,39 +135,41 @@ public class Personagem {
         return (valor1 - valor2);
 
     }
-    public int rollIniciativa(String velocidadeStand, int corpoChar){
+    public int rollIniciativa(){ // Método para definir a iniciativa do personagem atual
+        String velocidadeStand = this.getStand().getSpd();
+        int corpoChar = this.getCorpo();
         
         double dado;
         
         int valor = 0;
         
         switch(velocidadeStand){
-            case "a":
+            case "A":
                 
                 dado = Math.random() * 6 + 1;
             
                 valor = (int)dado + 5 + corpoChar;
                 
                 break;
-            case "b":
+            case "B":
                 dado = Math.random() * 6 + 1;
             
                 valor = (int)dado + 3 + corpoChar;
                 
                 break;
-            case "c":
+            case "C":
                 dado = Math.random() * 6 + 1;
             
                 valor = (int)dado + 1 + corpoChar;
                 
                 break;
-            case "d":
+            case "D":
                 dado = Math.random() * 6 + 1;
             
                 valor = (int)dado - 3 + corpoChar;
                 
                 break;
-            case "e":
+            case "E":
                 dado = Math.random() * 6 + 1;
             
                 valor = (int)dado - 5 + corpoChar;
