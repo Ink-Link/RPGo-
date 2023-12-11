@@ -10,10 +10,9 @@ import ClassesRpGo.Stand;
  */
 public class InserirPersonagem extends javax.swing.JFrame {
     
-    Pessoa donoSelecionado;
+    public static Pessoa donoSelecionado;
     Personagem personagemEditado;
     boolean editando;
-    public static String nome;
     
     /**
      * Creates new form InserirPersonagem
@@ -426,8 +425,9 @@ public class InserirPersonagem extends javax.swing.JFrame {
         telaSelecao.setVisible(true);
         telaSelecao.addWindowListener(new java.awt.event.WindowAdapter(){
             @Override
-            public void windowClosed(java.awt.event.WindowEvent evento) {txtfNomeDono.setText(nome);}
+            public void windowClosed(java.awt.event.WindowEvent evento) {txtfNomeDono.setText(donoSelecionado.getNome());}
         });
+        
         
         
     }//GEN-LAST:event_btnSelecionarDonoActionPerformed

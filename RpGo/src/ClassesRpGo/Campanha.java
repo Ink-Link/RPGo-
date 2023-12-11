@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Campanha {
+    public static int ID = 0;
+    
     private int id;
     
     private String titulo;

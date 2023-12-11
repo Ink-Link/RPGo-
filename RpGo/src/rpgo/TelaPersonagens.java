@@ -60,7 +60,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"
+                "Nome", "Stand", "Corpo", "Mente", "Coragem", "Dono", "Vilão?"
             }
         ) {
             Class[] types = new Class [] {
@@ -286,7 +286,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
 
 
             if (txtfBusca.getText().equals("")){
-                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0){
+                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Dono", "Vilão?"},0){
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     return false;
@@ -302,7 +302,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                             personagens.get(i).getCorpo(),
                             personagens.get(i).getMente(),
                             personagens.get(i).getCoragem(),
-                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            personagens.get(i).getDono().getNome(), // COLOCAR GET DO NOME DO DONO AQUI
                             "Não"};
                     }
                     else { //Ao terminar a lista de personagens, parte para os Vilões, se houver
@@ -312,7 +312,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                             viloes.get(i - personagens.size()).getCorpo(),
                             viloes.get(i - personagens.size()).getMente(),
                             viloes.get(i - personagens.size()).getCoragem(),
-                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            viloes.get(i - personagens.size()).getDono().getNome(), // COLOCAR GET DO NOME DO DONO AQUI
                             "Sim"};
                     }
                 tabela.addRow(linha);
@@ -321,7 +321,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                 tblPersonagens.getTableHeader().setReorderingAllowed(false); // Torna as colunas fixas
             }
             else {
-                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Jogador", "Vilão?"},0){
+                DefaultTableModel tabela = new DefaultTableModel(new Object[] {"Nome", "Stand", "Corpo", "Mente", "Coragem", "Dono", "Vilão?"},0){
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     return false;
@@ -336,7 +336,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                             personagens.get(i).getCorpo(),
                             personagens.get(i).getMente(),
                             personagens.get(i).getCoragem(),
-                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            personagens.get(i).getDono().getNome(), // COLOCAR GET DO NOME DO DONO AQUI
                             "Não"};
                         tabela.addRow(linha);
                     }
@@ -347,7 +347,7 @@ public class TelaPersonagens extends javax.swing.JFrame {
                             viloes.get(i - personagens.size()).getCorpo(),
                             viloes.get(i - personagens.size()).getMente(),
                             viloes.get(i - personagens.size()).getCoragem(),
-                            "Nenhum", // COLOCAR GET DO NOME DO DONO AQUI
+                            viloes.get(i - personagens.size()).getDono().getNome(), // COLOCAR GET DO NOME DO DONO AQUI
                             "Sim"};
                         tabela.addRow(linha);
                     }

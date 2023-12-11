@@ -389,20 +389,41 @@ public class TelaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMestreActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        int linhaSelecionada = tblFuncionarios.getSelectedRow();
+        if(InserirCampanha.FLAG == false){
+            int linhaSelecionada = tblFuncionarios.getSelectedRow();
         
-        int linhaSelecionada2 = tblJogadores.getSelectedRow();
+            int linhaSelecionada2 = tblJogadores.getSelectedRow();
         
-        if(linhaSelecionada != -1){
-            InserirPersonagem.nome = tblFuncionarios.getValueAt(linhaSelecionada, 2).toString();
-            dispose();
-        }
-        else if(linhaSelecionada2 != -1){
-            InserirPersonagem.nome = tblJogadores.getValueAt(linhaSelecionada2, 1).toString();
-            dispose();
+            if(linhaSelecionada != -1){
+                InserirPersonagem.donoSelecionado = pesquisa(tblFuncionarios.getValueAt(linhaSelecionada, 1).toString());
+                dispose();
+            }
+            else if(linhaSelecionada2 != -1){
+                InserirPersonagem.donoSelecionado = pesquisa(tblJogadores.getValueAt(linhaSelecionada2, 1).toString());
+                dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Selecione uma linha de uma tabela.");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(this, "Selecione uma linha de uma tabela.");
+            int linhaSelecionada = tblFuncionarios.getSelectedRow();
+        
+            int linhaSelecionada2 = tblJogadores.getSelectedRow();
+        
+            if(linhaSelecionada != -1){
+                InserirCampanha.nome = tblFuncionarios.getValueAt(linhaSelecionada, 2).toString();
+                InserirCampanha.FLAG = false;
+                dispose();
+            }
+            else if(linhaSelecionada2 != -1){
+                JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela de mestres.");
+                
+                tblJogadores.clearSelection();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Selecione uma linha de uma tabela.");
+            }
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

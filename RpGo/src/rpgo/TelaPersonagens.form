@@ -111,7 +111,7 @@
                 <Column editable="false" title="Corpo" type="java.lang.Integer"/>
                 <Column editable="false" title="Mente" type="java.lang.Integer"/>
                 <Column editable="false" title="Coragem" type="java.lang.Integer"/>
-                <Column editable="false" title="Jogador" type="java.lang.String"/>
+                <Column editable="false" title="Dono" type="java.lang.String"/>
                 <Column editable="false" title="Vil&#xe3;o?" type="java.lang.String"/>
               </Table>
             </Property>
