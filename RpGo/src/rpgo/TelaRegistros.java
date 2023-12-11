@@ -48,8 +48,12 @@ public class TelaRegistros extends javax.swing.JFrame {
         montarTabela(tblJogadores, Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt"));
     }
     private void montarTabela(javax.swing.JTable tabela, ArrayList<Pessoa> pessoas) {
-        DefaultTableModel modelo = new DefaultTableModel();
-
+        DefaultTableModel modelo = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         if (tabela == tblFuncionarios) {
             modelo.setColumnIdentifiers(new Object[]{"ID", "Usuário", "Nome"});
         } else if (tabela == tblJogadores) {
@@ -114,7 +118,7 @@ public class TelaRegistros extends javax.swing.JFrame {
         tblJogadores = new javax.swing.JTable();
         lblMestres = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
-        btnExcluir1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnAddJogador = new javax.swing.JButton();
         btnAddMestre = new javax.swing.JButton();
@@ -195,15 +199,15 @@ public class TelaRegistros extends javax.swing.JFrame {
             }
         });
 
-        btnExcluir1.setBackground(new java.awt.Color(30, 30, 30));
-        btnExcluir1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btnExcluir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
-        btnExcluir1.setToolTipText("Excluir selecionado");
-        btnExcluir1.setBorder(null);
-        btnExcluir1.setContentAreaFilled(false);
-        btnExcluir1.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setBackground(new java.awt.Color(30, 30, 30));
+        btnExcluir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/Geral/32x32/trash.png"))); // NOI18N
+        btnExcluir.setToolTipText("Excluir selecionado");
+        btnExcluir.setBorder(null);
+        btnExcluir.setContentAreaFilled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluir1ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -280,11 +284,11 @@ public class TelaRegistros extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExcluir1)
+                        .addComponent(btnExcluir)
                         .addGap(18, 18, 18)
                         .addComponent(btnEditar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSelecionar)
+                        .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
@@ -299,7 +303,7 @@ public class TelaRegistros extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnSelecionar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnExcluir1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -336,13 +340,35 @@ public class TelaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tblFuncionarios.getSelectedRow();
+        
+        int linhaSelecionada2 = tblJogadores.getSelectedRow();
+        
+        if(linhaSelecionada != -1){
+            InserirMestre telaFunc = new InserirMestre((Funcionario)pesquisa(tblFuncionarios.getValueAt(linhaSelecionada, 1).toString()));
+            telaFunc.setVisible(true);
+            telaFunc.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evento) {montarTabelas();}
+        });  
+        }
+        else if(linhaSelecionada2 != -1){
+            InserirJogador telaFunc = new InserirJogador((Jogador)pesquisa(tblJogadores.getValueAt(linhaSelecionada2, 1).toString()));
+            telaFunc.setVisible(true);
+            telaFunc.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evento) {montarTabelas();}
+        });
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Selecione uma linha de uma tabela.");
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnExcluir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluir1ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         excluirPessoa(tblFuncionarios, true);
         excluirPessoa(tblJogadores, false);
-    }//GEN-LAST:event_btnExcluir1ActionPerformed
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnAddJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddJogadorActionPerformed
         InserirJogador tela = new InserirJogador();
@@ -363,7 +389,21 @@ public class TelaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddMestreActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = tblFuncionarios.getSelectedRow();
+        
+        int linhaSelecionada2 = tblJogadores.getSelectedRow();
+        
+        if(linhaSelecionada != -1){
+            InserirPersonagem.nome = tblFuncionarios.getValueAt(linhaSelecionada, 2).toString();
+            dispose();
+        }
+        else if(linhaSelecionada2 != -1){
+            InserirPersonagem.nome = tblJogadores.getValueAt(linhaSelecionada2, 1).toString();
+            dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Selecione uma linha de uma tabela.");
+        }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void txtfBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfBuscaActionPerformed
@@ -374,7 +414,16 @@ public class TelaRegistros extends javax.swing.JFrame {
         ArrayList<Pessoa> jogadores = Jogador.lerJogadorDoArquivo("src\\Save\\Jogadores.txt");
 
         for (int i = 0; i < (mestres.size() + jogadores.size()); i++) {
-
+            if(i < mestres.size() && mestres.get(i) instanceof Funcionario){
+                if(((Funcionario)mestres.get(i)).getUsuario().equals(nome)){
+                    return mestres.get(i);
+                }
+            }
+            else if(i >= mestres.size() && jogadores.get(i - mestres.size()) instanceof Jogador){
+                if(((Jogador)jogadores.get(i - mestres.size())).getNome().equals(nome)){
+                    return jogadores.get(i - mestres.size());               
+                }
+}
         }
 
         return null;
@@ -417,7 +466,7 @@ public class TelaRegistros extends javax.swing.JFrame {
     private javax.swing.JButton btnAddMestre;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluir1;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

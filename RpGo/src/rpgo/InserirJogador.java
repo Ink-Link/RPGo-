@@ -21,28 +21,22 @@ import javax.swing.JOptionPane;
  */
 public class InserirJogador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InserirClientes
-     */
+    boolean flag2 = false;
+    
     public InserirJogador() {
         initComponents();
-        txtfNome.setForeground(new java.awt.Color(169, 169, 169));
         txtfNome.setText("Nome");
-        txtfNome.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            if (txtfNome.getText().equals("Nome")) {
-                txtfNome.setText("");
-                txtfNome.setForeground(new java.awt.Color(255, 255, 255));
-            }
-        }
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            if (txtfNome.getText().isEmpty()) {
-                txtfNome.setForeground(new java.awt.Color(169, 169, 169));
-                txtfNome.setText("Usuário");
-            }
-        }
-        });
         txtfIdJogador.setText(Integer.toString(Pessoa.ID));
+        montarTela();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
+    }
+    public InserirJogador(Jogador jogador) {
+        initComponents();
+        flag2 = true;
+        txtfNome.setText(jogador.getNome());
+        txtfIdJogador.setText(Integer.toString(jogador.getId()));
+        montarTela();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
     }
@@ -75,6 +69,23 @@ public class InserirJogador extends javax.swing.JFrame {
         }
 
         return false;
+    }
+    private void montarTela(){
+        txtfNome.setForeground(new java.awt.Color(169, 169, 169));
+        txtfNome.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (txtfNome.getText().equals("Nome")) {
+                txtfNome.setText("");
+                txtfNome.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (txtfNome.getText().isEmpty()) {
+                txtfNome.setForeground(new java.awt.Color(169, 169, 169));
+                txtfNome.setText("Nome");
+            }
+        }
+        });
     }
 
     /**
@@ -127,7 +138,7 @@ public class InserirJogador extends javax.swing.JFrame {
         txtDataJogador.setBackground(new java.awt.Color(40, 40, 40));
         txtDataJogador.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtDataJogador.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/ ####")));
+            txtDataJogador.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -220,12 +231,24 @@ public class InserirJogador extends javax.swing.JFrame {
         flag = false;
     }
     
-    if(!checkIfExists(jogador)) {
+    if(!checkIfExists(jogador) || flag2 == true) {
         if(flag == true){
-        saveToFile(jogador);
-        Pessoa.ID += 1;
+            if(flag2 == true){
+                    Jogador.removerPessoaDoArquivo(txtfIdJogador.getText(), "src\\Save\\Jogadores.txt", false);
+                    
+                    jogador.setId(Integer.parseInt(txtfIdJogador.getText()));
+                    
+                    saveToFile(jogador);
         
-        dispose();
+                    dispose();
+            }
+            else{
+                    saveToFile(jogador);
+        
+                    Pessoa.ID += 1;
+                    
+                    dispose();
+            }
         }
     }
     else{

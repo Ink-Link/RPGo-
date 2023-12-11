@@ -13,6 +13,7 @@ public class InserirPersonagem extends javax.swing.JFrame {
     Pessoa donoSelecionado;
     Personagem personagemEditado;
     boolean editando;
+    public static String nome;
     
     /**
      * Creates new form InserirPersonagem
@@ -173,9 +174,14 @@ public class InserirPersonagem extends javax.swing.JFrame {
         });
 
         txtfNomeDono.setBackground(new java.awt.Color(40, 40, 40));
-        txtfNomeDono.setForeground(new java.awt.Color(255, 255, 255));
+        txtfNomeDono.setForeground(new java.awt.Color(189, 189, 189));
         txtfNomeDono.setText("Nenhum dono");
         txtfNomeDono.setEnabled(false);
+        txtfNomeDono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfNomeDonoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -418,7 +424,17 @@ public class InserirPersonagem extends javax.swing.JFrame {
         // Abre a tela de registroso para que o dono do Personagem seja definido:
         TelaRegistros telaSelecao = new TelaRegistros();
         telaSelecao.setVisible(true);
+        telaSelecao.addWindowListener(new java.awt.event.WindowAdapter(){
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evento) {txtfNomeDono.setText(nome);}
+        });
+        
+        
     }//GEN-LAST:event_btnSelecionarDonoActionPerformed
+
+    private void txtfNomeDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfNomeDonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfNomeDonoActionPerformed
 
     /**
      * @param args the command line arguments

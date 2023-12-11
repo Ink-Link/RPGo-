@@ -13,62 +13,26 @@ import javax.swing.JOptionPane;
 
 public class InserirMestre extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaCadastro
-     */
+    boolean flag2 = false;
+    
     public InserirMestre(){
         initComponents();
         txtfIdMestre.setText(Integer.toString(Pessoa.ID));
-        txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
         txtfUsuario.setText("Usuário");
-        txtfUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            if (txtfUsuario.getText().equals("Usuário")) {
-                txtfUsuario.setText("");
-                txtfUsuario.setForeground(new java.awt.Color(255, 255, 255));
-            }
-        }
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            if (txtfUsuario.getText().isEmpty()) {
-                txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
-                txtfUsuario.setText("Usuário");
-            }
-        }
-        });
-        txtfNomeFuncionario.setForeground(new java.awt.Color(169, 169, 169));
         txtfNomeFuncionario.setText("Nome");
-        txtfNomeFuncionario.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            if (txtfNomeFuncionario.getText().equals("Nome")) {
-                txtfNomeFuncionario.setText("");
-                txtfNomeFuncionario.setForeground(new java.awt.Color(255, 255, 255));
-            }
-        }
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            if (txtfNomeFuncionario.getText().isEmpty()) {
-                txtfNomeFuncionario.setForeground(new java.awt.Color(169, 169, 169));
-                txtfNomeFuncionario.setText("Nome");
-            }
-        }
-        });
-        txtfSenha.setForeground(new java.awt.Color(169, 169, 169));
         txtfSenha.setText("********");
-        txtfSenha.addFocusListener(new java.awt.event.FocusAdapter() {
-        public void focusGained(java.awt.event.FocusEvent evt) {
-            if (txtfSenha.getText().equals("********")) {
-                txtfSenha.setText("");
-                txtfSenha.setForeground(new java.awt.Color(255, 255, 255));
-            }
-        }
-        public void focusLost(java.awt.event.FocusEvent evt) {
-            if (txtfSenha.getText().isEmpty()) {
-                txtfSenha.setForeground(new java.awt.Color(169, 169, 169));
-                txtfSenha.setText("********");
-            }
-        }
-        });
-
-
+        montarTela();
+        getContentPane().setBackground(new java.awt.Color(30, 30, 30));
+        setLocationRelativeTo(null);
+    }
+    public InserirMestre(Funcionario funcionario){
+        initComponents();
+        flag2 = true;
+        txtfIdMestre.setText(Integer.toString(funcionario.getId()));
+        txtfUsuario.setText(funcionario.getUsuario());
+        txtfNomeFuncionario.setText(funcionario.getNome());
+        txtfSenha.setText(funcionario.getSenha());
+        montarTela();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
     }
@@ -168,7 +132,7 @@ public class InserirMestre extends javax.swing.JFrame {
         txtfDataFuncionario.setBackground(new java.awt.Color(40, 40, 40));
         txtfDataFuncionario.setForeground(new java.awt.Color(255, 255, 255));
         try {
-            txtfDataFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/ ####")));
+            txtfDataFuncionario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -277,12 +241,24 @@ public class InserirMestre extends javax.swing.JFrame {
         
         flag = false;
     }
-    if(!checkIfExists(novoFuncionario)) {
+    if(!checkIfExists(novoFuncionario) || flag2 == true) {
         if(flag == true){
-        saveToFile(novoFuncionario);
-        Pessoa.ID += 1;
+            if(flag2 == true){
+                    Funcionario.removerPessoaDoArquivo(txtfIdMestre.getText(), "src\\Save\\Funcionarios.txt", false);
+                    
+                    novoFuncionario.setId(Integer.parseInt(txtfIdMestre.getText()));
+                    
+                    saveToFile(novoFuncionario);
         
-        dispose();
+                    dispose();
+            }
+            else{
+                    saveToFile(novoFuncionario);
+        
+                    Pessoa.ID += 1;
+                    
+                    dispose();
+            }
         }
     }
     else{
@@ -354,7 +330,55 @@ public class InserirMestre extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    private void montarTela(){
+        txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
+        txtfUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (txtfUsuario.getText().equals("Usuário")) {
+                txtfUsuario.setText("");
+                txtfUsuario.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (txtfUsuario.getText().isEmpty()) {
+                txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
+                txtfUsuario.setText("Usuário");
+            }
+        }
+        });
+        txtfNomeFuncionario.setForeground(new java.awt.Color(169, 169, 169));
 
+        txtfNomeFuncionario.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (txtfNomeFuncionario.getText().equals("Nome")) {
+                txtfNomeFuncionario.setText("");
+                txtfNomeFuncionario.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (txtfNomeFuncionario.getText().isEmpty()) {
+                txtfNomeFuncionario.setForeground(new java.awt.Color(169, 169, 169));
+                txtfNomeFuncionario.setText("Nome");
+            }
+        }
+        });
+        txtfSenha.setForeground(new java.awt.Color(169, 169, 169));
+
+        txtfSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+        public void focusGained(java.awt.event.FocusEvent evt) {
+            if (txtfSenha.getText().equals("********")) {
+                txtfSenha.setText("");
+                txtfSenha.setForeground(new java.awt.Color(255, 255, 255));
+            }
+        }
+        public void focusLost(java.awt.event.FocusEvent evt) {
+            if (txtfSenha.getText().isEmpty()) {
+                txtfSenha.setForeground(new java.awt.Color(169, 169, 169));
+                txtfSenha.setText("********");
+            }
+        }
+        });
+    }
     private boolean checkIfExists(Funcionario funcionario) {
         // Caminho do arquivo
         String fileName = "src\\Save\\Funcionarios.txt";
