@@ -42,7 +42,7 @@ public class TelaCombate extends javax.swing.JFrame {
     Dictionary<String, javax.swing.JButton> dictBotoesProtags = new Hashtable<>();
     
     ArrayList<Vilao> listaViloes = new ArrayList<Vilao>();
-    Dictionary<String, javax.swing.JLabel[]> dictViloes = new Hashtable<>();
+    Dictionary<String, javax.swing.JLabel[]> dictLabelsViloes = new Hashtable<>();
     Dictionary<String, javax.swing.JButton> dictBotoesViloes = new Hashtable<>();
     
     /**
@@ -69,10 +69,10 @@ public class TelaCombate extends javax.swing.JFrame {
         
         
         javax.swing.JLabel listaVilao0 [] = {lblNomeVilao0, lblVidaVilao0, lblPlanoVilao0, lblDetermVilao0, lblPtsBizarrosVilao0};
-        javax.swing.JLabel listaVilao1 [] = {lblNomeVilao1, lblVidaVilao1, lblPlanoVilao1, lblDetermVilao1, lblPtsBizarrosVilao0};
+        javax.swing.JLabel listaVilao1 [] = {lblNomeVilao1, lblVidaVilao1, lblPlanoVilao1, lblDetermVilao1, lblPtsBizarrosVilao1};
         
-        dictViloes.put("Vilao0", listaVilao0);
-        dictViloes.put("Vilao1", listaVilao1);
+        dictLabelsViloes.put("Vilao0", listaVilao0);
+        dictLabelsViloes.put("Vilao1", listaVilao1);
         
         dictBotoesProtags.put("btnProtag0",btnProtag0);
         dictBotoesProtags.put("btnProtag1",btnProtag1);
@@ -579,6 +579,11 @@ public class TelaCombate extends javax.swing.JFrame {
         btnTeste.setForeground(new java.awt.Color(255, 255, 255));
         btnTeste.setText("Testar");
         btnTeste.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        btnTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTesteActionPerformed(evt);
+            }
+        });
 
         btnEditarPersonagem.setBackground(new java.awt.Color(86, 86, 86));
         btnEditarPersonagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-Rohan2StandPPP.png"))); // NOI18N
@@ -995,9 +1000,9 @@ public class TelaCombate extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackgroundActionPerformed
 
     private void btnAddPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersonagemActionPerformed
-        // Abre a tela de personagens :
+        // Abre a tela de personagens para seleção
         
-        // FALTA VERIFICAR SE O PERSONAGEM JA FOI SELECIONADO //
+        // FALTA VERIFICAR SE A LISTA DE PERSONAGENS TA CHEIA //
         
         TelaPersonagens selecaoPersonagem = new TelaPersonagens();
         selecaoPersonagem.setVisible(true);
@@ -1008,15 +1013,17 @@ public class TelaCombate extends javax.swing.JFrame {
                     if (selecaoPersonagem.personagemSelecionado instanceof Vilao && !listaViloes.contains(selecaoPersonagem.personagemSelecionado)) {
                         System.out.println("E VILAO");
                         listaViloes.add((Vilao) selecaoPersonagem.personagemSelecionado);
+                        situarPersonagem();
                         situarVilao();
                     }
                     else if (listaViloes.contains(selecaoPersonagem.personagemSelecionado)){
-                        txtaLog.append("Personagem já adicionado\n");
+                        txtaLog.append("Vilão já adicionado\n");
                     }
                     else if (!listaPersonagens.contains(selecaoPersonagem.personagemSelecionado)) {
                         System.out.println("E PERSONAGEM");
                         listaPersonagens.add(selecaoPersonagem.personagemSelecionado);
                         situarPersonagem();
+                        situarVilao();
                     }
                     else{
                         txtaLog.append("Personagem já adicionado\n");
@@ -1033,7 +1040,16 @@ public class TelaCombate extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRemoverPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverPersonagemActionPerformed
-        // TODO add your handling code here:
+        // Remove um personagem selecionado da cena
+        String botaoSelecionado = "";
+        for (int posicaoLinha = 0 ; posicaoLinha<2 ; posicaoLinha++) {
+            for (int posicaoColuna = 0 ; posicaoColuna<3 ; posicaoColuna++) {
+                if (matrizProtag[posicaoLinha][posicaoColuna] == 1) {
+                    botaoSelecionado = "btnProtag" + Integer.toString(posicaoColuna + (3*posicaoLinha));
+                }
+            }
+        }
+        System.out.println(botaoSelecionado);
     }//GEN-LAST:event_btnRemoverPersonagemActionPerformed
 
     private void btnEditarPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPersonagemActionPerformed
@@ -1079,12 +1095,10 @@ public class TelaCombate extends javax.swing.JFrame {
                     indiceMaior = j;
                 }
             }
-            
             iniciativa.add(listaIniciativa.get(indiceMaior));
             listaIniciativa.remove(indiceMaior);
             valoresIniciativa.remove(indiceMaior);
         }
-        
         
         String labelFinal = "Turno: ";
         for (int j = 0; j < numeroPersonagens; j++) {
@@ -1095,15 +1109,14 @@ public class TelaCombate extends javax.swing.JFrame {
                 labelFinal = labelFinal + iniciativa.get(j).getNome() + " - ";                
             }
         }
-        
         lblTurno.setText(labelFinal);
         
         if (!listaViloes.isEmpty()){
             for (int p = 0; p < listaViloes.size(); p++){
-                javax.swing.JLabel botoes [] = dictProtagonistas.get(listaViloes.get(p));
-                botoes[4].setText(Integer.toString(listaPersonagens.size()));
+                listaViloes.get(p).setPontosBizarros(listaPersonagens.size());
+                dictLabelsViloes.get("Vilao" + p)[4].setText(Integer.toString(listaViloes.get(p).getPontosBizarros()));
             }
-        }
+        }     
     }//GEN-LAST:event_btnIniciativaActionPerformed
 
     private void btnProtag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProtag1ActionPerformed
@@ -1198,40 +1211,51 @@ public class TelaCombate extends javax.swing.JFrame {
         mudarBorda();
     }//GEN-LAST:event_btnProtag5ActionPerformed
 
+    private void btnTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTesteActionPerformed
+        // Rola o teste selecionado, de Personagem ou Stand
+        
+        System.out.println(cboxTeste.getSelectedItem());
+        System.out.println(matrizProtag.toString());
+        System.out.println(matrizVilao.toString());
+    }//GEN-LAST:event_btnTesteActionPerformed
+
     
     private void situarPersonagem() {
         if (!listaPersonagens.isEmpty()){
-            Personagem personagemAtual = listaPersonagens.get(listaPersonagens.size()-1);
-            int posicao = listaPersonagens.indexOf(personagemAtual);
-            String nomeAtual = "Protag" + (posicao);
+            txtaLog.setText("");
+            for (Personagem personagemAtual : listaPersonagens) {
+                int posicao = listaPersonagens.indexOf(personagemAtual);
+                String nomeAtual = "Protag" + (posicao);
 
-            javax.swing.JLabel botoes [] = dictProtagonistas.get(nomeAtual);
+                javax.swing.JLabel botoes [] = dictProtagonistas.get(nomeAtual);
 
-            botoes[0].setText(personagemAtual.getNome()); // Nome do personagem
-            botoes[0].setFont(botoes[0].getFont().deriveFont(Font.BOLD, 13f));
-            botoes[1].setText(Integer.toString(personagemAtual.getHp())); // Vida
-            botoes[2].setText(Integer.toString(personagemAtual.getPlano())); // Plano
-            botoes[3].setText(Integer.toString(personagemAtual.getDeterminacao())); // Determinação
-            
-            txtaLog.append(personagemAtual.getNome() + " adicionado!\n");
+                botoes[0].setText(personagemAtual.getNome()); // Nome do personagem
+                botoes[0].setFont(botoes[0].getFont().deriveFont(Font.BOLD, 13f)); // Muda a fonte para negrito
+                botoes[1].setText(Integer.toString(personagemAtual.getHp())); // Vida
+                botoes[2].setText(Integer.toString(personagemAtual.getPlano())); // Plano
+                botoes[3].setText(Integer.toString(personagemAtual.getDeterminacao())); // Determinação
+
+                txtaLog.append(personagemAtual.getNome() + " adicionado!\n");
+            }
         }
     }
     
     private void situarVilao() {
         if (!listaViloes.isEmpty()){
-            Vilao vilaoAtual = listaViloes.get(listaViloes.size()-1);
-            int posicao = listaViloes.indexOf(vilaoAtual);
-            String nomeAtual = "Vilao" + (posicao);
+            for (Vilao vilaoAtual : listaViloes) {
+                int posicao = listaViloes.indexOf(vilaoAtual);
+                String nomeAtual = "Vilao" + (posicao);
 
-            javax.swing.JLabel botoes [] = dictViloes.get(nomeAtual);
+                javax.swing.JLabel botoes [] = dictLabelsViloes.get(nomeAtual);
 
-            botoes[0].setText(vilaoAtual.getNome()); // Nome do vilão
-            botoes[0].setFont(botoes[0].getFont().deriveFont(Font.BOLD, 13f));
-            botoes[1].setText(Integer.toString(vilaoAtual.getHp())); // Vida
-            botoes[2].setText(Integer.toString(vilaoAtual.getPlano())); // Plano
-            botoes[3].setText(Integer.toString(vilaoAtual.getDeterminacao())); // Determinação
-            
-            txtaLog.append(vilaoAtual.getNome() + " adicionado!\n");
+                botoes[0].setText(vilaoAtual.getNome()); // Nome do vilão
+                botoes[0].setFont(botoes[0].getFont().deriveFont(Font.BOLD, 13f));
+                botoes[1].setText(Integer.toString(vilaoAtual.getHp())); // Vida
+                botoes[2].setText(Integer.toString(vilaoAtual.getPlano())); // Plano
+                botoes[3].setText(Integer.toString(vilaoAtual.getDeterminacao())); // Determinação
+
+                txtaLog.append(vilaoAtual.getNome() + " adicionado!\n");
+            }
         }
     }
     
