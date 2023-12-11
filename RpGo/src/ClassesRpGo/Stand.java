@@ -70,7 +70,81 @@ public class Stand {
     public void setPre(String pre) {
         this.pre = pre;
     }
-     public String rollTeste(String atributo){
+    
+    public int rollTesteInt(String atributo) {
+        double dado1, dado2, dado3;
+        
+        int valor1 = 0;
+        
+        ArrayList <Integer> valores = new ArrayList <Integer>(); 
+        
+        switch (atributo){
+        case "A":
+            dado1 = Math.random() * 6 + 1;
+       
+            dado2 = Math.random() * 6 + 1;
+            
+            dado3 = Math.random() * 6 + 1;
+            
+            valor1 = (int)dado1 + (int) dado2 + (int) dado3; 
+            
+            break;
+        case "B":
+            dado1 = Math.random() * 6 + 1;
+       
+            dado2 = Math.random() * 6 + 1;
+            
+            dado3 = Math.random() * 6 + 1;
+            
+            valores.add((int)dado1);
+            
+            valores.add((int)dado2);
+            
+            valores.add((int)dado3);
+            
+            valores.sort(null);
+            
+            valor1 = valores.get(1) + valores.get(2);
+            
+            break;
+            
+        case "C":
+            dado1 = Math.random() * 6 + 1;
+       
+            dado2 = Math.random() * 6 + 1;
+            
+            valor1 = (int)dado1 + (int) dado2;
+            
+            break;            
+        case "D":
+            dado1 = Math.random() * 6 + 1;
+       
+            dado2 = Math.random() * 6 + 1;
+            
+            valores.add((int)dado1);
+            
+            valores.add((int)dado2);
+            
+            valores.sort(null);
+            
+            valor1 = valores.get(1);
+            
+            break;
+            
+        case "E":
+            dado1 = Math.random() * 6 + 1;
+            
+            valor1 = (int)dado1;
+            
+            break;
+        
+        default:
+            break;
+        }
+        return valor1;
+    }
+    
+    public String rollTeste(String atributo){
         double dado1, dado2, dado3;
         
         int valor1 = 0;
@@ -141,13 +215,13 @@ public class Stand {
             break;
         }
         if(valor1 <= 4){
-            return "Falha";
+            return "Falha\n";
         }
         else if(valor1 < 7){
-            return "Sucesso parcial";
+            return "Sucesso parcial\n";
         }
         else{
-            return "Sucesso";
+            return "Sucesso\n";
         }
     }
         

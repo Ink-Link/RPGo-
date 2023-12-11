@@ -29,11 +29,11 @@ public class Personagem {
         this.mente = mente;
         this.coragem = coragem;
         
-        this.hp = corpo; // Incompleto: HP = Corpo x d6 + rolagem de Durabilidade
+        this.stand = stand;
+        
+        this.hp = gerarHp();
         this.plano = mente;
         this.determinacao = coragem;
-        
-        this.stand = stand;
         
         this.dono = dono;
     }
@@ -118,6 +118,18 @@ public class Personagem {
 
     public void setDono(Pessoa dono) {
         this.dono = dono;
+    }
+    
+    public int gerarHp() {
+        int totalVida = 0;
+        for (int i=0; i<corpo; i++) {
+            totalVida += (int) (Math.random() * 6 + 1);
+        }
+        totalVida += this.stand.rollTesteInt(this.stand.getDur());
+        
+        this.hp = totalVida;
+        
+        return totalVida;
     }
     public int rollContestada(String statusPrincipal, String statusSecundario){
         double dado1, dado2;
@@ -205,23 +217,23 @@ public class Personagem {
        
         return passou;  
     }
-    public String rollTeste(String atributo){
+    public String rollTeste(int atributo){
         double dado;
         
         int valor;
         
         dado = Math.random() * 6 + 1;
         
-        valor = (int)dado + Integer.parseInt(atributo);
+        valor = (int)dado + atributo;
         
         if(valor <= 4){
-            return "Falha";
+            return "Falha\n";
         }
         else if(valor < 7){
-            return "Sucesso parcial";
+            return "Sucesso parcial\n";
         }
         else{
-            return "Sucesso";
+            return "Sucesso\n";
         }   
     }
 
