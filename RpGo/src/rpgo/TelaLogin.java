@@ -198,9 +198,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         }
         if(flag == false){
-            JOptionPane.showMessageDialog(this, "Usuário não está cadastrado!");
-            
-            JOptionPane.showMessageDialog(this, "Realize o cadastro do usuário");
+            JOptionPane.showMessageDialog(this, "Usuário não está cadastrado!\nRealize o cadastro do usuário.");
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
