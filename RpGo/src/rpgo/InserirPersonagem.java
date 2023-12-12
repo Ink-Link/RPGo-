@@ -4,6 +4,7 @@ import ClassesRpGo.Pessoa;
 import ClassesRpGo.Personagem;
 import ClassesRpGo.Vilao;
 import ClassesRpGo.Stand;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,20 @@ public class InserirPersonagem extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+        
+        ArrayList<Personagem> listaCompleta = Arquivar.lerPersonagensDoArquivo("src\\Save\\Personagens.txt");
+        String tipoIndicado = "Personagem";
+        for(Personagem personagem : listaCompleta){
+            if (personagem == null){
+                tipoIndicado = "Vilão";
+            }
+            else if(tipoIndicado.equals("Personagem")){
+            
+            }
+            else{
+            
+            }
+        }
         
         editando = false;
     }

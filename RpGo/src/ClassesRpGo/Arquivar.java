@@ -38,7 +38,10 @@ public class Arquivar {
     }
 
     public static ArrayList<Personagem> lerPersonagensDoArquivo(String caminhoArquivo) {
+        ArrayList<Personagem> tudo = new ArrayList<>();
         ArrayList<Personagem> personagens = new ArrayList<>();
+        ArrayList<Personagem> viloes = new ArrayList<>();
+        
 
         try (BufferedReader reader = new BufferedReader(new FileReader(caminhoArquivo))) {
             String linha;
@@ -54,14 +57,25 @@ public class Arquivar {
                 }
                 Personagem personagem = fromFileString(linha, vilao, funcionario);
                 if (personagem != null) {
-                    personagens.add(personagem);
+                    if(vilao){
+                        viloes.add(personagem);
+                    }
+                    else{
+                        personagens.add(personagem);
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return personagens;
+        for(Personagem personagem : personagens){
+            tudo.add(personagem);
+        }
+        tudo.add(null);
+        for(Personagem vilao: viloes){
+            tudo.add(vilao);
+        }
+        return tudo;
     }
 
     
