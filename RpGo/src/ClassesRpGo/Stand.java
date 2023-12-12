@@ -26,11 +26,13 @@ public class Stand {
         this.pwr = "";
         this.spd = "";
         this.dur = "";
-        this.pre = "";
-        
-        
+        this.pre = "";   
     }
 
+    public String toFileString(){
+        return this.nome + ";" + this.pwr + ";" + this.spd + ";" + this.dur + ";" + this.pre; 
+    }
+    
     public String getNome() {
         return nome;
     }

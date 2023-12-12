@@ -1,5 +1,6 @@
 package rpgo;
 
+import ClassesRpGo.Arquivar;
 import ClassesRpGo.Funcionario;
 import ClassesRpGo.Pessoa;
 
@@ -217,56 +218,56 @@ public class InserirMestre extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         boolean flag = true;
-// Obtendo os dados da interface gráfica
-    String nome = txtfNomeFuncionario.getText();
-    String usuario = txtfUsuario.getText();
-    String senha = txtfSenha.getText();
-    String dataDeNascimento = txtfDataFuncionario.getText();
+        // Obtendo os dados da interface gráfica
+        String nome = txtfNomeFuncionario.getText();
+        String usuario = txtfUsuario.getText();
+        String senha = txtfSenha.getText();
+        String dataDeNascimento = txtfDataFuncionario.getText();
 
-    // Criando uma instância de Funcionario
-    Funcionario novoFuncionario = new Funcionario(Pessoa.ID, nome, dataDeNascimento, usuario, senha);
-    // Verificando se o funcionário já existe
-    if(txtfNomeFuncionario.getText().equals("Nome")){
-        JOptionPane.showMessageDialog(this, "Escreva algo no campo Nome");
-        
-        flag = false;
-    }
-    if(txtfUsuario.getText().equals("Usuário")){
-        JOptionPane.showMessageDialog(this, "Escreva algo no campo Usuário");  
-        
-        flag = false;
-    }
-    if(txtfSenha.getText().equals("********")){
-        JOptionPane.showMessageDialog(this, "Escreva algo no campo de Senha");
-        
-        flag = false;
-    }
-    if(!checkIfExists(novoFuncionario) || flag2 == true) {
-        if(flag == true){
-            if(flag2 == true){
-                    Funcionario.removerPessoaDoArquivo(txtfIdMestre.getText(), "src\\Save\\Funcionarios.txt", false);
-                    
-                    novoFuncionario.setId(Integer.parseInt(txtfIdMestre.getText()));
-                    
-                    saveToFile(novoFuncionario);
-        
-                    dispose();
-            }
-            else{
-                    saveToFile(novoFuncionario);
-        
-                    Pessoa.ID += 1;
-                    
-                    dispose();
+        // Criando uma instância de Funcionario
+        Funcionario novoFuncionario = new Funcionario(Pessoa.ID, nome, dataDeNascimento, usuario, senha);
+        // Verificando se o funcionário já existe
+        if(txtfNomeFuncionario.getText().equals("Nome")){
+            JOptionPane.showMessageDialog(this, "Escreva algo no campo Nome");
+
+            flag = false;
+        }
+        if(txtfUsuario.getText().equals("Usuário")){
+            JOptionPane.showMessageDialog(this, "Escreva algo no campo Usuário");  
+
+            flag = false;
+        }
+        if(txtfSenha.getText().equals("********")){
+            JOptionPane.showMessageDialog(this, "Escreva algo no campo de Senha");
+
+            flag = false;
+        }
+        if(!Arquivar.checkIfExists(novoFuncionario.getUsuario(), "src\\Save\\Funcionarios.txt") || flag2 == true) {
+            if(flag == true){
+                if(flag2 == true){
+                        Funcionario.removerPessoaDoArquivo(txtfIdMestre.getText(), "src\\Save\\Funcionarios.txt", false);
+
+                        novoFuncionario.setId(Integer.parseInt(txtfIdMestre.getText()));
+
+                        Arquivar.salvarNoArquivo(novoFuncionario.toFileString(), "src\\Save\\Funcionarios.txt");
+
+                        dispose();
+                }
+                else{
+                        Arquivar.salvarNoArquivo(novoFuncionario.toFileString(), "src\\Save\\Funcionarios.txt");
+
+                        Pessoa.ID += 1;
+
+                        dispose();
+                }
             }
         }
-    }
-    else{
-        // Exibir mensagem de que o funcionário já existe
-        JOptionPane.showMessageDialog(this, "Funcionário já existe!");
-        
-        dispose();
-    }    
+        else{
+            // Exibir mensagem de que o funcionário já existe
+            JOptionPane.showMessageDialog(this, "Funcionário já existe!");
+
+            dispose();
+        }    
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtfIdMestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfIdMestreActionPerformed
@@ -317,19 +318,6 @@ public class InserirMestre extends javax.swing.JFrame {
         });
     }                                         
 
-    private void saveToFile(Funcionario funcionario) {
-        // Caminho do arquivo
-        String fileName = "src\\Save\\Funcionarios.txt";
-
-        // Convertendo Funcionario para string e salvando no arquivo
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            writer.write(funcionario.toFileString());
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     private void montarTela(){
         txtfUsuario.setForeground(new java.awt.Color(169, 169, 169));
         txtfUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -378,22 +366,6 @@ public class InserirMestre extends javax.swing.JFrame {
             }
         }
         });
-    }
-    private boolean checkIfExists(Funcionario funcionario) {
-        // Caminho do arquivo
-        String fileName = "src\\Save\\Funcionarios.txt";
-
-        // Verificando se o funcionário já existe no arquivo
-        try {
-            Path path = Paths.get(fileName);
-            if (Files.exists(path)) {
-                return Files.lines(path).anyMatch(line -> line.contains(funcionario.getUsuario()));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

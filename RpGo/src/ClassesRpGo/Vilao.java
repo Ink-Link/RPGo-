@@ -16,7 +16,13 @@ public class Vilao extends Personagem {
         this.pontosBizarros = 0;
         
     } 
-
+    
+    public String toFileString(){
+        return this.nome + ";" + Integer.toString(this.corpo) + ";" + Integer.toString(this.mente)  + ";" + 
+                Integer.toString(this.coragem)  + ";" + Integer.toString(this.hp) + ";" + 
+                this.stand.toFileString() + ";" + this.dono.toFileString() + ";" + this.pontosBizarros; 
+    }
+    
     public int getPontosBizarros() {
         return pontosBizarros;
     }
