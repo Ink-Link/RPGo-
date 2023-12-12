@@ -227,14 +227,14 @@ public class Personagem {
         valor = (int)dado + atributo;
         
         if(valor <= 4){
-            return "Falha\n";
+            return (Integer.toString(valor) + " (Falha)\n");
         }
         else if(valor < 7){
-            return "Sucesso parcial\n";
+            return (Integer.toString(valor) + " (Sucesso parcial)\n");
         }
         else{
-            return "Sucesso\n";
-        }   
+            return (Integer.toString(valor) + " (Sucesso)\n");
+        }  
     }
 
 }

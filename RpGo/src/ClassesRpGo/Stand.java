@@ -215,13 +215,13 @@ public class Stand {
             break;
         }
         if(valor1 <= 4){
-            return "Falha\n";
+            return (Integer.toString(valor1) + " (Falha)\n");
         }
         else if(valor1 < 7){
-            return "Sucesso parcial\n";
+            return (Integer.toString(valor1) + " (Sucesso parcial)\n");
         }
         else{
-            return "Sucesso\n";
+            return (Integer.toString(valor1) + " (Sucesso)\n");
         }
     }
         
