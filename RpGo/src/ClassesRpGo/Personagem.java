@@ -120,6 +120,12 @@ public class Personagem {
         this.dono = dono;
     }
     
+    public String toFileString(){
+        return this.nome + ";" + Integer.toString(this.corpo) + ";" + Integer.toString(this.mente)  + ";" + 
+                Integer.toString(this.coragem)  + ";" + Integer.toString(this.hp) + ";" + 
+                this.stand.toFileString() + ";" + this.dono.getNome(); 
+    }
+    
     public int gerarHp() {
         int totalVida = 0;
         for (int i=0; i<corpo; i++) {

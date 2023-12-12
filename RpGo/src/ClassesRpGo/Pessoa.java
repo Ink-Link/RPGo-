@@ -27,6 +27,8 @@ public abstract class Pessoa {
         this.nome = nome;
         this.dataDeNascimento = dataDeNascimento;
     }
+    
+    public abstract String toFileString();
 
     public static void removerPessoaDoArquivo(String chave, String caminhoArquivo, boolean removerPorUsuario) {
         try {

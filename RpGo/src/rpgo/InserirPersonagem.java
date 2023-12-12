@@ -1,8 +1,10 @@
 package rpgo;
+import ClassesRpGo.Arquivar;
 import ClassesRpGo.Pessoa;
 import ClassesRpGo.Personagem;
 import ClassesRpGo.Vilao;
 import ClassesRpGo.Stand;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,7 +12,7 @@ import ClassesRpGo.Stand;
  */
 public class InserirPersonagem extends javax.swing.JFrame {
     
-    public static Pessoa donoSelecionado;
+    public static Pessoa donoSelecionado = null;
     Personagem personagemEditado;
     boolean editando;
     
@@ -305,27 +307,35 @@ public class InserirPersonagem extends javax.swing.JFrame {
         // TODO add your handling code here:
         boolean eVilao = ckboxVilao.isSelected(); 
         
-        if (!editando) { // Caso não estiver editando, cria um novo personagem
+        String nomeInformado = txtfNomePersonagem.getText();
+        int corpo = (Integer) spnrCorpo.getValue();
+        int mente = (Integer) spnrMente.getValue();
+        int coragem = (Integer) spnrCoragem.getValue();
+
+        String nomeStand = txtfNomeStand.getText();
+        String poder = (String) spnrPoder.getValue();
+        String velocidade = (String) spnrVelocidade.getValue();
+        String durabilidade = (String) spnrDurabilidade.getValue();
+        String precisao = (String) spnrPrecisao.getValue();
+        
+        // Verifica se algum dos campos foi deixado em branco
+        if(nomeInformado.equals("") || nomeStand.equals("") || this.donoSelecionado == null){
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+        }
+        else if(Arquivar.checkIfExists(nomeInformado, "src\\Save\\Personagens.txt") ||
+                Arquivar.checkIfExists(nomeStand, "src\\Save\\Personagens.txt")){
+            JOptionPane.showMessageDialog(this, "O nome passado já existe!");    
+        }
+        else if (!editando) { // Caso não estiver editando, cria um novo personagem
             // Verifica se 'Vilão?' foi marcado para criar o personagem com a classe certa
             if (eVilao) {            
-                String nomeVilao = txtfNomePersonagem.getText();
-                int corpo = (Integer) spnrCorpo.getValue();
-                int mente = (Integer) spnrMente.getValue();
-                int coragem = (Integer) spnrCoragem.getValue();
-
-                String nomeStand = txtfNomeStand.getText();
-                String poder = (String) spnrPoder.getValue();
-                String velocidade = (String) spnrVelocidade.getValue();
-                String durabilidade = (String) spnrDurabilidade.getValue();
-                String precisao = (String) spnrPrecisao.getValue();
-
                 Stand novoStand = new Stand(nomeStand, 
                                             poder, 
                                             velocidade, 
                                             durabilidade, 
                                             precisao);
 
-                Vilao novoVilao = new Vilao(nomeVilao, 
+                Vilao novoVilao = new Vilao(nomeInformado, 
                                             corpo, 
                                             mente, 
                                             coragem, 
@@ -333,26 +343,16 @@ public class InserirPersonagem extends javax.swing.JFrame {
                                             this.donoSelecionado);
 
                 Vilao.listaViloes.add(novoVilao);
+                Arquivar.salvarNoArquivo(novoVilao.toFileString(), "src\\Save\\Personagens.txt");
             } 
             else {
-                String nomePersonagem = txtfNomePersonagem.getText();
-                int corpo = (Integer) spnrCorpo.getValue();
-                int mente = (Integer) spnrMente.getValue();
-                int coragem = (Integer) spnrCoragem.getValue();
-
-                String nomeStand = txtfNomeStand.getText();
-                String poder = (String) spnrPoder.getValue();
-                String velocidade = (String) spnrVelocidade.getValue();
-                String durabilidade = (String) spnrDurabilidade.getValue();
-                String precisao = (String) spnrPrecisao.getValue();
-
                 Stand novoStand = new Stand(nomeStand, 
                                             poder, 
                                             velocidade, 
                                             durabilidade, 
                                             precisao);
 
-                Personagem novoPersonagem = new Personagem(nomePersonagem, 
+                Personagem novoPersonagem = new Personagem(nomeInformado, 
                                                            corpo, 
                                                            mente, 
                                                            coragem, 
@@ -360,28 +360,18 @@ public class InserirPersonagem extends javax.swing.JFrame {
                                                            this.donoSelecionado);
 
                 Personagem.listaPersonagens.add(novoPersonagem);
+                Arquivar.salvarNoArquivo(novoPersonagem.toFileString(), "src\\Save\\Personagens.txt");
             }
         }
         else { //Caso esteja editando, sobrescreve os dados do personagem existente
             if (eVilao) {            
-                String nomeVilao = txtfNomePersonagem.getText();
-                int corpo = (Integer) spnrCorpo.getValue();
-                int mente = (Integer) spnrMente.getValue();
-                int coragem = (Integer) spnrCoragem.getValue();
-
-                String nomeStand = txtfNomeStand.getText();
-                String poder = (String) spnrPoder.getValue();
-                String velocidade = (String) spnrVelocidade.getValue();
-                String durabilidade = (String) spnrDurabilidade.getValue();
-                String precisao = (String) spnrPrecisao.getValue();
-
                 Stand novoStand = new Stand(nomeStand, 
                                             poder, 
                                             velocidade, 
                                             durabilidade, 
                                             precisao);
 
-                this.personagemEditado.setNome(nomeVilao); 
+                this.personagemEditado.setNome(nomeInformado); 
                 this.personagemEditado.setCorpo(corpo); 
                 this.personagemEditado.setMente(mente);
                 this.personagemEditado.setCoragem(coragem);
@@ -389,24 +379,13 @@ public class InserirPersonagem extends javax.swing.JFrame {
                 this.personagemEditado.setDono(this.donoSelecionado);
             } 
             else {
-                String nomePersonagem = txtfNomePersonagem.getText();
-                int corpo = (Integer) spnrCorpo.getValue();
-                int mente = (Integer) spnrMente.getValue();
-                int coragem = (Integer) spnrCoragem.getValue();
-
-                String nomeStand = txtfNomeStand.getText();
-                String poder = (String) spnrPoder.getValue();
-                String velocidade = (String) spnrVelocidade.getValue();
-                String durabilidade = (String) spnrDurabilidade.getValue();
-                String precisao = (String) spnrPrecisao.getValue();
-
-                Stand novoStand = new Stand(nomeStand, 
+               Stand novoStand = new Stand(nomeStand, 
                                             poder, 
                                             velocidade, 
                                             durabilidade, 
                                             precisao);
 
-                this.personagemEditado.setNome(nomePersonagem); 
+                this.personagemEditado.setNome(nomeInformado); 
                 this.personagemEditado.setCorpo(corpo); 
                 this.personagemEditado.setMente(mente);
                 this.personagemEditado.setCoragem(coragem);

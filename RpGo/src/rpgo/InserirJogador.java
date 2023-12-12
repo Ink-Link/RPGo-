@@ -4,6 +4,7 @@
  */
 package rpgo;
 
+import ClassesRpGo.Arquivar;
 import ClassesRpGo.Funcionario;
 import ClassesRpGo.Jogador;
 import ClassesRpGo.Pessoa;
@@ -40,36 +41,7 @@ public class InserirJogador extends javax.swing.JFrame {
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
     }
-    private void saveToFile(Jogador jogador) {
-        // Caminho do arquivo
-        String fileName = "src\\Save\\Jogadores.txt";
 
-        // Convertendo jogador para string e salvando no arquivo
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            writer.write(jogador.toFileString());
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private boolean checkIfExists(Jogador jogador) {
-        // Caminho do arquivo
-        String fileName = "src\\Save\\Jogadores.txt";
-
-        // Verificando se o jogador já existe no arquivo
-        try {
-            Path path = Paths.get(fileName);
-            if (Files.exists(path)) {
-                return Files.lines(path).anyMatch(line -> line.contains(jogador.getNome()));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
     private void montarTela(){
         txtfNome.setForeground(new java.awt.Color(169, 169, 169));
         txtfNome.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -231,19 +203,19 @@ public class InserirJogador extends javax.swing.JFrame {
         flag = false;
     }
     
-    if(!checkIfExists(jogador) || flag2 == true) {
+    if(!Arquivar.checkIfExists(jogador.getNome(), "src\\Save\\Jogadores.txt") || flag2 == true) {
         if(flag == true){
             if(flag2 == true){
                     Jogador.removerPessoaDoArquivo(txtfIdJogador.getText(), "src\\Save\\Jogadores.txt", false);
                     
                     jogador.setId(Integer.parseInt(txtfIdJogador.getText()));
                     
-                    saveToFile(jogador);
+                    Arquivar.salvarNoArquivo(jogador.toFileString(), "src\\Save\\Jogadores.txt");
         
                     dispose();
             }
             else{
-                    saveToFile(jogador);
+                    Arquivar.salvarNoArquivo(jogador.toFileString(), "src\\Save\\Jogadores.txt");
         
                     Pessoa.ID += 1;
                     
