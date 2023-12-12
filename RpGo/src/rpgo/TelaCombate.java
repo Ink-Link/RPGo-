@@ -842,7 +842,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnIniciativa.setBackground(new java.awt.Color(86, 86, 86));
         btnIniciativa.setForeground(new java.awt.Color(255, 255, 255));
-        btnIniciativa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/24px-Dados.png"))); // NOI18N
+        btnIniciativa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-MikitakaStandPPP.png"))); // NOI18N
         btnIniciativa.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         btnIniciativa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -861,7 +861,7 @@ public class TelaCombate extends javax.swing.JFrame {
 
         btnProximoTurno.setBackground(new java.awt.Color(86, 86, 86));
         btnProximoTurno.setForeground(new java.awt.Color(255, 255, 255));
-        btnProximoTurno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/120px-Josuke2StandPPP.png"))); // NOI18N
+        btnProximoTurno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rpgo/Icones/TelaCombate/225px-Diavolo2StandPPP.png"))); // NOI18N
         btnProximoTurno.setText("Próximo Turno");
         btnProximoTurno.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         btnProximoTurno.addActionListener(new java.awt.event.ActionListener() {
@@ -1207,22 +1207,25 @@ public class TelaCombate extends javax.swing.JFrame {
 
     private void btnTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTesteActionPerformed
         // Rola o teste selecionado, de Personagem ou Stand
-        System.out.println(cboxTeste.getSelectedItem());
-        
-        switch (cboxTeste.getSelectedItem().toString()) {
-            // Testes de Personagem
-            case "Corpo" -> txtaLog.append("Teste de Corpo: " + iniciativa.get(turnoAtual).rollTeste(iniciativa.get(turnoAtual).getCorpo()));
-            case "Mente" -> txtaLog.append("Teste de Mente: " + iniciativa.get(turnoAtual).rollTeste(iniciativa.get(turnoAtual).getMente()));
-            case "Coragem" -> txtaLog.append("Teste de Coragem: " + iniciativa.get(turnoAtual).rollTeste(iniciativa.get(turnoAtual).getCoragem()));
-            
-            // Testes de Stand
-            case "Poder" -> txtaLog.append("Teste de Poder: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getPwr()));
-            case "Velocidade" -> txtaLog.append("Teste de Velocidade: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getSpd()));
-            case "Durabilidade" -> txtaLog.append("Teste de Durabilidade: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getDur()));
-            case "Precisão" -> txtaLog.append("Teste de Precisão: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getPre()));
-                
-            default -> {
+        // FAZER COM QUE FIQUE DISABLED ATÉ ROLAR INICIATIVA: DÁ ERRO SE TENTAR ROLAR SEM PERSONAGENS NA FILA
+        if (iniciativa.size()>0) {
+            switch (cboxTeste.getSelectedItem().toString()) {
+                // Testes de Personagem
+                case "Corpo" -> txtaLog.append("Teste de Corpo: " + iniciativa.get(turnoAtual).rollTeste(iniciativa.get(turnoAtual).getCorpo()));
+                case "Mente" -> txtaLog.append("Teste de Mente: " + iniciativa.get(turnoAtual).rollTeste(iniciativa.get(turnoAtual).getMente()));
+                case "Coragem" -> txtaLog.append("Teste de Coragem: " + iniciativa.get(turnoAtual).rollTeste(iniciativa.get(turnoAtual).getCoragem()));
+
+                // Testes de Stand
+                case "Poder" -> txtaLog.append("Teste de Poder: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getPwr()));
+                case "Velocidade" -> txtaLog.append("Teste de Velocidade: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getSpd()));
+                case "Durabilidade" -> txtaLog.append("Teste de Durabilidade: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getDur()));
+                case "Precisão" -> txtaLog.append("Teste de Precisão: " + iniciativa.get(turnoAtual).getStand().rollTeste(iniciativa.get(turnoAtual).getStand().getPre()));
+
+                default -> {}
             }
+        }
+        else {
+            txtaLog.append("Role iniciativa primeiro!\n");
         }
         // Testes de Personagem
     }//GEN-LAST:event_btnTesteActionPerformed
