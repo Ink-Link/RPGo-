@@ -25,20 +25,6 @@ public class InserirPersonagem extends javax.swing.JFrame {
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
         
-        ArrayList<Personagem> listaCompleta = Arquivar.lerPersonagensDoArquivo("src\\Save\\Personagens.txt");
-        String tipoIndicado = "Personagem";
-        for(Personagem personagem : listaCompleta){
-            if (personagem == null){
-                tipoIndicado = "Vilão";
-            }
-            else if(tipoIndicado.equals("Personagem")){
-            
-            }
-            else{
-            
-            }
-        }
-        
         editando = false;
     }
     

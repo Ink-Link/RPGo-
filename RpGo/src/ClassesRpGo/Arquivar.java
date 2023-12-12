@@ -55,13 +55,15 @@ public class Arquivar {
                 else if (linha.split(";").length == 15){
                     funcionario = true;
                 }
-                Personagem personagem = fromFileString(linha, vilao, funcionario);
-                if (personagem != null) {
-                    if(vilao){
-                        viloes.add(personagem);
-                    }
-                    else{
-                        personagens.add(personagem);
+                if(!linha.equals("")){
+                    Personagem personagem = fromFileString(linha, vilao, funcionario);
+                    if (personagem != null) {
+                        if(vilao){
+                            viloes.add(personagem);
+                        }
+                        else{
+                            personagens.add(personagem);
+                        }
                     }
                 }
             }

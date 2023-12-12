@@ -231,7 +231,7 @@ public class InserirCampanha extends javax.swing.JFrame {
     }//GEN-LAST:event_cboxFrequenciaActionPerformed
 
     private void lblSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblSalvarActionPerformed
-        Campanha campanha = new Campanha(Campanha.ID, txtfTitulo.getText(), txtfSistema.getText(),  );
+        //Campanha campanha = new Campanha(Campanha.ID, txtfTitulo.getText(), txtfSistema.getText(),  );
     }//GEN-LAST:event_lblSalvarActionPerformed
 
     private void lblBuscarMestreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblBuscarMestreActionPerformed

@@ -42,10 +42,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblSalvar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="lblSalvar" min="-2" max="-2" attributes="0"/>
                           <Component id="cboxFrequencia" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="99" max="32767" attributes="0"/>

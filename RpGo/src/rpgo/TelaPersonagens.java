@@ -1,5 +1,6 @@
 package rpgo;
 
+import ClassesRpGo.Arquivar;
 import ClassesRpGo.Personagem;
 import ClassesRpGo.Vilao;
 import java.util.ArrayList;
@@ -19,6 +20,27 @@ public class TelaPersonagens extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(30, 30, 30));
         setLocationRelativeTo(null);
+        
+                ArrayList<Personagem> listaCompleta = Arquivar.lerPersonagensDoArquivo("src\\Save\\Personagens.txt");;;
+        ArrayList<Personagem> listaPersonagem = new ArrayList<>();
+        ArrayList<Vilao> listaVilao = new ArrayList<>();
+        
+        String tipoIndicado = "Personagem";
+        for(Personagem personagem : listaCompleta){
+            if (personagem == null){
+                tipoIndicado = "Vilão";
+            }
+            else if(tipoIndicado.equals("Personagem")){
+                listaPersonagem.add(personagem);
+            }
+            else{
+                listaVilao.add((Vilao) personagem);
+            }
+        }
+        
+        Personagem.listaPersonagens = listaPersonagem;
+        Vilao.listaViloes = listaVilao;
+        
         montarTabela();
     }
     /**

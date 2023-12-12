@@ -123,7 +123,7 @@ public class Personagem {
     public String toFileString(){
         return this.nome + ";" + Integer.toString(this.corpo) + ";" + Integer.toString(this.mente)  + ";" + 
                 Integer.toString(this.coragem)  + ";" + Integer.toString(this.hp) + ";" + 
-                this.stand.toFileString() + ";" + this.dono.getNome(); 
+                this.stand.toFileString() + ";" + this.dono.toFileString(); 
     }
     
     public int gerarHp() {

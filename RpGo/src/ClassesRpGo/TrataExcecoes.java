@@ -4,7 +4,7 @@
  */
 package ClassesRpGo;
 
-public class TrataExceções {
+public class TrataExcecoes {
     public static boolean verificaInt(String inteiro){
         try{
             Integer.parseInt(inteiro);
