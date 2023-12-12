@@ -412,7 +412,7 @@ public class TelaRegistros extends javax.swing.JFrame {
             int linhaSelecionada2 = tblJogadores.getSelectedRow();
         
             if(linhaSelecionada != -1){
-                InserirCampanha.nome = tblFuncionarios.getValueAt(linhaSelecionada, 2).toString();
+                InserirPersonagem.donoSelecionado = pesquisa(tblFuncionarios.getValueAt(linhaSelecionada, 1).toString());
                 InserirCampanha.FLAG = false;
                 dispose();
             }

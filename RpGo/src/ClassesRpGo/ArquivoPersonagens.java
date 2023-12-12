@@ -58,11 +58,9 @@ public class ArquivoPersonagens {
     
     public static Vilao fromFileString(String fileString, boolean vilao, Pessoa dono) {
         String[] parts = fileString.split(";");
-
+        Vilao novoVilao;
     // Verifique se o número de partes está correto
-        if (vilao == true) {
-            throw new IllegalArgumentException("Formato de string inválido para criar um Vilao");
-            
+        if (vilao == true) {   
             String nome = parts[0];
             int corpo = Integer.parseInt(parts[1]);
             int mente = Integer.parseInt(parts[2]);
@@ -75,9 +73,13 @@ public class ArquivoPersonagens {
 
         // Crie e retorne um novo objeto Vilao
             Stand stand = new Stand(nomeStand, poder, velocidade, durabilidade, precisao);
-            Vilao novoVilao = new Vilao(nome, corpo, mente, coragem, stand, dono);  // Certifique-se de ter uma referência para o dono
-        return novoVilao;
+            novoVilao = new Vilao(nome, corpo, mente, coragem, stand, dono);  // Certifique-se de ter uma referência para o dono
+
+        
         }
-        // Extraia informações das partes 
+
+    
+        return novoVilao;
+        
     }
 }

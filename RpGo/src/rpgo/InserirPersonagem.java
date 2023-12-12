@@ -420,7 +420,10 @@ public class InserirPersonagem extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnSelecionarDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarDonoActionPerformed
-        // Abre a tela de registroso para que o dono do Personagem seja definido:
+        boolean eVilao = ckboxVilao.isSelected();
+        if(eVilao){
+            InserirCampanha.FLAG = true;
+        }
         TelaRegistros telaSelecao = new TelaRegistros();
         telaSelecao.setVisible(true);
         telaSelecao.addWindowListener(new java.awt.event.WindowAdapter(){
